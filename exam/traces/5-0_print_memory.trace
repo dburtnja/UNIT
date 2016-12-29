@@ -1,0 +1,88 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1r2p4.unit.ua
+Darwin 15.5.0 x86_64
+$> date
+Tue Dec 27 13:39:29 EET 2016
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 8.0.0 (clang-800.0.42.1)
+Target: x86_64-apple-darwin15.5.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple LLVM version 8.0.0 (clang-800.0.42.1)
+Target: x86_64-apple-darwin15.5.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2016/c-exam-beginner/exam_20161227/dburtnja
+
+= Git history ==================================================================
+$> git -C /var/folders/3n/s9_c2wnj54jfr31lqs2tnhc80000gq/T/tmpF9gjiP/user log --pretty='%H - %an, %ad : %s'
+f0f5335f972d77a3cdcc2321ea563e332f781cee - Exam 42, Tue Dec 27 13:38:59 2016 +0200 : add print_memory
+47121132d3399cc55e1ef97d93e3aecb17c2ebc9 - Exam 42, Tue Dec 27 12:45:56 2016 +0200 : add sort
+f54736a14286c1c5585d8ce5bd285e9bf6afe95f - Exam 42, Tue Dec 27 12:04:13 2016 +0200 : capitalizer
+c499bcb0af864390a18bf942c33dac79041c3f3b - Exam 42, Tue Dec 27 11:14:56 2016 +0200 : add inter
+4a998a5b125927dd4bbc3099efbb6fdba4060b08 - Exam 42, Tue Dec 27 10:28:14 2016 +0200 : add rev_print
+73826f19518c7f446c56333adbd18d58a779433c - Exam 42, Tue Dec 27 10:09:45 2016 +0200 : add maff..
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/3n/s9_c2wnj54jfr31lqs2tnhc80000gq/T/tmpF9gjiP/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  1508 Dec 27 13:39 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought   102 Dec 27 13:39 inter
+drwxr-xr-x  3 deepthought  deepthought   102 Dec 27 13:39 maff_alpha
+drwxr-xr-x  3 deepthought  deepthought   102 Dec 27 13:39 print_memory
+drwxr-xr-x  3 deepthought  deepthought   102 Dec 27 13:39 rev_print
+drwxr-xr-x  3 deepthought  deepthought   102 Dec 27 13:39 sort_int_tab
+drwxr-xr-x  3 deepthought  deepthought   102 Dec 27 13:39 str_capitalizer
+
+/var/folders/3n/s9_c2wnj54jfr31lqs2tnhc80000gq/T/tmpF9gjiP/user/inter:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1663 Dec 27 13:39 inter.c
+
+/var/folders/3n/s9_c2wnj54jfr31lqs2tnhc80000gq/T/tmpF9gjiP/user/maff_alpha:
+total 8
+-rw-r--r--  1 deepthought  deepthought  993 Dec 27 13:39 maff_alpha.c
+
+/var/folders/3n/s9_c2wnj54jfr31lqs2tnhc80000gq/T/tmpF9gjiP/user/print_memory:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1891 Dec 27 13:39 print_memory.c
+
+/var/folders/3n/s9_c2wnj54jfr31lqs2tnhc80000gq/T/tmpF9gjiP/user/rev_print:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1201 Dec 27 13:39 rev_print.c
+
+/var/folders/3n/s9_c2wnj54jfr31lqs2tnhc80000gq/T/tmpF9gjiP/user/sort_int_tab:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1327 Dec 27 13:39 sort_int_tab.c
+
+/var/folders/3n/s9_c2wnj54jfr31lqs2tnhc80000gq/T/tmpF9gjiP/user/str_capitalizer:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1898 Dec 27 13:39 str_capitalizer.c
+ 
+= print_memory =================================================================
+$> gcc -Wextra -Wall -Werror print_memory.c main.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./vj0ijvrk1l66nsrbv6143lzx
+$> diff -U 3 user_output_test1 test1.output | cat -e
+--- user_output_test1	2016-12-27 13:39:30.000000000 +0200$
++++ test1.output	2016-12-27 13:39:30.000000000 +0200$
+@@ -3,7 +3,7 @@$
+ 0000 0000 0000 0000                     ........$
+ 0001 0203 0405 0607 0809 0a0b 0c0d 0e0f ................$
+ 1011 1213 1415 1617 1819 1a1b 1c1d 1e1f ................$
+-2021 2223 2425 2627 2829 2a2b 2c2d 2e2f .!"#$%&'()*+,-./$
++2021 2223 2425 2627 2829 2a2b 2c2d 2e2f  !"#$%&'()*+,-./$
+ 3031 3233 3435 3637 3839 3a3b 3c3d 3e3f 0123456789:;<=>?$
+ 4041 4243 4445 4647 4849 4a4b 4c4d 4e4f @ABCDEFGHIJKLMNO$
+ 5051 5253 5455 5657 5859 5a5b 5c5d 5e5f PQRSTUVWXYZ[\]^_$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 0 ===============================================================
