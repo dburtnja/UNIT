@@ -15,72 +15,124 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int		check_end(char *str, int *i)
+t_list	*mem_alloc(void)
 {
-	*i = 0;
-	while (str[*i] != '\0')
-	{
-		if (str[*i] =='\n')
-			return (1);
-		(*i)++;
-	}
-	return (-1)
+	char	*buf;
+	t_list	*new;
+
+	buf = ft_strnew(BUFF_SIZE);
+	if (!buf)
+		return (NULL);
+	new = ft_lstnew(buf, BUFF_SIZE + 1);
+	if (!new)
+		return (NULL);
+	return (new);
 }
 
-int		mem_alloc(t_line *add)
+int		read_line(t_line *add, int fd)
 {
-	add->buff = ft_strnew(BUF_SIZE);
-	if (!(add->buff))
-		return (-1);
-	add->new = ft_lstnew(add->buff, BUF_SIZE);
-	if (!(add->new))
-		return (-1);
+	int		i;
+	t_list	*p;
+
+	i = 65535;
+	add->len = 0;
+	p = mem_alloc();
+	if (!p) return (-1);
+	add->head = p;
+	while (i > 0)
+	{
+		i = read(fd, p->content, BUFF_SIZE);
+		if (ft_lentoc(p->content, '\n') != BUFF_SIZE)
+			break ;
+		add->len++;
+		p->next = mem_alloc();
+		if (!p->next) return (-1);
+		p = p->next;
+	}
+	add->len = add->len * BUFF_SIZE + ft_lentoc(p->content, '\n');
+	p->next = NULL;
+	return (i);
+}
+
+int		write_to_line(t_line *add, char **line)
+{
+	int		start;
+	t_list	*p;
+	char	*buf;
+
+	p = add->head;
+	*line = ft_strnew(add->len);
+	ft_bzero(*line, add->len + 1);
+	while (p)
+	{
+		ft_strlcat(*line, p->content, add->len + 1);    //free 654544546
+		if (!p->next)
+			break ;
+		p = p->next;
+	}
+	add->buf_s = BUFF_SIZE - ft_lentoc(p->content, '\n') - 1; 
+	start = (ft_strchr(p->content, '\n') - (char*)p->content);
+	if (add->buf_s > 0)
+		add->buf = ft_strsub(p->content, start + 1, add->buf_s);
 	return (1);
 }
 
-int		write_to_line(t_line add, char *line)
+int		read_from_buf(t_line *add, char **line)
 {
-	while (add->ptr)
-	{
-		while (add->ptr->*(content) != '\n')
-		{
-			
-		}
-	}
-}
+	char 	*buf;
+	int		len;
+	int		size;
 
-int		find_line(t_line add, int fd)
-{
-	if (mem_alloc(add) == -1);
-		return (-1);
-	add->head = add->new;
-	while (read(fd, add->new->content, BUF_SIZE) == BUF_SIZE)
+	size = 0;
+	buf = add->buf;
+	len = ft_lentoc(buf, '\n');
+	*line = ft_strnew(len);
+	ft_strlcat(*line, buf, len + 1);
+	if (len < add->buf_s)
 	{
-		if (check_end(add->new->content) == 1)
-			break ;
-		add->ptr = add->new;
-		if (mem_alloc(add) == -1)
-			return (-1);
-		add->ptr->next = add->new;
-		add->ptr = add->ptr->next;
+		
 	}
-	return (-1);
+
+	add->buf_s = size;
+	free(buf)
+
+
+	if (buf == NULL) ft_putstr("NULL");
+	if (len == add->buf_s)
+		return (1);
+	return (0);
 }
 
 int		get_next_line(const int fd, char **line)
 {
-	static t_line *add;
+	int				f;
+	static t_line	*add;
 
-	if (BUF_SIZE < 0 && BUF_SIZE > 65534)
+	if (BUFF_SIZE < 0 || BUFF_SIZE > 65534)
 		return (-1);
 	if (!add)
 	{
 		add = (t_line*)malloc(sizeof(t_line) * 7164);
-			if	(!add)
-				return (-1);
+		if (!add)
+			return (-1);
 		ft_bzero((void*)add, 7164);
 	}
-	if (find_line(add[fd], fd) == -1)//1 0 -1
-		return (-1);
-	wtrite_to_line(add[fd], *line);
+	if (add[fd].buf != NULL)
+	{
+		ft_putstr("aaaa");
+		f = read_from_buf(&add[fd], line);
+	}
+	if (f > 0)//////
+	{
+		f = read_line(&add[fd], fd);
+		if (f == -1)
+			return (-1);
+		write_to_line(&add[fd], line);
+	}
+
+
+	//ft_lstiter(add[fd].head, *ft_lstprint_str);
+	if (f > 0)
+		return (1);
+	return (f);
 }

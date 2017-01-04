@@ -21,6 +21,8 @@ int main(void)
 
 	fd = open("file.txt", O_RDONLY);
 	ft_putnbr(get_next_line(fd, &line));
-	ft_putstr(line);
+	ft_putendl(line);
+	ft_putnbr(get_next_line(fd, &line));
+	ft_putendl(line);
 	return (0);
 }
