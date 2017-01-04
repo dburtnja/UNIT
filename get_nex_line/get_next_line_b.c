@@ -29,83 +29,76 @@ t_list	*mem_alloc(void)
 	return (new);
 }
 
+void	read_from_buf(t_line *add, char *str)
+{
+	char *buf;
+
+	buf = ft_strchr(add->buf, '\n') + 1;
+	ft_bzero(str, BUFF_SIZE);
+	ft_strlcat(str, buf, BUFF_SIZE);
+	free(add->buf);
+	add->buf = NULL;
+}
+
 int		read_line(t_line *add, int fd)
 {
 	int		i;
 	t_list	*p;
 
 	i = 65535;
-	add->len = 0;
 	p = mem_alloc();
 	if (!p) return (-1);
 	add->head = p;
 	while (i > 0)
 	{
-		i = read(fd, p->content, BUFF_SIZE);
-		if (ft_lentoc(p->content, '\n') != BUFF_SIZE)
+		if (add->buf == NULL)
+			i = read(fd, p->content, BUFF_SIZE);
+		else
+			read_from_buf(add, p->content);
+		if (ft_lentoc(p->content, '\n') != ft_strlen(p->content))
 			break ;
 		add->len++;
 		p->next = mem_alloc();
 		if (!p->next) return (-1);
 		p = p->next;
 	}
-	add->len = add->len * BUFF_SIZE + ft_lentoc(p->content, '\n');
 	p->next = NULL;
 	return (i);
 }
 
 int		write_to_line(t_line *add, char **line)
 {
-	int		start;
+	int		len;
 	t_list	*p;
-	char	*buf;
-
+	
 	p = add->head;
-	*line = ft_strnew(add->len);
-	ft_bzero(*line, add->len + 1);
+	len = 0;
 	while (p)
 	{
-		ft_strlcat(*line, p->content, add->len + 1);    //free 654544546
-		if (!p->next)
-			break ;
+		len = len + ft_lentoc(p->content, '\n');
 		p = p->next;
 	}
-	add->buf_s = BUFF_SIZE - ft_lentoc(p->content, '\n') - 1; 
-	start = (ft_strchr(p->content, '\n') - (char*)p->content);
-	if (add->buf_s > 0)
-		add->buf = ft_strsub(p->content, start + 1, add->buf_s);
-	return (1);
-}
-
-int		read_from_buf(t_line *add, char **line)
-{
-	char 	*buf;
-	int		len;
-	int		size;
-
-	size = 0;
-	buf = add->buf;
-	len = ft_lentoc(buf, '\n');
-	*line = ft_strsub(buf, 0, len);
-	if (len < add->buf_s - 1)
+	p = add->head;
+	*line = ft_strnew(len);
+	if (*line == NULL) return -1;
+	ft_bzero(*line, len + 1);
+	while (p)
 	{
-		size = add->buf_s - len - 1;
-		add->buf = ft_strsub(buf, len + 1, size);
+		ft_strlcat(*line, p->content, len + 1);
+		if (!p->next) break ;
+		p = p->next;
 	}
-	add->buf_s = size;
-	free(buf);
-	if (buf == NULL) ft_putstr("NULL");
-	if (len == add->buf_s)
-		return (1);
-	return (0);
+	add->buf = p->content;
+	p->content = NULL;
+	return (1);
 }
 
 int		get_next_line(const int fd, char **line)
 {
-	int				s;
 	int				f;
 	static t_line	*add;
 
+	f = 1;
 	if (BUFF_SIZE < 0 || BUFF_SIZE > 65534)
 		return (-1);
 	if (!add)
@@ -115,21 +108,12 @@ int		get_next_line(const int fd, char **line)
 			return (-1);
 		ft_bzero((void*)add, 7164);
 	}
-	if (add[fd].buf != NULL)
-	{
-		s = read_from_buf(&add[fd], line);
-	}
-	if (s > 0)//////
-	{
-		f = read_line(&add[fd], fd);
-		if (f == -1)
-			return (-1);
-		write_to_line(&add[fd], line);
-	}
-
-
-	//ft_lstiter(add[fd].head, *ft_lstprint_str);
-	if (f > 0)
-		return (1);
-	return (f);
+	f = read_line(&add[fd], fd);
+	if (f == -1)
+		return (-1);
+	if (write_to_line(&add[fd], line) == -1)
+		return (-1);
+	if (f == 0)
+		return (0);
+	return (1);
 }

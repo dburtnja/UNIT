@@ -18,11 +18,23 @@ int main(void)
 	char *line;
 
 	int fd;
+	int	i;
+	int	fd2;
 
+	i = 1;
 	fd = open("file.txt", O_RDONLY);
-	ft_putnbr(get_next_line(fd, &line));
+	fd2 = open("file2.txt", O_RDONLY);
+	ft_putnbr(get_next_line(fd2, &line) > 0);
 	ft_putendl(line);
-	ft_putnbr(get_next_line(fd, &line));
+	ft_putnbr(get_next_line(fd, &line) > 0);
 	ft_putendl(line);
+	ft_putnbr(get_next_line(fd2, &line) > 0);
+	ft_putendl(line);
+	while (i > 0)
+	{
+		i = get_next_line(fd, &line) > 0;
+		ft_putnbr(i);
+		ft_putstr(line);
+	}
 	return (0);
 }
