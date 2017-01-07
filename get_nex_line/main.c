@@ -19,22 +19,34 @@ int main(void)
 
 	int fd;
 	int	i;
+	int	j;
 	int	fd2;
-
+ft_putstr("START\tfd = ");
 	i = 1;
+	j = 1;
 	fd = open("file.txt", O_RDONLY);
 	fd2 = open("file2.txt", O_RDONLY);
-	ft_putnbr(get_next_line(fd2, &line) > 0);
+	ft_putnbr(fd);
+	ft_putstr("\tfd2 = ");
+	ft_putnbr(fd2);
+	ft_putendl("\tSTART");
+
+
+
+
+/*	ft_putendl(line);
+	ft_putnbr(get_next_line(fd, &line));
 	ft_putendl(line);
-	ft_putnbr(get_next_line(fd, &line) > 0);
-	ft_putendl(line);
-	ft_putnbr(get_next_line(fd2, &line) > 0);
-	ft_putendl(line);
+	ft_putnbr(get_next_line(fd2, &line));
+	ft_putendl(line);*/
 	while (i > 0)
 	{
-		i = get_next_line(fd, &line) > 0;
-		ft_putnbr(i);
-		ft_putstr(line);
+		i = get_next_line(fd, &line);
+		ft_putnbr(fd);
+		ft_putendl(line);
+		j = get_next_line(fd2, &line);
+		ft_putnbr(fd2);
+		ft_putendl(line);
 	}
 	return (0);
 }

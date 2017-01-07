@@ -32,9 +32,9 @@ t_line	*m_l(int fd, char *buf)
 	return (new);
 }
 
-char	*write_line(char *str, char **line, int l, int *f)
+t_line	*write_line(char *str, char **line, int l, int *f, int fd)
 {
-	char	*new;
+	t_line	*new;
 	char	*temp;
 	char	*buf;
 
@@ -47,9 +47,11 @@ char	*write_line(char *str, char **line, int l, int *f)
 		temp = ft_strsub(str, 0, l);
 		buf = ft_strjoin(*line, temp);
 		ft_strdel(&temp);
-		new = ft_strsub(str, l + 1, (int)ft_strlen(str) - (l + 1));
+		new = m_l(fd, ft_strsub(str, l + 1, (int)ft_strlen(str) - (l + 1)));
 		if (!new)
 			*f = -1;
+		else
+			new->next = NULL;
 	}
 	ft_strdel(line);
 	*line = buf;
@@ -59,22 +61,28 @@ char	*write_line(char *str, char **line, int l, int *f)
 	return (new);
 }
 
-int		read_file(int fd, char **str_l, char **line, int *f)
+int		read_file(int fd, t_line **buf_l, char **line, int *f)
 {
+	t_line	**p;
 	char	*str;
 
+	p = buf_l;
 	*line = ft_strnew(0);
 	if (*line == NULL)
 		*f = -1;
-	if (*str_l && *f >= 0)
-		*str_l = write_line(*str_l, line, ft_lentoc(*str_l, '\n'), f);
+	if (*p && *f >= 0)
+	{
+		*buf_l = write_line((*p)->buf, line, ft_lentoc((*p)->buf, '\n'), f, fd);
+		ft_memdel((void**)p);
+		*p = NULL;
+	}
 	while (*f > 0 && *f != 7777777)
 	{
 		str = ft_strnew(BUFF_SIZE);
 		if (!str) return (-1);
 		*f = read(fd, str, BUFF_SIZE);
 		if (*f == -1) return (-1);
-		*str_l = write_line(str, line, ft_lentoc(str, '\n'), f);
+		*buf_l = write_line(str, line, ft_lentoc(str, '\n'), f, fd);
 	}
 	return (*f);
 } 
@@ -84,7 +92,6 @@ int		get_next_line(const int fd, char **line)
 	static t_line	*head;
 	char			*buf;
 	t_line			*p;
-	t_line			*pn;
 	int				f;
 
 	f = 1;
@@ -93,21 +100,13 @@ int		get_next_line(const int fd, char **line)
 	p = head;
 	while (p)
 	{
-		pn = p;
 		if (p->fd == fd)
 			break ;
 		p = p->next;
 	}
-	buf = !p ? NULL : p->buf;
-	f = read_file(fd, &buf, line, &f);
-	if (!head && buf)
-		head = m_l(fd, buf);
-	else if (buf && p)
-		p->buf = buf;
-	else if (buf)
-		pn->next = m_l(fd, buf);
-	else
-		return (-1);
+	f = read_file(fd, &p, line, &f);
+	if (!head)
+		head = p;
 	if (f > 0)
 		return (1);
 	return (f);
