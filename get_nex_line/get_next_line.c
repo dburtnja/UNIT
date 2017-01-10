@@ -107,8 +107,17 @@ int		get_next_line(const int fd, char **line)
 	else if (buf)
 		pn->next = m_l(fd, buf);
 	else
-		return (-1);
-	if (f > 0)
+	{
+		
+		if (head && head->fd == fd)
+			ft_memdel((void**)&head);
+		else if (pn && p)
+		{
+			pn->next = p->next;
+			ft_memdel((void**)&p);
+		}
+	}
+	if (f > 0 || (f == 0 && **line != '\0'))
 		return (1);
 	return (f);
 }

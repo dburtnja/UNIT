@@ -19,6 +19,7 @@ typedef	struct		s_line
 {
 	int				fd;
 	char			*buf;
+	int				f;
 	struct s_line	*next;
 }					t_line;
 int		get_next_line(const int fd, char **line);
