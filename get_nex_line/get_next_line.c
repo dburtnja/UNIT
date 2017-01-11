@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 14:41:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2016/12/29 20:16:00 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/11 20:04:41 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		get_next_line(const int fd, char **line)
 	int				f;
 
 	f = 1;
-	if (BUFF_SIZE < 0 || BUFF_SIZE > 65534)
+	if (BUFF_SIZE < 0 || BUFF_SIZE > 65534 || !line)
 		return (-1);
 	p = head;
 	while (p)
@@ -107,10 +107,11 @@ int		get_next_line(const int fd, char **line)
 	else if (buf)
 		pn->next = m_l(fd, buf);
 	else
-	{
-		
+	{	
 		if (head && head->fd == fd)
+		{
 			ft_memdel((void**)&head);
+		}
 		else if (pn && p)
 		{
 			pn->next = p->next;
