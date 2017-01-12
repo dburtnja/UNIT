@@ -102,7 +102,7 @@ int		get_next_line(const int fd, char **line)
 	f = read_file(fd, &buf, line, &f);
 	if (!head && buf)
 		head = m_l(fd, buf);
-	else if (buf && p)
+	else if (p && fd == p->fd)
 		p->buf = buf;
 	else if (buf)
 		pn->next = m_l(fd, buf);
