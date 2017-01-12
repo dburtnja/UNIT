@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 14:41:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/11 20:04:41 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/12 13:25:47 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*write_line(char *str, char **line, int l, int *f)
 		buf = ft_strjoin(*line, str);
 	else
 	{
- 		*f = 7777777;
+		*f = 7777777;
 		temp = ft_strsub(str, 0, l);
 		buf = ft_strjoin(*line, temp);
 		ft_strdel(&temp);
@@ -71,13 +71,15 @@ int		read_file(int fd, char **str_l, char **line, int *f)
 	while (*f > 0 && *f != 7777777)
 	{
 		str = ft_strnew(BUFF_SIZE);
-		if (!str) return (-1);
+		if (!str)
+			return (-1);
 		*f = read(fd, str, BUFF_SIZE);
-		if (*f == -1) return (-1);
+		if (*f == -1)
+			return (-1);
 		*str_l = write_line(str, line, ft_lentoc(str, '\n'), f);
 	}
 	return (*f);
-} 
+}
 
 int		get_next_line(const int fd, char **line)
 {
@@ -107,11 +109,9 @@ int		get_next_line(const int fd, char **line)
 	else if (buf)
 		pn->next = m_l(fd, buf);
 	else
-	{	
+	{
 		if (head && head->fd == fd)
-		{
 			ft_memdel((void**)&head);
-		}
 		else if (pn && p)
 		{
 			pn->next = p->next;
