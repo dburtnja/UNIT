@@ -3,10 +3,6 @@
 
 void	put_16(unsigned char c)
 {
-	unsigned char	b;
-
-	if (c == 0)
-		write(1, "0", 1);
 	if (c >= 16)
 	{
 		put_16(c / 16);
@@ -14,54 +10,77 @@ void	put_16(unsigned char c)
 	}
 	else
 	{
-		if (c < 9)
-			b = c + '0';
+		if (c < 10)
+			c = c + '0';
 		else
-			b = (c - 10) + 'a';
-		write(1, &b, 1);
+			c = c + 'a' - 10;
+		write(1, &c, 1);
 	}
 }
 
-void	write_str(unsigned char *s, size_t size)
+void	print_char(unsigned char c)
 {
-	size_t	i;
+	if (c > 31 && c < 127)
+		write(1, &c, 1);
+	else
+		write(1, ".", 1);
+}
 
-	i = 0;
-	while (i < 16 && i < size)
+void	spaces(size_t i)
+{
+	i = (16 - i) * 2;
+	write (1, " ", 1);
+	while (i > 0)
 	{
-		if (s[i] > 31 && s[i] < 127)
-			write(1, &s[i], 1);
-		else
-			write (1, ".", 1);
-		i++;
+		if (i % 4 == 0)
+			write (1, " ", 1);
+		write (1, " ", 1);
+		i--;
 	}
-	write (1, "\n", 1);
 }
 
 void	print_memory(const void *addr, size_t size)
 {
-	unsigned char	*s;
 	size_t			i;
+	size_t			j;
+	unsigned char	*str;
 
-	s = (unsigned char*)addr;
 	i = 0;
+	str = (unsigned char*)addr;
 	while (i < size)
 	{
-		put_16(s[i]);
-		i++;
-		if (i % 2 == 0)
-			write(1, " ", 1);
 		if (i % 16 == 0)
-			write_str(&s[i - 16], size - i);
+			j = i;
+		if (str[i] < 16)
+			write(1, "0", 1);
+		put_16(str[i]);
+		i++;
+		if (i % 16 == 0 || size == i)
+		{
+			spaces(i - j);
+			while (j < i)
+			{
+				print_char(str[j]);	
+				j++;
+			}
+			write(1, "\n", 1);
+		}
+		else if (i % 2 == 0)
+			write(1, " ", 1);
 	}
-	write(1, "\n", 1);
 }
 
 int	main(void)
 {
-	int	tab[10] = {0, 23, 150, 255,
-		              12, 16,  21, 42};
+	int	i;
+	char str[256];
 
-	print_memory(tab, sizeof(tab));
+	i = 0;
+	while (i < 256)
+	{
+		str[i] = i;
+		i++;
+	}
+	print_memory(&str[0], sizeof(str));
 	return (0);
 }
