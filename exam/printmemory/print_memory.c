@@ -70,17 +70,3 @@ void	print_memory(const void *addr, size_t size)
 	}
 }
 
-int	main(void)
-{
-	int	i;
-	char str[256];
-
-	i = 0;
-	while (i < 256)
-	{
-		str[i] = i;
-		i++;
-	}
-	print_memory(&str[0], sizeof(str));
-	return (0);
-}

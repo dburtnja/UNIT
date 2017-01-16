@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	brainfuck(char *s, char *a);
+void	brainfuck(char **s, char *a);
 
 static void	clean(char *s)
 {
@@ -30,7 +30,10 @@ int			main(int argc, char **argv)
 	if (s)
 	{
 		clean(s);
-		brainfuck(s, argv[1]);
+		brainfuck(&s, argv[1]);
 	}
 	return (0);
 }
+
+//"++++[>++++++<-]>[>+++++>+++++++<<-]>>++++<[[>[[>>+<<-]<]>>>-]>-[>+>+<<-]>]+++++[>+++++++<<++>-]>.<<."
+//[]++++++++++[>>+>+>++++++[<<+<+++>>>-]<<<<-]"A*$";?@![#>>+<<]>[>>]<<<<[>++<[-]]>.>.
