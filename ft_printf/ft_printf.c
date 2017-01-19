@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/19 14:01:51 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/01/19 14:02:25 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
@@ -6,14 +18,13 @@ int		ft_printf(char *str, ...)
 	t_arg	*head;
 	int		count;
 	va_list arg_ptr;
-	int		nbr;
 
 	if (!str)
 		return (-1);
 	count = 0;
 	head = read_str(str);
 	nbr = lstlen(head);
-	va_start(arg_ptr, nbr);
+	va_start(arg_ptr, str);
 /*	while (count < nbr)
 	{
 		printf("%d\n", va_arg(arg_ptr, int));

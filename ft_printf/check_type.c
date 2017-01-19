@@ -1,40 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_str.c                                         :+:      :+:    :+:   */
+/*   check_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/19 14:02:36 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/19 14:09:29 by dburtnja         ###   ########.fr       */
+/*   Created: 2017/01/19 14:03:13 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/01/19 21:57:05 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_arg	*read_str(char *str)
+int		find_c(char c, char *str, int p)
 {
-	t_arg	*head;
-	t_arg	*p;
-	int		start;
-	int		i;
-
-	start = 0;
-	head = NULL;
-	p = NULL;
-	while (*str != '\0')
+	while (*str != 0)
 	{
-		if (*str == '%')
-		{
-			p = check_type(&str);
-			colect_lst(&head, p);
-		}
-		else
-		{
-			p = new_lst(ft_strsub(str, 0, ft_lentoc(str, '%')), 1);
-			colect_lst(&head, p);
-			str = str + ft_lentoc(str, '%');
-		}
+		if (*str == c)
+			return (1);
+		str++;
 	}
-	return (head);
+	if (p == 1)
+		*str = c;
+	return (0);
+}
+
+t_arg	*check_type(char **str)
+{
+	int		i;
+	t_arg	*new;
+
+	i = 0;
+	new = new_lst(NULL, 0);
+	if (!new)
+		exit (1);
+	new->flags = check_flags(*str, &i);
+	new->width = check_nbr(*str, &i);
+	if (str[0][*i] == '.')
+		new->precision = check_nbr(*str, &i);
+	new->size = check_size(*str, &i);
+	return (new);
 }
