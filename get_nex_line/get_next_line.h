@@ -6,13 +6,13 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 15:34:32 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/12 13:22:12 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/12 15:48:47 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 20
+# define BUFF_SIZE 32
 # include "./libft/libft.h"
 
 typedef	struct		s_line

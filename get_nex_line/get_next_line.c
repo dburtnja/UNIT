@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/29 14:41:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/12 13:25:47 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/12 15:40:20 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,41 +81,47 @@ int		read_file(int fd, char **str_l, char **line, int *f)
 	return (*f);
 }
 
-int		get_next_line(const int fd, char **line)
+int		help_gnl(char **buf, char **line, t_line **p, int fd)
 {
-	static t_line	*head;
-	char			*buf;
-	t_line			*p;
-	t_line			*pn;
-	int				f;
+	int		f;
 
 	f = 1;
 	if (BUFF_SIZE < 0 || BUFF_SIZE > 65534 || !line)
 		return (-1);
-	p = head;
-	while (p)
+	p[0] = p[2];
+	while (p[0])
 	{
-		pn = p;
-		if (p->fd == fd)
+		p[1] = p[0];
+		if (p[0]->fd == fd)
 			break ;
-		p = p->next;
+		p[0] = p[0]->next;
 	}
-	buf = !p ? NULL : p->buf;
-	f = read_file(fd, &buf, line, &f);
-	if (!head && buf)
-		head = m_l(fd, buf);
-	else if (p && fd == p->fd)
-		p->buf = buf;
+	*buf = !p[0] ? NULL : p[0]->buf;
+	return (read_file(fd, buf, line, &f));
+}
+
+int		get_next_line(const int fd, char **line)
+{
+	static t_line	*p[3];
+	char			*buf;
+	int				f;
+
+	if ((f = help_gnl(&buf, line, &(p[0]), fd)) == -1)
+		return (-1);
+	if (!(p[2]) && buf)
+		p[2] = m_l(fd, buf);
+	else if (p[0] && fd == p[0]->fd)
+		p[0]->buf = buf;
 	else if (buf)
-		pn->next = m_l(fd, buf);
+		p[1]->next = m_l(fd, buf);
 	else
 	{
-		if (head && head->fd == fd)
-			ft_memdel((void**)&head);
-		else if (pn && p)
+		if (p[2] && (p[2])->fd == fd)
+			ft_memdel((void**)&(p[2]));
+		else if (p[1] && p[0])
 		{
-			pn->next = p->next;
-			ft_memdel((void**)&p);
+			p[1]->next = p[0]->next;
+			ft_memdel((void**)&(p[0]));
 		}
 	}
 	if (f > 0 || (f == 0 && **line != '\0'))
