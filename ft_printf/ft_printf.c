@@ -1,58 +1,35 @@
-#include "../libft/libft.h"
-#include <stdarg.h>
 
-/*int		ft_printf(const char *restrict format, ...)
+#include "ft_printf.h"
+
+int		ft_printf(char *str, ...)
 {
-	char str;
-	int num = 2;
+	t_arg	*head;
+	int		count;
+	va_list arg_ptr;
+	int		nbr;
 
-	va_list argptr;
-	va_start (argptr, num);
-	
-	ft_putstr(va_arg(argptr, char));
-	num--;
-	ft_putstr(va_arg(argptr, char));
-	return (0);
+	if (!str)
+		return (-1);
+	count = 0;
+	head = read_str(str);
+	nbr = lstlen(head);
+	va_start(arg_ptr, nbr);
+/*	while (count < nbr)
+	{
+		printf("%d\n", va_arg(arg_ptr, int));
+		count++;
+	}*/
+	va_end(arg_ptr);
+	return (mod_and_print(head, nbr));
 }
 
+#include <stdio.h>
 int main(void)
 {
-	ft_printf("aaa %s \n %s\n", "first", "second");
+	ft_printf("underscore\n");
+//	ft_printf("my first printf:\a %d\n", 10, 10, 10, 10);
+//	ft_putnbr(printf("\n   %denys  \n", 15));
 	return (0);
 
 }
-*/
-#include <stdio.h>		/* printf */
-#include <stdarg.h>		/* va_list, va_start, va_arg, va_end */
 
-void PrintFloats (char str, ...)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '%')
-			j++;
-		i++;
-	}
-	char	*val;
-	printf ("Printing floats:");
-	va_list vl;
-	va_start(vl,n);
-	for (i=0;i<n;i++)
-	{
-		val=va_arg(vl, char*);
-		printf ("%s", val);
-	}
-	va_end(vl);
-	printf ("\n");
-}
-
-int main ()
-{
-	  PrintFloats ("print first: %s\n print second: %s\n print third %s\n", "first ", "second ", "third ");
-		return 0;
-}
