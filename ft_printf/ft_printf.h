@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/19 21:57:12 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/20 19:20:26 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef	struct		s_arg
 	char			*flags;
 	int				width;
 	int				precision;
-	char			size;
-	char			type;
+	int				size;
+	int				type;
 }					t_arg;
 
 int					ft_printf(char *str, ...);
@@ -41,6 +41,8 @@ int					find_c(char c, char *str, int p);
 int					check_width(char *str, int *i);
 char				*check_flags(char *str, int *i);
 int					check_precision(char *str, int *i);
+int					check_size(char *str, int *i);
+int					find_type(char *str, int *type);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);

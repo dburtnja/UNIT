@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 19:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/19 21:57:07 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/20 19:20:23 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,19 @@ char	*check_flags(char *str, int *i)
 	return (f);
 }
 
-int		check_nbr(char *str, int *i)
+int		check_nbr(char *str, int *i, int f)
 {
 	int		ret;
 	int		b;
 
+	if (str[*i] != '.' && f == 1)
+		return (0);
+	if ((str[*i + 1] != '*' || (str[*i + 1] < '0' && str[*i + 1] > '9'))
+			&& f == 1)
+		return (0);
 	ret = 0;
 	b = 1;
+	if (str[i] == '*')
 	while (str[*i] == '*')
 	{
 		b = -1;
@@ -49,12 +55,51 @@ int		check_nbr(char *str, int *i)
 	return (ret * b);
 }
 
-char	*check_size(char *str, int *i)
+int		find_type(char *str, int *type)
 {
-	char	sizes[10];
-	char	s[2];
-	int		l;
-	char	*ret;
+	char	types[18];
+	int		n;
 
-	ret = NULL:
+	n = 0;
+	types = "diuoxXfFeEgGaAcspn";
+	while (find_c(str[n], &types[0], 0) == 0)
+		n++;
+	return (n);
 }
+
+char	**create_sizes(void)
+{
+	char	sizes[8][2];
+
+	sizes[0] = "hh";
+	sizes[1] = "h";
+	sizes[2] = "l";
+	sizes[3] = "ll";
+	sizes[4] = "j";
+	sizes[5] = "z";
+	sizes[6] = "t";
+	sizes[7] = "L";
+	return (sizes + 1);
+}
+
+int		check_size(char *str, int *i)
+{
+	char	**sizes;
+	int		i;
+	int		l;
+
+	i = 0;
+	sizes = create_sizes(); 
+		{
+		while (i < 8)
+		{
+			
+			i++;
+		}
+	}
+	return (0);
+}
+
+if (str[*i] == '.' && (str[*i + 1] == '*' || (str[*i + 1] >= 0 &&
+					str[*i + 1] <= 9)))
+
