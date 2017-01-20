@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/20 19:20:26 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/20 22:21:11 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ typedef	struct		s_arg
 	void			*data;
 	char			*flags;
 	int				width;
+	int				w_star;
 	int				precision;
+	int				p_star;
 	int				size;
 	int				type;
 }					t_arg;
@@ -57,5 +59,6 @@ void				ft_bzero(void *s, size_t n);
 void				ft_putnbr(int n);
 void				ft_putchar(char c);
 int					ft_atoi_mod(char *buf, int *i);
+char				*ft_strstr(const char *big, const char *little);
 
 #endif
