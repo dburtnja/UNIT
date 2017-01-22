@@ -41,6 +41,22 @@ int		compare(int type, int size)
 	return (0);
 }
 
+int		find_type(char *str, int *type)
+{
+	char	*types;
+	int		n;
+
+	n = 0;
+	types = "diuoxXfFeEgGaAcspn";
+	while ((*type = find_c(str[n], types, 0)) == 0)
+	{
+		n++;
+		if (str[n] == 0)
+			return (0);
+	}
+	return (n);
+}
+
 t_arg	*check_type(char **str)
 {
 	int		i;
@@ -57,10 +73,10 @@ t_arg	*check_type(char **str)
 	}
 	if ((new = new_lst(NULL, 1)) == NULL)
 		exit (1);
-	type_place = find_type(*str, &new->type);
+	type_place = find_type(*str, &(new->type));
 	while (type_place > i)
 	{
-		new->flags = check_flags(*str, &i);
+		check_flags(*str, &i, &(new->flag));
 		new->width = check_nbr(*str, &i, 0, &(new->w_star));
 		new->precision = check_nbr(*str, &i, 1, &(new->p_star));
 		if ((b = check_size(*str, &i)) > new->size && compare(new->type, b))

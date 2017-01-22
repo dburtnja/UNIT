@@ -18,12 +18,21 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct		s_flag
+{
+	int				pl;
+	int				min;
+	int				hesh;
+	int				space;
+	int				nul;
+}					t_flag;
+
 typedef	struct		s_arg
 {
 	struct s_arg	*next;
 	int				mod;
 	void			*data;
-	char			*flags;
+	t_flag			flag;
 	int				width;
 	int				w_star;
 	int				precision;
@@ -41,7 +50,7 @@ int					mod_and_print(t_arg *head);
 t_arg				*check_type(char **str);
 int					find_c(char c, char *str, int p);
 int					check_width(char *str, int *i);
-char				*check_flags(char *str, int *i);
+void				check_flags(char *str, int *i, t_flag *flag);
 int					check_precision(char *str, int *i);
 int					check_size(char *str, int *i);
 int					find_type(char *str, int *type);
@@ -62,5 +71,7 @@ void				ft_putnbr(int n);
 void				ft_putchar(char c);
 int					ft_atoi_mod(char *buf, int *i);
 char				*ft_strstr(const char *big, const char *little);
+void				ft_strdel(char **as);
+void				ft_memdel(void **ap);
 
 #endif

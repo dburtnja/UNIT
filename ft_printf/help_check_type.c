@@ -12,23 +12,28 @@
 
 #include "ft_printf.h"
 
-char	*check_flags(char *str, int *i)
+int		h_check_flags(char	check, char c, int	*flag)
 {
-	char	*flags;
-	char	f[5];
-	char	*ret;
-
-	ret = NULL;
-	ft_bzero(&f[0], 5);
-	flags = "+-# 0";
-	while (find_c(str[*i], &flags[0], 0))
+	if (check == c)
 	{
-		find_c(str[*i], f, 1);
-		(*i)++;
+		*flag = 1;
+		return (1);
 	}
-	if (ft_strlen(f) > 0)
-		ret = ft_strdup(f);
-	return (ret);
+	return (0);
+}
+
+void	check_flags(char *str, int *i, t_flag *flag)
+{
+	if (h_check_flags(*str, '+', &(flag->pl)))
+		(*i)++;
+	else if (h_check_flags(*str, '-', &(flag->min)))
+		(*i)++;
+	else if (h_check_flags(*str, '#', &(flag->hesh)))
+		(*i)++;
+	else if (h_check_flags(*str, ' ', &(flag->space)))
+		(*i)++;
+	else if (h_check_flags(*str, '0', &(flag->nul)))
+		(*i)++;
 }
 
 int		check_nbr(char *str, int *i, int f, int *star)
@@ -40,29 +45,12 @@ int		check_nbr(char *str, int *i, int f, int *star)
 		return (0);
 	if (str[*i] == '*')
 	{
-		while (str[*i] == '*')
-			(*i)++;
-		*star = 1;
+		(*i)++;
+		(*star)++;
 		return (0);
 	}
 	else
 		return (ft_atoi_mod(str, i));
-}
-
-int		find_type(char *str, int *type)
-{
-	char	*types;
-	int		n;
-
-	n = 0;
-	types = "diuoxXfFeEgGaAcspn";
-	while ((*type = find_c(str[n], types, 0)) == 0)
-	{
-		n++;
-		if (str[n] == 0)
-			return (0);
-	}
-	return (n);
 }
 
 void	create_sizes(char *sizes[])
