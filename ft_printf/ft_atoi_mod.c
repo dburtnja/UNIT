@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int			ft_atoi_mod(const char *buf, int *i)
+int			ft_atoi_mod(char *buf, int *i)
 {
 	unsigned long long nb;
 
@@ -20,11 +20,7 @@ int			ft_atoi_mod(const char *buf, int *i)
 	while (buf[*i] != '\0' && (buf[*i] >= '0' && buf[*i] <= '9'))
 	{
 		nb = nb * 10 + (buf[*i] - '0');
-		*i++;
-		if (nb > 9223372036854775807 && s == -1)
-			return (0);
-		if (nb > 9223372036854775807)
-			return (-1);
+		(*i)++;
 	}
 	return (nb);
 }

@@ -23,7 +23,6 @@ int		ft_printf(char *str, ...)
 		return (-1);
 	count = 0;
 	head = read_str(str);
-	nbr = lstlen(head);
 	va_start(arg_ptr, str);
 /*	while (count < nbr)
 	{
@@ -31,7 +30,7 @@ int		ft_printf(char *str, ...)
 		count++;
 	}*/
 	va_end(arg_ptr);
-	return (mod_and_print(head, nbr));
+	return (mod_and_print(head, lstlen(head)));
 }
 
 #include <stdio.h>

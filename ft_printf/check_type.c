@@ -46,6 +46,9 @@ t_arg	*check_type(char **str)
 	t_arg	*new;
 
 	i = 0;
+	(*str)++;
+	if (**str == '%')
+		return (new_lst(ft_strdup("%"), 1));
 	new = new_lst(NULL, 0);
 	if (!new)
 		exit (1);
@@ -59,5 +62,6 @@ t_arg	*check_type(char **str)
 			new->size = b;
 		i++;
 	}
+	*str = *str + i;
 	return (new);
 }

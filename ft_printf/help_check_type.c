@@ -14,7 +14,7 @@
 
 char	*check_flags(char *str, int *i)
 {
-	char	flags[5];
+	char	*flags;
 	char	f[5];
 	int		l;
 	char	*ret;
@@ -25,11 +25,11 @@ char	*check_flags(char *str, int *i)
 	while (find_c(str[*i], &flags[0], 0))
 	{
 		find_c(str[*i], f, 1);
-		*i++;
+		(*i)++;
 	}
 	if (ft_strlen(f) > 0)
 		ret = ft_strdup(f);
-	return (f);
+	return (ret);
 }
 
 int		check_nbr(char *str, int *i, int f, int *star)
@@ -39,10 +39,10 @@ int		check_nbr(char *str, int *i, int f, int *star)
 	if ((str[*i + 1] != '*' || (str[*i + 1] < '0' && str[*i + 1] > '9'))
 			&& f == 1)
 		return (0);
-	if (str[i] == '*')
+	if (str[*i] == '*')
 	{
 		while (str[*i] == '*')
-			*i++;
+			(*i)++;
 		*star = 1;
 		return (0);
 	}
@@ -52,20 +52,22 @@ int		check_nbr(char *str, int *i, int f, int *star)
 
 int		find_type(char *str, int *type)
 {
-	char	types[18];
+	char	*types;
 	int		n;
 
 	n = 0;
 	types = "diuoxXfFeEgGaAcspn";
 	while (find_c(str[n], &types[0], 0) == 0)
+	{
 		n++;
+		if (str[n] == 0)
+			return (0);
+	}
 	return (n);
 }
 
-char	**create_sizes(void)
+void	create_sizes(char *sizes[])
 {
-	char	sizes[8][2];
-
 	sizes[0] = "hh";
 	sizes[1] = "h";
 	sizes[2] = "l";
@@ -74,18 +76,32 @@ char	**create_sizes(void)
 	sizes[5] = "z";
 	sizes[6] = "t";
 	sizes[7] = "L";
-	return (sizes);
 }
 
 int		check_size(char *str, int *i)
 {
-	char	**sizes;
-	int		l;
+	char	*sizes[8];
+	int		k;
+	int		j;
 
-	sizes = create_sizes(); 
-	while (find_c(str[*i], sizes[l], )
+	create_sizes(sizes);
+	k = 0;
+	while (k < 8)
 	{
-		
+		j = 0;
+		while (j < 2 && sizes[k][j] != 0)
+		{
+			if (sizes[k][j] == str[j])
+				j++;
+			else
+				break ;
+		}
+		if (j == 2 || (sizes[k][j] == 0 && str[j] != 'l'))
+		{
+		*i += j;
+		return (k + 1);
+		}
+		k++;
 	}
 	return (0);
 }

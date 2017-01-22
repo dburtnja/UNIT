@@ -45,6 +45,7 @@ char				*check_flags(char *str, int *i);
 int					check_precision(char *str, int *i);
 int					check_size(char *str, int *i);
 int					find_type(char *str, int *type);
+int					check_nbr(char *str, int *i, int f, int *star);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
