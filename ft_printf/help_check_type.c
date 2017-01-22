@@ -16,7 +16,6 @@ char	*check_flags(char *str, int *i)
 {
 	char	*flags;
 	char	f[5];
-	int		l;
 	char	*ret;
 
 	ret = NULL;
@@ -57,7 +56,7 @@ int		find_type(char *str, int *type)
 
 	n = 0;
 	types = "diuoxXfFeEgGaAcspn";
-	while (find_c(str[n], &types[0], 0) == 0)
+	while ((*type = find_c(str[n], types, 0)) == 0)
 	{
 		n++;
 		if (str[n] == 0)

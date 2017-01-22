@@ -14,14 +14,17 @@
 
 int		find_c(char c, char *str, int p)
 {
-	while (*str != 0)
+	int		i;
+
+	i = 0;
+	while (str[i] != 0)
 	{
-		if (*str == c)
-			return (1);
-		str++;
+		if (str[i] == c)
+			return (i + 1);
+		i++;
 	}
 	if (p == 1)
-		*str = c;
+		str[i] = c;
 	return (0);
 }
 
@@ -48,9 +51,11 @@ t_arg	*check_type(char **str)
 	i = 0;
 	(*str)++;
 	if (**str == '%')
-		return (new_lst(ft_strdup("%"), 1));
-	new = new_lst(NULL, 0);
-	if (!new)
+	{
+		(*str)++;
+		return (new_lst(ft_strdup("%"), 0));
+	}
+	if ((new = new_lst(NULL, 1)) == NULL)
 		exit (1);
 	type_place = find_type(*str, &new->type);
 	while (type_place > i)
@@ -62,6 +67,6 @@ t_arg	*check_type(char **str)
 			new->size = b;
 		i++;
 	}
-	*str = *str + i;
+	*str = *str + i + 1;
 	return (new);
 }

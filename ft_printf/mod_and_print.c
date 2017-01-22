@@ -1,15 +1,14 @@
 
 #include "ft_printf.h"
 
-int		mod_and_print(t_arg *head, int nbr)
+int		mod_and_print(t_arg *head)
 {
 	char	*str;
 
-	if (nbr == 0)
-		str = (char*)head->data;
-	else
+	while (head)
 	{
-		ft_putstr("else");
+		ft_putstr(head->data);
+		head = head->next;
 	}
 	return (ft_putstr(str));
 }

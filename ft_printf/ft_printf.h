@@ -37,7 +37,7 @@ int					lstlen(t_arg *head);
 t_arg				*read_str(char *str);
 int					colect_lst(t_arg **head, t_arg *lst);
 t_arg				*new_lst(void *data, int f);
-int					mod_and_print(t_arg *head, int nbr);
+int					mod_and_print(t_arg *head);
 t_arg				*check_type(char **str);
 int					find_c(char c, char *str, int p);
 int					check_width(char *str, int *i);
@@ -46,6 +46,7 @@ int					check_precision(char *str, int *i);
 int					check_size(char *str, int *i);
 int					find_type(char *str, int *type);
 int					check_nbr(char *str, int *i, int f, int *star);
+int					read_arg(t_arg *head, va_list ptr);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
