@@ -14,7 +14,7 @@ int		read_arg(t_arg *head, va_list ptr)
 		if (head->mod == 1)
 		{
 			//if (head
-			head->data = va_arg(ptr, char*);
+			head->data = ft_strdup(va_arg(ptr, char*));
 		}
 		head = head->next;
 	}

@@ -25,11 +25,6 @@ int		ft_printf(char *str, ...)
 	head = read_str(str);
 	va_start(arg_ptr, str);
 	read_arg(head, arg_ptr);	
-/*	while (count < nbr)
-	{
-		printf("%d\n", va_arg(arg_ptr, int));
-		count++;
-	}*/
 	va_end(arg_ptr);
 	return (mod_and_print(head));
 }
@@ -38,6 +33,8 @@ int		ft_printf(char *str, ...)
 int main(void)
 {
 	ft_putnbr(ft_printf("%s under%sscore,%s\n", " str ", "vholodin", "okres"));
+	ft_putnbr(printf("%s under%sscore,%s\n", " str ", "vholodin", "okres"));
+
 //	ft_printf("my first printf:\a %d\n", 10, 10, 10, 10);
 //	ft_putnbr(printf("\n   %denys  \n", 15));
 	return (0);

@@ -57,10 +57,24 @@ int		find_type(char *str, int *type)
 	return (n);
 }
 
+void	h_check_type(char *str, t_arg *new, int *i)
+{
+	int		j;
+	int		b;
+
+	j = *i;
+	check_flags(str, i, &(new->flag));
+	new->width = check_nbr(str, i, 0, &(new->w_star));
+	new->precision = check_nbr(str, i, 1, &(new->p_star));
+	if ((b = check_size(str, i)) > new->size && compare(new->type, b))
+		new->size = b;
+	if (*i == j)
+		(*i)++;
+}
+
 t_arg	*check_type(char **str)
 {
 	int		i;
-	int		b;
 	int		type_place;
 	t_arg	*new;
 
@@ -75,14 +89,7 @@ t_arg	*check_type(char **str)
 		exit (1);
 	type_place = find_type(*str, &(new->type));
 	while (type_place > i)
-	{
-		check_flags(*str, &i, &(new->flag));
-		new->width = check_nbr(*str, &i, 0, &(new->w_star));
-		new->precision = check_nbr(*str, &i, 1, &(new->p_star));
-		if ((b = check_size(*str, &i)) > new->size && compare(new->type, b))
-			new->size = b;
-		i++;
-	}
+		h_check_type(*str, new, &i);
 	*str = *str + i + 1;
 	return (new);
 }

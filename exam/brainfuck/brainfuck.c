@@ -1,56 +1,63 @@
 
-#include <unistd.h>
+#include "brainfuck.h"
 
-void	print_memory(const void *addr, size_t size);
-
-char	*brainfuck(char **s, char *a)
+char	*brainfuck(char **str, char *map)
 {
-	char	*p;
+	char	*buf;
 	int		i;
 
 	i = 0;
-	while (*a != 0 && *a != ']')
+	while (*map != 0 && *map != ']')
 	{
-		if (*a == '>')
-			(*s)++;
-		else if (*a == '<')
-			(*s)--;
-		else if (*a == '+')
-			(**s)++;
-		else if (*a == '-')
-			(**s)--;
-		else if (*a == '.')
-			write(1, *s, 1);
-		else if (*a == '[')
+		if (*map == '+') (**str)++;
+		else if (*map == '-') (**str)--;
+		else if (*map == '>') (*str)++;
+		else if (*map == '<') (*str)--;
+		else if (*map == '.') write(1, *str, 1);
+		else if (*map == '[')
 		{
-			if (**s == 0)
+			if (**str == 0)
 			{
 				while (1)
 				{
-					if (*a == '[')
+					if (*map == '[')
 						i++;
-					if (*a == ']')
+					if (*map == ']')
 						i--;
-					if (i <= 0)
-						break ;
-					a++;
+					if (i == 0)
+						break;
+					map++;
 				}
 			}
 			else
 			{
-				p = brainfuck(s, a + 1);
-				if (p != NULL)
-					a = p;
-				else
-					a--;
+				buf = brainfuck(str, map + 1);
+				map = buf ? buf : map - 1;	
 			}
 		}
-		a++;
+		map++;
 	}
-	if (**s == 0)
-		return (a);
-
+	if (**str == 0)
+		return (map);
 	return (NULL);
 }
 
+int		main(int argc, char **argv)
+{
+	char	*str;
+	int		i;
 
+	i = 0;
+	if (argc == 2)
+	{
+		str = (char*)malloc(sizeof(char) * 5000);
+ 		while (i < 5000)
+		{
+			str[i] = 0;
+			i++;
+		}
+		brainfuck(&str, argv[1]);
+	}
+	write(1, "\n", 1);
+	return (0);
+}

@@ -24,15 +24,15 @@ int		h_check_flags(char	check, char c, int	*flag)
 
 void	check_flags(char *str, int *i, t_flag *flag)
 {
-	if (h_check_flags(*str, '+', &(flag->pl)))
+	if (h_check_flags(str[*i], '+', &(flag->pl)))
 		(*i)++;
-	else if (h_check_flags(*str, '-', &(flag->min)))
+	else if (h_check_flags(str[*i], '-', &(flag->min)))
 		(*i)++;
-	else if (h_check_flags(*str, '#', &(flag->hesh)))
+	else if (h_check_flags(str[*i], '#', &(flag->hesh)))
 		(*i)++;
-	else if (h_check_flags(*str, ' ', &(flag->space)))
+	else if (h_check_flags(str[*i], ' ', &(flag->space)))
 		(*i)++;
-	else if (h_check_flags(*str, '0', &(flag->nul)))
+	else if (h_check_flags(str[*i], '0', &(flag->nul)))
 		(*i)++;
 }
 
@@ -49,8 +49,9 @@ int		check_nbr(char *str, int *i, int f, int *star)
 		(*star)++;
 		return (0);
 	}
-	else
+	else if (str[*i] > 0 && str[*i] <= 9)
 		return (ft_atoi_mod(str, i));
+	return (0);
 }
 
 void	create_sizes(char *sizes[])
