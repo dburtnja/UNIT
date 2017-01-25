@@ -9,9 +9,9 @@ void	find_type_mod(t_arg *head, va_list arg)
 		mod_u_o_x(head, arg);
 	else if (head->type <= 14)
 		mod_f_e_g_a(head, arg);
-	else if (head->type == 15)
+	else */if (head->type == 15)
 		mod_char(head, arg);
-	else */if (head->type == 16)
+	else if (head->type == 16)
 		mod_str(head, arg);
 /*	else if (head->type == 17)
 		mod_void(head, arg);

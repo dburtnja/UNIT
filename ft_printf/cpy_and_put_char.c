@@ -3,7 +3,7 @@
 
 size_t	find_len(size_t strl, int p)
 {
-	if (p > 0 && p < strl)
+	if (p != -1 && p < strl)
 		return (size_t)p;
 	return (strl);	
 }
@@ -52,9 +52,14 @@ char	*put_char_and_cpy(char *str, t_arg *head)
 	}
 	while (i < w)
 	{
-		ret[i] = str[i];
+		ret[i] = *str;
 		i++;
+		str++;
 	}
 	return (ret);
 }
 
+void	mod_m_flag(char *str, t_arg *head)
+{
+
+}

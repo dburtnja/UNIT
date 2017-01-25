@@ -64,12 +64,12 @@ void	h_check_type(char *str, t_arg *new, int *i, va_list arg)
 
 	j = *i;
 	check_flags(str, i, &(new->flag));
-	new->width = check_nbr(str, i, arg);
+	check_nbr(str, i, arg, &(new->width));
 	if (str[*i] == '.' && (str[*i + 1] == '*' || (str[*i + 1] >= '0'
 			&& str[*i + 1] <= '9')))
 	{
 		(*i)++;
-		new->precision = check_nbr(str, i, arg);
+		check_nbr(str, i, arg, &(new->precision));
 	}
 	if ((b = check_size(str, i)) > new->size && compare(new->type, b))
 		new->size = b;

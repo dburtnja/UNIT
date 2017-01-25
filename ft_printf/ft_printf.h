@@ -52,12 +52,14 @@ void				check_flags(char *str, int *i, t_flag *flag);
 int					check_precision(char *str, int *i);
 int					check_size(char *str, int *i);
 int					find_type(char *str, int *type);
-int					check_nbr(char *str, int *i, va_list arg);
+void				check_nbr(char *str, int *i, va_list arg, int *nbr);
 int					read_arg(t_arg *head, va_list ptr);
 void				mod_str(t_arg *head, va_list ptr);
 char				*cpy_and_put_char(char *str, t_arg *head);
 char				*put_char_and_cpy(char *str, t_arg *head);
 void				ft_modlst(t_arg *head, va_list arg);
+void				mod_char(t_arg *head, va_list ptr);
+void				mod_m_flag(char *str, t_arg *head);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);

@@ -36,16 +36,15 @@ void	check_flags(char *str, int *i, t_flag *flag)
 		(*i)++;
 }
 
-int		check_nbr(char *str, int *i, va_list arg)
+void	check_nbr(char *str, int *i, va_list arg, int *nbr)
 {
 	if (str[*i] == '*')
 	{
 		(*i)++;
-		return (va_arg(arg, int));
+		*nbr = va_arg(arg, int);
 	}
 	else if (str[*i] > '0' && str[*i] <= '9')
-		return (ft_atoi_mod(str, i));
-	return (0);
+		*nbr = ft_atoi_mod(str, i);
 }
 
 void	create_sizes(char *sizes[])

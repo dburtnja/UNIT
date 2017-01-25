@@ -30,8 +30,8 @@ int		ft_printf(char *str, ...)
 #include <stdio.h>
 int main(void)
 {
-	ft_printf("%s under%sscore,%s\n", " str ", "vholodin", "okres");
-	printf("%s under%sscore,%s\n", " str ", "vholodin", "okres");
+	ft_printf("%*.*s underscore,\n", 1, 0, "str", 'c');
+	printf("%*.*s%c underscore,\n", 1, 0, "str", 'c');
 
 //	ft_printf("my first printf:\a %d\n", 10, 10, 10, 10);
 //	ft_putnbr(printf("\n   %denys  \n", 15));
