@@ -34,28 +34,30 @@ typedef	struct		s_arg
 	void			*data;
 	t_flag			flag;
 	int				width;
-	int				w_star;
 	int				precision;
-	int				p_star;
 	int				size;
 	int				type;
 }					t_arg;
 
 int					ft_printf(char *str, ...);
 int					lstlen(t_arg *head);
-t_arg				*read_str(char *str);
+t_arg				*read_str(char *str, va_list arg);
 int					colect_lst(t_arg **head, t_arg *lst);
 t_arg				*new_lst(void *data, int f);
-int					mod_and_print(t_arg *head);
-t_arg				*check_type(char **str);
+int					ft_print(t_arg *head);
+t_arg				*check_type(char **str, va_list arg);
 int					find_c(char c, char *str, int p);
 int					check_width(char *str, int *i);
 void				check_flags(char *str, int *i, t_flag *flag);
 int					check_precision(char *str, int *i);
 int					check_size(char *str, int *i);
 int					find_type(char *str, int *type);
-int					check_nbr(char *str, int *i, int f, int *star);
+int					check_nbr(char *str, int *i, va_list arg);
 int					read_arg(t_arg *head, va_list ptr);
+void				mod_str(t_arg *head, va_list ptr);
+char				*cpy_and_put_char(char *str, t_arg *head);
+char				*put_char_and_cpy(char *str, t_arg *head);
+void				ft_modlst(t_arg *head, va_list arg);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
@@ -73,5 +75,6 @@ int					ft_atoi_mod(char *buf, int *i);
 char				*ft_strstr(const char *big, const char *little);
 void				ft_strdel(char **as);
 void				ft_memdel(void **ap);
+char				*ft_strncpy(char *dest, const char *str, size_t n);
 
 #endif

@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_str.c                                         :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/19 14:02:36 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/19 14:09:29 by dburtnja         ###   ########.fr       */
+/*   Created: 2016/12/06 18:57:09 by dburtnja          #+#    #+#             */
+/*   Updated: 2016/12/06 19:10:37 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_arg	*read_str(char *str, va_list arg)
+char	*ft_strncpy(char *dest, const char *str, size_t n)
 {
-	t_arg	*head;
-	t_arg	*p;
-	int		start;
+	size_t i;
 
-	start = 0;
-	head = NULL;
-	p = NULL;
-	while (*str != '\0')
+	i = 0;
+	while (i < n && str[i] != '\0')
 	{
-		if (*str == '%')
-		{
-			p = check_type(&str, arg);
-			colect_lst(&head, p);
-		}
-		else
-		{
-			p = new_lst(ft_strsub(str, 0, ft_lentoc(str, '%')), 0);
-			colect_lst(&head, p);
-			str = str + ft_lentoc(str, '%');
-		}
+		dest[i] = str[i];
+		i++;
 	}
-	return (head);
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }

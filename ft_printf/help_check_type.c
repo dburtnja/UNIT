@@ -36,20 +36,14 @@ void	check_flags(char *str, int *i, t_flag *flag)
 		(*i)++;
 }
 
-int		check_nbr(char *str, int *i, int f, int *star)
+int		check_nbr(char *str, int *i, va_list arg)
 {
-	if (str[*i] != '.' && f == 1)
-		return (0);
-	if ((str[*i + 1] != '*' || (str[*i + 1] < '0' && str[*i + 1] > '9'))
-			&& f == 1)
-		return (0);
 	if (str[*i] == '*')
 	{
 		(*i)++;
-		(*star)++;
-		return (0);
+		return (va_arg(arg, int));
 	}
-	else if (str[*i] > 0 && str[*i] <= 9)
+	else if (str[*i] > '0' && str[*i] <= '9')
 		return (ft_atoi_mod(str, i));
 	return (0);
 }

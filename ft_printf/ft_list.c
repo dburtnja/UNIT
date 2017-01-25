@@ -49,9 +49,7 @@ t_arg	*new_lst(void *data, int mod)
 	new->flag.space = 0;
 	new->flag.nul = 0;
 	new->width = 0;
-	new->w_star = 0;
 	new->precision = 0;
-	new->p_star = 0;
 	new->size = 0;
 	new->type = 0;
 	return (new);
