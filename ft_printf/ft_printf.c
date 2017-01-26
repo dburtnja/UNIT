@@ -27,11 +27,16 @@ int		ft_printf(char *str, ...)
 	return (ret);
 }
 
+
 #include <stdio.h>
 int main(void)
 {
-	ft_printf("%*.*s underscore,\n", 1, 0, "str", 'c');
-	printf("%*.*s%c underscore,\n", 1, 0, "str", 'c');
+	int i;
+
+	char s[] = "start end";
+
+	ft_printf("%25.*s\n", 0, s);
+  	   printf("%25.*s\n", 0, s);
 
 //	ft_printf("my first printf:\a %d\n", 10, 10, 10, 10);
 //	ft_putnbr(printf("\n   %denys  \n", 15));

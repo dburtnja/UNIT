@@ -31,7 +31,7 @@ typedef	struct		s_arg
 {
 	struct s_arg	*next;
 	int				mod;
-	void			*data;
+	char			*data;
 	t_flag			flag;
 	int				width;
 	int				precision;
@@ -60,6 +60,8 @@ char				*put_char_and_cpy(char *str, t_arg *head);
 void				ft_modlst(t_arg *head, va_list arg);
 void				mod_char(t_arg *head, va_list ptr);
 void				mod_m_flag(char *str, t_arg *head);
+void				mod_void(t_arg *head, va_list ptr);
+void				mod_double(t_arg *head, va_list ptr);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
@@ -78,5 +80,8 @@ char				*ft_strstr(const char *big, const char *little);
 void				ft_strdel(char **as);
 void				ft_memdel(void **ap);
 char				*ft_strncpy(char *dest, const char *str, size_t n);
+char				*ft_itoa_base(unsigned long long value, unsigned long long base,
+					int up, int nul);
+int					ft_nbrlen(unsigned long long i);
 
 #endif

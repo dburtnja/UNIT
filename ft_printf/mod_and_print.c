@@ -11,7 +11,7 @@ int		ft_print(t_arg *head)
 	while (head)
 	{
 		new = ft_strjoin(str, (char*)head->data);
-		ft_memdel(&(head->data));
+		ft_strdel(&(head->data));
 		ft_strdel(&str);
 		str = new;
 		head = head->next;
