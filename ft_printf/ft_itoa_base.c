@@ -3,12 +3,12 @@
 
 void	nbr_to_str(unsigned long long value, unsigned long long base, char **str, int up)
 {
-	char c;
+	char	c;
 
 	if (value >= base)
 	{
-		nbr_to_str(value/base, base, str, up);
-		nbr_to_str(value%base, base, str, up);
+		nbr_to_str(value / base, base, str, up);
+		nbr_to_str(value % base, base, str, up);
 	}
 	else
 	{
@@ -26,8 +26,10 @@ char	*ft_itoa_base(unsigned long long value, unsigned long long base, int up, in
 {
 	char	*str;
 	char	*s;
-	
-	str = ft_strnew(67 + nul);
+	int		nbrl;
+
+	nbrl = ft_nbrlen(value, base);
+	str = ft_strnew(nbrl + nul);
 	s = str;
 	if (base < 2 || base > 16)
 		return (s);

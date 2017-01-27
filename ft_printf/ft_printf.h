@@ -6,10 +6,9 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/20 22:21:11 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/27 15:53:43 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
@@ -62,6 +61,8 @@ void				mod_char(t_arg *head, va_list ptr);
 void				mod_m_flag(char *str, t_arg *head);
 void				mod_void(t_arg *head, va_list ptr);
 void				mod_double(t_arg *head, va_list ptr);
+void				mod_i_d(t_arg *head, va_list arg);
+char				*ft_itoa_p(long long value, t_arg *head);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
@@ -80,8 +81,10 @@ char				*ft_strstr(const char *big, const char *little);
 void				ft_strdel(char **as);
 void				ft_memdel(void **ap);
 char				*ft_strncpy(char *dest, const char *str, size_t n);
-char				*ft_itoa_base(unsigned long long value, unsigned long long base,
-					int up, int nul);
-int					ft_nbrlen(unsigned long long i);
+char				*ft_itoa_base(unsigned long long value, unsigned
+		long long base, int up, int nul);
+int					ft_nbrlen(unsigned long long i, unsigned long long base);
+void				nbr_to_str(unsigned long long value, unsigned
+		long long base, char **str, int up);
 
 #endif

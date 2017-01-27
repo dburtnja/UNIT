@@ -6,13 +6,13 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 16:51:04 by dburtnja          #+#    #+#             */
-/*   Updated: 2016/12/07 17:24:17 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/27 15:27:54 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_nbrlen(unsigned long long i)
+int		ft_nbrlen(unsigned long long i, unsigned long long base)
 {
 	int c;
 
@@ -21,7 +21,7 @@ int		ft_nbrlen(unsigned long long i)
 		return (1);
 	while (i > 0)
 	{
-		i = i / 10;
+		i = i / base;
 		c++;
 	}
 	return (c);

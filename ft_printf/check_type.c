@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:03:13 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/20 22:21:05 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/27 21:11:15 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void	h_check_type(char *str, t_arg *new, int *i, va_list arg)
 	j = *i;
 	check_flags(str, i, &(new->flag));
 	check_nbr(str, i, arg, &(new->width));
-	if (str[*i] == '.' && (str[*i + 1] == '*' || (str[*i + 1] >= '0'
-			&& str[*i + 1] <= '9')))
+	if (str[*i] == '.')
 	{
 		(*i)++;
+		new->precision = 0;
 		check_nbr(str, i, arg, &(new->precision));
 	}
 	if ((b = check_size(str, i)) > new->size && compare(new->type, b))
@@ -76,6 +76,8 @@ void	h_check_type(char *str, t_arg *new, int *i, va_list arg)
 	if (*i == j)
 		(*i)++;
 }
+
+#include <stdio.h>
 
 t_arg	*check_type(char **str, va_list arg)
 {
@@ -95,6 +97,7 @@ t_arg	*check_type(char **str, va_list arg)
 	type_place = find_type(*str, &(new->type));
 	while (type_place > i)
 		h_check_type(*str, new, &i, arg);
+	printf("100:%d\n", new->size);	
 	ft_modlst(new, arg);
 	*str = *str + i + 1;
 	return (new);

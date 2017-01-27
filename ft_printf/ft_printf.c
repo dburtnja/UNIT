@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:01:51 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/19 14:02:25 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/27 21:11:19 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,8 @@ int main(void)
 	int i;
 
 	char s[] = "start end";
-
-	ft_printf("%25.*s\n", 0, s);
-  	   printf("%25.*s\n", 0, s);
+	ft_printf("%hd\n", 65534);
+  	   printf("%hd\n", 65534);
 
 //	ft_printf("my first printf:\a %d\n", 10, 10, 10, 10);
 //	ft_putnbr(printf("\n   %denys  \n", 15));

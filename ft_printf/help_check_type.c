@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 19:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/20 21:44:00 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/01/27 21:11:12 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,28 @@ int		check_size(char *str, int *i)
 	char	*sizes[8];
 	int		k;
 	int		j;
+	int		z;
 
 	create_sizes(sizes);
 	k = 0;
 	while (k < 8)
 	{
-		j = 0;
+		j = *i;
+		z = 0;
 		while (j < 2 && sizes[k][j] != 0)
 		{
-			if (sizes[k][j] == str[j])
+			if (sizes[k][z] == str[j])
+			{
 				j++;
+				z++;
+			}
 			else
 				break ;
 		}
 		if (j == 2 || (sizes[k][j] == 0 && str[j] != 'l'))
 		{
-		*i += j;
-		return (k + 1);
+			*i = j;
+			return (k + 1);
 		}
 		k++;
 	}

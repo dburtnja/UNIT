@@ -1,37 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mod_i_d.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/27 15:45:20 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/01/27 20:28:42 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*put_sign(int *nbr, t_arg *head)
+long long	r_type(va_list arg, t_arg *head)
 {
-	if (*nb < 0)
-	{
-		*nb *= -1;
-		return ("-");
-	}
-	else if (head->flag.pl == 1)
-	{
-		return ("+");
-	}
-	else if (head->flag.space == 1)
-		return (" ");
-	return ("\0");
+	if (head->size < 3)
+		return ((long long)va_arg(arg, int));
+	else if (head->size == 3)
+		return ((long long)va_arg(arg, long int));
+	else if (head->size == 4)
+		return ((long long)va_arg(arg, long long int));
+	return (-1);
 }
 
-void	mod_int(t_arg *head, va_list arg)
+void		mod_int(t_arg *head, va_list arg)
 {
-	int		nbr;
-	char	*sign;
+	char	*str;
 
-	nbr = va_arg(arg, int);
-	sign = put_sign(&nbr, head);
+	if (head->flag.min == 1)
+		head->flag.nul = 0;
 	head->flag.hesh = 0;
-	if (head->flag.min == 0 && head->flag.nul == 1)
-		
-	ft_itoa_base(nbr, 10, 0, 
+	str = ft_itoa_p(r_type(arg, head), head);
+	head->precision = -1;
+	mod_m_flag(str, head);
+	ft_strdel(&str);
 }
 
-void	mod_i_d(t_arg *head, va_list arg)
+void		mod_i_d(t_arg *head, va_list arg)
 {
-	if (head->size == 0)
+	if (head->size < 5)
 		mod_int(head, arg);	
 }

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cpy_and_put_char.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/01/27 17:06:19 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/01/27 18:39:10 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -18,16 +29,16 @@ size_t	find_len(size_t strl, t_arg head)
 
 	p = head.precision;
 	if (head.flag.hesh == 1)
-		return (strl + f_hesh);	
+		return (strl + f_hesh);
 	if (p != -1 && p < strl)
 		return ((size_t)p);
-	return (strl);	
+	return (strl);
 }
 
 char	*cpy_and_put_char(char *str, t_arg *head)
 {
 	size_t	len;
-	size_t	i; 
+	size_t	i;
 	char	*ret;
 
 	len = find_len(ft_strlen(str), *head);
@@ -52,7 +63,7 @@ char	*put_char_and_cpy(char *str, t_arg *head)
 {
 	size_t	len;
 	size_t	w;
-	size_t	i; 
+	size_t	i;
 	char	*ret;
 
 	len = find_len(ft_strlen(str), *head);
