@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int		ft_putstr(char const *s)
+size_t	ft_putstr(char const *s)
 {
-	int i;
+	size_t	i;
 
 	if (s)
 	{

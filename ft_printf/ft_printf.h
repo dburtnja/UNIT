@@ -63,10 +63,17 @@ void				mod_void(t_arg *head, va_list ptr);
 void				mod_double(t_arg *head, va_list ptr);
 void				mod_i_d(t_arg *head, va_list arg);
 char				*ft_itoa_p(long long value, t_arg *head);
+void				mod_unsigned(t_arg *head, va_list arg);
+char				*ft_itoa_u(unsigned long long value, unsigned long long b,
+t_arg *head, int up);
+void				mod_n(t_arg *head, va_list arg);
+void				add_hesh(char *str, size_t *i, int hesh);
+size_t				find_len(size_t str, t_arg head);
+size_t				find_size_str(size_t strl, t_arg *head, size_t *len);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
-int					ft_putstr(char const *s);
+size_t				ft_putstr(char const *s);
 char				*ft_strdup(const char *s);
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlen(const char *s);

@@ -28,19 +28,6 @@ int		find_c(char c, char *str, int p)
 	return (0);
 }
 
-int		compare(int type, int size)
-{
-	if (size == 0)
-		return (1);
-	if ((type <= 6 || type == 18) && size < 8)
-		return (1);
-	else if (type <= 14 && size == 8)
-		return (1);
-	else if (type <= 16 && size == 3)
-		return (1);
-	return (0);
-}
-
 int		find_type(char *str, int *type)
 {
 	char	*types;
@@ -71,13 +58,11 @@ void	h_check_type(char *str, t_arg *new, int *i, va_list arg)
 		new->precision = 0;
 		check_nbr(str, i, arg, &(new->precision));
 	}
-	if ((b = check_size(str, i)) > new->size && compare(new->type, b))
+	if ((b = check_size(str, i)) > new->size)
 		new->size = b;
 	if (*i == j)
 		(*i)++;
 }
-
-#include <stdio.h>
 
 t_arg	*check_type(char **str, va_list arg)
 {
@@ -97,7 +82,6 @@ t_arg	*check_type(char **str, va_list arg)
 	type_place = find_type(*str, &(new->type));
 	while (type_place > i)
 		h_check_type(*str, new, &i, arg);
-	printf("100:%d\n", new->size);	
 	ft_modlst(new, arg);
 	*str = *str + i + 1;
 	return (new);

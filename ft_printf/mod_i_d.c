@@ -14,13 +14,24 @@
 
 long long	r_type(va_list arg, t_arg *head)
 {
-	if (head->size < 3)
+	signed char	c;
+	short int	s_i;
+	
+	if (head->size == 0)
 		return ((long long)va_arg(arg, int));
+	else if (head->size == 1)
+	{
+		c = (signed char)va_arg(arg, int);
+		return ((long long)c);
+	}
+	else if (head->size == 2)
+	{
+		s_i = (short int)va_arg(arg, int);
+		return ((long long)s_i);
+	}
 	else if (head->size == 3)
-		return ((long long)va_arg(arg, long int));
-	else if (head->size == 4)
-		return ((long long)va_arg(arg, long long int));
-	return (-1);
+		return ((long long)va_arg(arg, long));
+	return (va_arg(arg, long long));
 }
 
 void		mod_int(t_arg *head, va_list arg)

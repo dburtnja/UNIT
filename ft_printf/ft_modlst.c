@@ -5,9 +5,9 @@ void	find_type_mod(t_arg *head, va_list arg)
 {
 	if (head->type <= 2)
 		mod_i_d(head, arg);
-/*	else if (head->type <= 6)
-		mod_u_o_x(head, arg);
-	else if (head->type <= 14)
+	else if (head->type <= 6)
+		mod_unsigned(head, arg);
+/*	else if (head->type <= 14)
 		mod_double(head, arg);
 	else */if (head->type == 15)
 		mod_char(head, arg);
@@ -15,8 +15,8 @@ void	find_type_mod(t_arg *head, va_list arg)
 		mod_str(head, arg);
 	else if (head->type == 17)
 		mod_void(head, arg);
-/*	else if (head->type == 18)
-		mod_n(head, arg);*/
+	else if (head->type == 18)
+		mod_n(head, arg);
 }
 
 void	ft_modlst(t_arg *head, va_list arg)

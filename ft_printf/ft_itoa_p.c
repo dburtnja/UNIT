@@ -78,3 +78,34 @@ char	*ft_itoa_p(long long value, t_arg *head)
 	nbr_to_str(value, 10, &str, 0);
 	return (s);
 }
+
+char	*find_size(t_arg *head, int nbrl, int *len)
+{
+	if (head->precision > nbrl)
+		return (ft_strnew(*len = head->precision));
+	else if (head->precision == -1 && head->width > nbrl && head->flag.nul == 1)
+		return (ft_strnew(*len = head->width));
+	else if (head->precision <= nbrl && head->flag.hesh == 1 && head->type == 4)
+		return (ft_strnew(*len = nbrl + 1));
+	else
+		return (ft_strnew(*len = nbrl));
+}
+
+char	*ft_itoa_u(unsigned long long value, unsigned long long b,
+t_arg *head, int up)
+{
+	int		len;
+	int		nbrl;
+	char	*s;
+	char	*str;
+
+	nbrl = ft_nbrlen(value, b);
+	if ((str = find_size(head, nbrl, &len)) == NULL)
+		exit (1);
+	if (head->type == 4)
+		head->flag.hesh = 0;
+	s = str;
+	str = add_nul(str, 0, len - nbrl);
+	nbr_to_str(value, b, &str, up);
+	return (s);
+}

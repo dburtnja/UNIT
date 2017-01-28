@@ -5,15 +5,14 @@ void	mod_void(t_arg *head, va_list ptr)
 {
 	char				*str;
 	unsigned long long	ad;
-	int					nul;
 
-	nul = 0;
-	head->precision = -1;
 	head->flag.hesh = 1;
-	if (head->flag.min == 0 && head->flag.nul == 1)
-		nul = head->width - 14;
-	ad = (unsigned long long)va_arg(ptr, void*);	
-	str = ft_itoa_base(ad, 16, 0, nul);
+	head->flag.pl = 0;
+	head->flag.space = 0;
+	if (head->flag.min == 1)
+		head->flag.nul = 0;
+	ad = (unsigned long long)va_arg(ptr, void*);
+	str = ft_itoa_u(ad, 16, head, 0);
 	mod_m_flag(str, head);
 	ft_strdel(&str);
 }
