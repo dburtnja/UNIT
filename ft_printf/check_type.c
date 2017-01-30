@@ -34,13 +34,15 @@ int		find_type(char *str, int *type)
 	int		n;
 
 	n = 0;
-	types = "diuoxXfFeEgGaAcspn";
+	types = "dDiuUoOxXbfFeEgGaAcCsSpnrk";
 	while ((*type = find_c(str[n], types, 0)) == 0)
 	{
-		n++;
 		if (str[n] == 0)
 			return (0);
+		n++;
 	}
+	if (str[n] == 0)
+			return (0);
 	return (n);
 }
 

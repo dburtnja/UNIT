@@ -39,15 +39,20 @@ int up)
 
 void				mod_unsigned(t_arg *head, va_list arg)
 {
-	if (head->type == 3)
+	if (head->type == 4 || head->type == 5)
 	{
 		head->flag.hesh = 0;
 		mod_unsigned_int(head, arg, 10, 0);
 	}
-	else if (head->type == 4)
+	else if (head->type == 6 || head->type == 7)
 		mod_unsigned_int(head, arg, 8, 0);
-	else if (head->type == 5)
+	else if (head->type == 8)
 		mod_unsigned_int(head, arg, 16, 0);
-	else if (head->type == 6)
+	else if (head->type == 9)
 		mod_unsigned_int(head, arg, 16, 1);		
+	else if (head->type == 10)
+	{
+		head->flag.hesh = 0;
+		mod_unsigned_int(head, arg, 2, 0);		
+	}
 }

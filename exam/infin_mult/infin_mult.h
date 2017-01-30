@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   infin_mult.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/19 14:01:51 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/27 21:11:19 by dburtnja         ###   ########.fr       */
+/*   Created: 2017/01/24 10:47:57 by exam              #+#    #+#             */
+/*   Updated: 2017/01/24 10:49:23 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef INFIN_MULT_H
+# define INFIN_MULT_H
 
-int		ft_printf(char *str, ...)
-{
-	t_arg	*head;
-	int		ret;
-	va_list arg_ptr;
+# include <unistd.h>
+# include <stdlib.h>
 
-	if (!str)
-		return (-1);
-	va_start(arg_ptr, str);
-	head = read_str(str, arg_ptr);
-	ret = ft_print(head);
-	va_end(arg_ptr);
-	return (ret);
-}
+#endif

@@ -18,6 +18,7 @@ void	write_to_n(t_arg *head, size_t len)
 int		ft_print(t_arg *head)
 {
 	size_t	len;
+	t_arg	*p;
 
 	len = 0;
 	while (head)
@@ -29,13 +30,9 @@ int		ft_print(t_arg *head)
 		}
 		else
 			write_to_n(head, len);
+		p = head;
 		head = head->next;
-/*
-		new = ft_strjoin(str, (char*)head->data);
-		ft_strdel(&(head->data));
-		ft_strdel(&str);
-		str = new;
-		head = head->next;*/
+		ft_memdel((void**)&p);
 	}
 	return (len);
 }
