@@ -70,3 +70,10 @@ void	print_memory(const void *addr, size_t size)
 	}
 }
 
+int	main(void)
+{
+	char *s = "Hello world";
+
+	print_memory(s, 20);
+	return (0);
+}
