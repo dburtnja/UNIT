@@ -13,6 +13,8 @@ void	write_to_n(t_arg *head, size_t len)
 		*(head->data) = (long)len;
 	else if (head->size == 4)
 		*(head->data) = (long long)len;
+	else if (head->size == 6)
+		*(head->data) = (size_t)len;
 }
 
 int		ft_print(t_arg *head)

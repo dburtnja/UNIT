@@ -45,6 +45,7 @@ SRC =	check_type.c\
 		mod_n.c\
 		mod_str.c\
 		mod_unsigned.c\
+		mod_double.c\
 		mod_void.c\
 		read_str.c
 

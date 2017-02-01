@@ -9,9 +9,9 @@ void	ft_modlst(t_arg *head, va_list arg)
 		mod_i_d(head, arg);
 	else if (head->type <= 10)
 		mod_unsigned(head, arg);
-/*	else if (head->type <= 18)
+	else if (head->type <= 18)
 		mod_double(head, arg);
-	*/else if (head->type <= 20)
+	else if (head->type <= 20)
 		mod_char(head, arg);
 	else if (head->type <= 22)
 		mod_str(head, arg);
