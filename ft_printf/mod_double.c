@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/27 15:50:40 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/02 20:25:11 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	mod_f(t_arg *head, va_list arg)
 	if (head->flag.min == 1)
 		head->flag.nul = 0;
 	if (head->precision == -1)
-		head->precision == 6;
-	ft_itoa_d(nbr, head);
-	str = mod_m_flag(str, head);
+		head->precision = 6;
+	str = ft_itoa_d(nbr, head);
+	mod_m_flag(str, head);
 	ft_strdel(&str);
 }
 

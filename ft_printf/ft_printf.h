@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/27 15:53:43 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/02 21:04:06 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ void				mod_n(t_arg *head, va_list arg);
 void				add_hesh(char *str, size_t *i, int hesh);
 size_t				find_len(size_t str, t_arg head);
 size_t				find_size_str(size_t strl, t_arg *head, size_t *len);
+unsigned long long	ft_round(long double nbr);//, t_arg *head);
+char				*ft_itoa_d(long double value, t_arg *head);
+char				mk_sign(long long *value, t_arg *head, int *len);
+char				*add_nul(char *str, char sign, int len);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);

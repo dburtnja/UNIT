@@ -6,7 +6,7 @@
 #    By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/09 16:49:11 by dburtnja          #+#    #+#              #
-#    Updated: 2016/12/09 20:49:04 by dburtnja         ###   ########.fr        #
+#    Updated: 2017/02/02 18:48:03 by dburtnja         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,9 @@ SRC =	check_type.c\
 		mod_unsigned.c\
 		mod_double.c\
 		mod_void.c\
-		read_str.c
+		read_str.c\
+		ft_round.c\
+		ft_itoa_d.c
 
 OBJ = $(SRC:.c=.o)
 

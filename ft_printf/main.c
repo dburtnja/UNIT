@@ -8,12 +8,12 @@ int main(void)
 
 	char s[] = "start end";
 
-	   printf("\n");
+	   printf("%ld\n", sizeof(size_t));
 	double d = 123456789.123456789;
 
 
-	   printf("orig: %f\n", d);
-	ft_printf("ft_t: %f\n", d);
+	   printf("orig: %020.19f\n", d);
+	ft_printf("ft_t: %020.19f\n", d);
 
 	ft_printf("\n\n\n\n");
 	ft_printf("ft_t str: %15.5s\n", "admiral");
