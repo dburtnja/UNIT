@@ -9,11 +9,11 @@ int main(void)
 	char s[] = "start end";
 
 	   printf("%ld\n", sizeof(size_t));
-	double d = 123456789.123456789;
+	double d = +123456789.123456789;
 
 
-	   printf("orig: %020.19f\n", d);
-	ft_printf("ft_t: %020.19f\n", d);
+	   printf("orig: %+20.2e\n",d);
+	ft_printf("ft_t: %+20.2e\n",d);
 
 	ft_printf("\n\n\n\n");
 	ft_printf("ft_t str: %15.5s\n", "admiral");

@@ -6,13 +6,13 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:08:57 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/03 14:57:01 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/03 17:11:29 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-long double			ft_ceil(long double nbr)
+long double	ft_ceil(long double nbr)
 {
 	long double	i;
 
@@ -22,7 +22,7 @@ long double			ft_ceil(long double nbr)
 	return (i + 1);
 }
 
-long double			ft_floor(long double nbr)
+long double	ft_floor(long double nbr)
 {
 	long double	i;
 
@@ -32,17 +32,22 @@ long double			ft_floor(long double nbr)
 	return (i - 1);
 }
 
-unsigned long long	ft_round(long double nbr, t_arg *head)
+char		*ft_round(long double nbr, t_arg *head, char *str)
 {
-	long long	ret;
+	int			i;
 	int			p;
 
 	p = head->precision;
 	while (p > 0)
 	{
 		nbr *= 10;
+		if (p == 1)
+			nbr = (nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr));
+		i = (int)nbr;
+		*str = i + '0';
+		nbr = nbr - i;
 		p--;
+		str++;
 	}
-	ret = (unsigned long long)(nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr));
-	return (ret);
+	return (str);
 }
