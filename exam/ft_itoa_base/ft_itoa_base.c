@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	nbr_to_str(unsigned int value, unsigned int base, char **str)
+void	nbr_to_str(unsigned long long value, unsigned long long base, char **str, int up)
 {
 	char c;
 
 	if (value >= base)
 	{
-		nbr_to_str(value/base, base, str);
-		nbr_to_str(value%base, base, str);
+		nbr_to_str(value/base, base, str, up);
+		nbr_to_str(value%base, base, str, up);
 	}
 	else
 	{
 		if (value > 9)
-			c = value + 'A' - 10;
+			c = value + (up == 0 ? 'a' : 'A') - 10;
 		else
 			c = value + '0';
 		**str = c;
@@ -22,15 +22,15 @@ void	nbr_to_str(unsigned int value, unsigned int base, char **str)
 	**str = '\0';
 }
 
-char	*ft_itoa_base(int value, int base)
+char	*ft_itoa_base(unsigned long long value, unsigned long long base, int up)
 {
 	char	*str;
 	char	*s;
 	
-	str = (char*)malloc(sizeof(char) * 33);
+	str = (char*)malloc(sizeof(char) * 65);
 	*str = 0;
 	s = str;
-	if (value < 0)
+/*	if (value < 0)
 	{
 		if (base == 10)
 		{
@@ -38,19 +38,22 @@ char	*ft_itoa_base(int value, int base)
 			str++;
 		}
 		value *= -1;	
-	}
+	}*/
 	if (base < 2 || base > 16)
 		return (s);
-	nbr_to_str((unsigned int)value, (unsigned int)base, &str);
+	nbr_to_str(value, base, &str, up);
 	return (s);
 }
 
-int		main(int argc, char **argv)
+int		main(void)
 {
-	if (argc != 3)
-		return (0);
-	//printf("%d", 4 * 8);
-	printf("%s\n", ft_itoa_base(atoi(argv[1]), atoi(argv[2])));
+	int		i = 0;
+	int		*pi = &i;
+	unsigned long long		val = (unsigned long long)pi;
+	
+	printf("%p\n", pi);
+	printf("%#llx\n", val);
+	printf("%s\n", ft_itoa_base(val, 16, 0));
 	
 	return (0);
 }
