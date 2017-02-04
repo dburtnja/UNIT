@@ -6,8 +6,12 @@ void	mod_char(t_arg *head, va_list ptr)
 	char	*str;
 
 	head->precision = -1;
-	str = ft_strnew(1);
-	str[0] = (char)va_arg(ptr, int);	
+	if ((str = ft_strnew(1)) == NULL)
+		exit (1);;
+	if (c == 0)
+		str[0] = (char)va_arg(ptr, int);	
+	else
+		str[0]
 	mod_m_flag(str, head);	
 	ft_strdel(&str);
 }

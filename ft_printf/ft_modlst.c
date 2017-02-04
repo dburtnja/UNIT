@@ -12,13 +12,17 @@ void	ft_modlst(t_arg *head, va_list arg)
 	else if (head->type <= 18)
 		mod_double(head, arg);
 	else if (head->type <= 20)
-		mod_char(head, arg);
+		mod_char(head, arg, 0);
 	else if (head->type <= 22)
 		mod_str(head, arg);
 	else if (head->type == 23)
 		mod_void(head, arg);
 	else if (head->type == 24)
 		mod_n(head, arg);
-	else if (head->type == 25)
-		mod_n(head, arg);
+/*	else if (head->type == 25)
+		mod_r(head, arg);
+	else if (head->type == 26)
+		mod_k(head, arg);
+*/	else if (head->type == 27)
+		mod_char(head, arg, '%');
 }

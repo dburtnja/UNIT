@@ -34,7 +34,7 @@ int		find_type(char *str, int *type)
 	int		n;
 
 	n = 0;
-	types = "dDiuUoOxXbfFeEgGaAcCsSpnrk";
+	types = "dDiuUoOxXbfFeEgGaAcCsSpnrk%";
 	while ((*type = find_c(str[n], types, 0)) == 0)
 	{
 		if (str[n] == 0)
@@ -74,11 +74,6 @@ t_arg	*check_type(char **str, va_list arg)
 
 	i = 0;
 	(*str)++;
-	if (**str == '%')
-	{
-		(*str)++;
-		return (new_lst(ft_strdup("%"), 0));
-	}
 	if ((new = new_lst(NULL, 1)) == NULL)
 		exit (1);
 	type_place = find_type(*str, &(new->type));

@@ -25,7 +25,7 @@ char	*write_e(long double nbr, t_arg *head, int c)
 	str1 = ft_itoa_d(nbr, head);
 	str2 = ft_strnew(4);
 	str2[0] = upper;
-	str2[1] = c > 0 ? '+' : '-';
+	str2[1] = c < 0 ? '-' : '+';
 	c = c > 0 ? c : c * -1;
 	str2[2] = c / 10 + '0';
 	str2[3] = c % 10 + '0';
@@ -56,7 +56,7 @@ char	*mod_e(long double nbr, t_arg *head)
 	}
 	return (write_e(nbr, head, count));
 }
-
+/*
 char	*mod_g(long double nbr, t_arg *head)
 {
 	unsigned long long	buf;
@@ -68,18 +68,18 @@ char	*mod_g(long double nbr, t_arg *head)
 		
 	}
 }
-
+*/
 char	*type_d(t_arg *head, long double nbr)
 {
 	if (head->type == 11 || head->type == 12)
 		return (ft_itoa_d(nbr, head));
 	else if (head->type == 13 || head->type == 14)
 		return (mod_e(nbr, head));
-	else if (head->type == 15 || head->type == 16)
+	/*else if (head->type == 15 || head->type == 16)
 		return (mod_g(nbr, head));
-/*	else if (head->type == 17 || head->type == 17)
-		mod_a(head, arg);	*/
-	return (NULL);
+*/	/*else if (head->type == 17 || head->type == 18)
+		mod_a(head, arg);
+*/	return (NULL);
 }
 
 void	mod_double(t_arg *head, va_list arg)
