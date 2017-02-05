@@ -5,6 +5,7 @@ void	mod_char(t_arg *head, va_list ptr, char c)
 {
 	char	*str;
 
+	head->len = 1;
 	head->precision = -1;
 	if ((str = ft_strnew(1)) == NULL)
 		exit (1);;

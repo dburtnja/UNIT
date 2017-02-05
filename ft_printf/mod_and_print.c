@@ -27,7 +27,8 @@ int		ft_print(t_arg *head)
 	{
 		if (head->mod != 2)
 		{
-			len = len + ft_putstr(head->data);
+			len = len + head->len;
+			write(1, head->data, head->len);
 			ft_strdel(&(head->data));
 		}
 		else

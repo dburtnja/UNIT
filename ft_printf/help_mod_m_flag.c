@@ -30,9 +30,14 @@ size_t	find_len(size_t strl, t_arg head)
 
 size_t	find_size_str(size_t strl, t_arg *head, size_t *len)
 {
+	size_t	ret;
+
+	strl = head->len != 0 ? head->len : strl;
 	*len = find_len(strl, *head);
 	if (head->width != -1 && *len < (size_t)head->width)
-		return ((size_t)head->width);
+		ret = (size_t)head->width;
 	else
-		return (*len);
+		ret = *len;
+	head->len = ret;
+	return (ret);
 }

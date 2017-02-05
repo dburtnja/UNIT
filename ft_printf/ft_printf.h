@@ -36,6 +36,7 @@ typedef	struct		s_arg
 	int				precision;
 	int				size;
 	int				type;
+	size_t			len;
 }					t_arg;
 
 int					ft_printf(char *str, ...);

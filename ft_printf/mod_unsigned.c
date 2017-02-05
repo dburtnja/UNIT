@@ -1,7 +1,33 @@
 
 #include "ft_printf.h"
 
-unsigned long long	ur_type(va_list arg, t_arg *head)
+unsigned long long	un_type(va_list arg, t_arg *head)
+{
+	unsigned char		c;
+	unsigned long long	s_i;
+
+	if (head->size == 0)
+		return ((unsigned long long)va_arg(arg, unsigned long));
+	else if (head->size == 1)
+	{
+		c = (unsigned char)va_arg(arg, unsigned int);
+		return ((unsigned long long)c);
+	}
+	else if (head->size == 2)
+	{
+		s_i = (unsigned long long)va_arg(arg, unsigned long);
+		return ((unsigned long long)s_i);
+	}
+	else if (head->size == 3)
+		return ((unsigned long long)va_arg(arg, unsigned long));
+	else if (head->size == 4)
+		return (va_arg(arg, unsigned long long));
+	else if (head->size == 5)
+		return ((unsigned long long)va_arg(arg, uintmax_t));
+	return ((unsigned long long)va_arg(arg, size_t));
+}
+
+unsigned long long	ox_type(va_list arg, t_arg *head)
 {
 	unsigned char		c;
 	unsigned short int	s_i;
@@ -30,13 +56,18 @@ unsigned long long	ur_type(va_list arg, t_arg *head)
 void				mod_unsigned_int(t_arg *head, va_list arg, int b,
 int up)
 {
-	char	*str;
+	char				*str;
+	unsigned long long	nbr;
 
 	head->flag.pl = 0;
 	head->flag.space = 0;
 	if (head->flag.min == 1)
 		head->flag.nul = 0;	
-	str = ft_itoa_u(ur_type(arg, head), (unsigned long long)b, head, up);
+	if (head->type == 5)
+		nbr = un_type(arg, head);
+	else
+		nbr = ox_type(arg, head);
+	str = ft_itoa_u(nbr, (unsigned long long)b, head, up);
 	mod_m_flag(str, head);
 	ft_strdel(&str);
 }

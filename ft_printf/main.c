@@ -9,8 +9,8 @@ int main(void)
 	char s[] = "start end";
 	double d = 2.061;
 
-	   ft_printf("start%#.Xend\n", 0);
-	      printf("start%#.Xend\n", 0);
+	   ft_printf("start%hUend\n", 4294967296);
+	      printf("start%hUend\n", 4294967296);
 	   ft_printf("%#10X\n", 0);
 	      printf("%#10X\n", 0);
 	   ft_printf("%0 33..1d\n", 22222222);
@@ -25,8 +25,8 @@ int main(void)
 	ft_printf("\n\n\n\n");
 	ft_printf("ft_t str: %15.5s\n", NULL);
 	   printf("ft_t str: %15.5s\n", NULL);
-	ft_printf("ft_t: %#15.X\n", 220);
-	   printf("orig: %#15.X\n", 220);
+	ft_printf("ft_t: %#.xe\n", 0);
+	   printf("orig: %#.xe\n", 0);
 	ft_printf("ft_t add: %-20.p\n", &i);
 		 printf("orig add: %-20.p\n", &i);
 	ft_putnbr(ft_printf("\b123456789%hhns\n", &i));

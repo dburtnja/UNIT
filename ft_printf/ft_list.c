@@ -52,5 +52,6 @@ t_arg	*new_lst(void *data, int mod)
 	new->precision = -1;
 	new->size = 0;
 	new->type = 0;
+	new->len = 0;
 	return (new);
 }
