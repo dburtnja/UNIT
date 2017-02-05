@@ -31,7 +31,11 @@ long long	r_type(va_list arg, t_arg *head)
 	}
 	else if (head->size == 3)
 		return ((long long)va_arg(arg, long));
-	return (va_arg(arg, long long));
+	else if (head->size == 4)
+		return (va_arg(arg, long long));
+	else if (head->size == 5)
+		return ((long long)va_arg(arg, intmax_t));
+	return ((long long)va_arg(arg, size_t));
 }
 
 void		mod_int(t_arg *head, va_list arg)
@@ -49,6 +53,6 @@ void		mod_int(t_arg *head, va_list arg)
 
 void		mod_i_d(t_arg *head, va_list arg)
 {
-	if (head->size < 5)
-		mod_int(head, arg);	
+	if (head->size < 7)
+		mod_int(head, arg);
 }

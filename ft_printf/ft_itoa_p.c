@@ -81,6 +81,8 @@ char	*ft_itoa_p(long long value, t_arg *head)
 
 char	*find_size(t_arg *head, int nbrl, int *len)
 {
+	if (head->precision == 0 && (head->type >= 6 && head->type <= 9))
+		return (ft_strnew(*len = 0));
 	if (head->precision > nbrl)
 		return (ft_strnew(*len = head->precision));
 	else if (head->precision == -1 && head->width > nbrl && head->flag.nul == 1)
@@ -100,12 +102,20 @@ t_arg *head, int up)
 	char	*str;
 
 	nbrl = ft_nbrlen(value, b);
+	if (head->flag.hesh == 1 && !(value == 0 && b != 8))
+	{
+		if (b == 8)
+			nbrl++;
+		else if (b == 16)
+			nbrl += 2;
+	}
 	if ((str = find_size(head, nbrl, &len)) == NULL)
 		exit (1);
-	if (head->type == 4)
-		head->flag.hesh = 0;
 	s = str;
+	if (head->flag.hesh == 1 && value != 0)
+		str = add_hesh(str, b, up);
 	str = add_nul(str, 0, len - nbrl);
-	nbr_to_str(value, b, &str, up);
+	if (len > 0)
+		nbr_to_str(value, b, &str, up);
 	return (s);
 }

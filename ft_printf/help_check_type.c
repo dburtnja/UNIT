@@ -82,7 +82,7 @@ int		check_size(char *str, int *i)
 			else
 				break ;
 		}
-		if (j - *i == 2 || (sizes[k][z] == 0 && str[j] != 'l'))
+		if (j - *i == 2 || (sizes[k][z] == 0 && !(str[j] == 'l' && k == 2)))
 		{
 			*i = j;
 			return (k + 1);

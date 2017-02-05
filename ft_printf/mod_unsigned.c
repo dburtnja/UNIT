@@ -20,7 +20,11 @@ unsigned long long	ur_type(va_list arg, t_arg *head)
 	}
 	else if (head->size == 3)
 		return ((unsigned long long)va_arg(arg, unsigned long));
-	return (va_arg(arg, unsigned long long));
+	else if (head->size == 4)
+		return (va_arg(arg, unsigned long long));
+	else if (head->size == 5)
+		return ((unsigned long long)va_arg(arg, uintmax_t));
+	return ((unsigned long long)va_arg(arg, size_t));
 }
 
 void				mod_unsigned_int(t_arg *head, va_list arg, int b,

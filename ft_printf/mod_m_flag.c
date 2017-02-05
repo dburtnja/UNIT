@@ -9,7 +9,6 @@ char	*cpy_and_put_char(char *str, t_arg *head)
 
 	ret = ft_strnew(find_size_str(ft_strlen(str), head, &len));
 	i = 0;
-	add_hesh(ret, &i, head->flag.hesh);
 	while (i < len)
 	{
 		ret[i] = *str;
@@ -36,10 +35,9 @@ char	*put_char_and_cpy(char *str, t_arg *head)
 	i = 0;
 	while (i < w - len)
 	{
-		ret[i] = ' ';
+		ret[i] = head->flag.nul == 1 ? '0' : ' ';
 		i++;
 	}
-	add_hesh(ret, &i, head->flag.hesh);
 	while (i < w)
 	{
 		ret[i] = *str;
@@ -51,6 +49,8 @@ char	*put_char_and_cpy(char *str, t_arg *head)
 
 void	mod_m_flag(char *str, t_arg *head)
 {
+	if (!((head->type >= 19 && head->type <= 22) || head->type == 27))
+		head->flag.nul = 0;
 	if (head->flag.min == 1)
 		head->data = cpy_and_put_char(str, head);
 	else

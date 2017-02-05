@@ -1,14 +1,21 @@
 
 #include "ft_printf.h"
 
-void	add_hesh(char *str, size_t *i, int hesh)
+char	*add_hesh(char *str, int b, int up)
 {
-	if (hesh == 1)
+	if (b == 16)
 	{
-		str[*i] = '0';
-		str[(*i) + 1] = 'x';
-		*i += 2;
+		*str = '0';
+		str++;
+		*str = up == 1 ? 'X' : 'x';
+		str++;
 	}
+	if (b == 8)
+	{
+		*str = '0';
+		str++;
+	}
+	return (str);
 }
 
 size_t	find_len(size_t strl, t_arg head)
@@ -16,9 +23,7 @@ size_t	find_len(size_t strl, t_arg head)
 	int		   p;
 
 	p = head.precision;
-	if (head.flag.hesh == 1)
-		return (strl + 2);
-	if (p != -1 && (size_t)p < strl && head.type == 16)
+	if (p != -1 && (size_t)p < strl && (head.type == 21 || head.type == 22))
 		return (p);
 	return (strl);
 }
