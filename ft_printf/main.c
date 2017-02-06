@@ -5,14 +5,15 @@
 int main(void)
 {
 	char i;
-
+	wchar_t c = 1000;
 	char s[] = "start end";
 	double d = 2.061;
-
+	write(1, &c, 2);
+/*
 	   ft_printf("start%hUend\n", 4294967296);
 	      printf("start%hUend\n", 4294967296);
-	   ft_printf("%#10X\n", 0);
-	      printf("%#10X\n", 0);
+	   ft_printf("%#10.p\n", 0);
+	      printf("%#10.p\n", 0);
 	   ft_printf("%0 33..1d\n", 22222222);
 	      printf("%0 33..1d\n", 22222222);
 
@@ -21,11 +22,11 @@ int main(void)
 
 	   printf("orig: %+20e\n",d);
 	ft_printf("ft_t: %+20e\n",d);
-
+*/
 	ft_printf("\n\n\n\n");
-	ft_printf("ft_t str: %15.5s\n", NULL);
-	   printf("ft_t str: %15.5s\n", NULL);
-	ft_printf("ft_t: %#.xe\n", 0);
+	ft_printf("ft_t str: %15.5Send\n", "з±≥");
+	   printf("org  str: %15.5Send\n", "з±≥");
+/*	ft_printf("ft_t: %#.xe\n", 0);
 	   printf("orig: %#.xe\n", 0);
 	ft_printf("ft_t add: %-20.p\n", &i);
 		 printf("orig add: %-20.p\n", &i);
@@ -35,7 +36,7 @@ int main(void)
        printf("orig n: %hhd\n", i);
 	ft_printf("ft_t b: %hhb\n", 'c');
 
-
+*/
 
 //	  ft_printf("my first printf:\a %d\n", 10, 10, 10, 10);
 //	  ft_putnbr(printf("\n	 %denys  \n", 15));
