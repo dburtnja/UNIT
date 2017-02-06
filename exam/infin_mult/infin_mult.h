@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/24 10:47:57 by exam              #+#    #+#             */
-/*   Updated: 2017/01/24 10:49:23 by exam             ###   ########.fr       */
+/*   Created: 2017/01/31 10:04:31 by exam              #+#    #+#             */
+/*   Updated: 2017/01/31 12:06:40 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+void    in_mult(char **argv, char **strs, int l1, int l2);
+char    *res_null(char *str, int len);
+void    move_int(char *str, int l1);
+void    sum_strs(char **strs, int l1);
 
 #endif

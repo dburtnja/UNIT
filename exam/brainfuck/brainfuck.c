@@ -18,7 +18,7 @@ char	*brainfuck(char **str, char *map)
 		{
 			if (**str == 0)
 			{
-				while (1)
+/*				while (1)
 				{
 					if (*map == '[')
 						i++;
@@ -28,7 +28,7 @@ char	*brainfuck(char **str, char *map)
 						break;
 					map++;
 				}
-			}
+*/			}
 			else
 			{
 				buf = brainfuck(str, map + 1);

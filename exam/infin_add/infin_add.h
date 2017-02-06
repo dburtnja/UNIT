@@ -16,8 +16,5 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-char	*min_infin_add(char *strU, char *strD);
-size_t	ft_strlen(char *str);
-void	clear_res(char *res, size_t i);
 
 #endif

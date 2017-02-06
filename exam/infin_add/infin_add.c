@@ -22,55 +22,99 @@ size_t	ft_strlen(char	*str)
 	return (i);
 }
 
-void	clear_res(char *res, size_t i)
+char	*ft_strnew(int i)
 {
-	while (i > 0)
+	int		j;
+	char	*ret;
+
+	j = 0;
+	ret = (char*)malloc(sizeof(char) * (i + 1));
+	while (j < i + 1)
 	{
-		res[i] = 0;
+		ret[j] = 0;
+		j++;
+	}
+	return (ret);
+}
+
+char	*ret_str(char *str, int *len)
+{
+	char	*ret;
+	int		i;
+
+	*len = ft_strlen(str);
+	i = *len;
+	ret = ft_strnew(i);
+	i--;
+	while (i >= 0)
+	{
+		ret[i] = *str;
 		i--;
+		str++;
+	}
+	return (ret);
+}
+
+void	rewrite_str(char *ret, int len)
+{
+	int		i;
+	char	c;
+
+	i = 0;
+	while (len > i)
+	{
+		c = ret[i];
+		if (c > 9)
+		{
+			ret[i] = c % 10 + '0';
+			ret[i + 1] += c / 10;
+		}
+		else
+			ret[i] = c + '0';
+		i++;
 	}
 }
 
-char	*colect(char *res, int i)
+char	*add_str(char *str_a, char *str_b, int len)
 {
-	while (1)
+	char	*ret;
+	int		i;
+
+	i = 0;
+	ret = ft_strnew(len);
+	while (len > i)
 	{
-		if (res[i] > 9)
-		{
-			res[i - 1] = res[i - 1] + res[i] / 10;
-			res[i] = (res[i] % 10) + '0';
-		}
-		else
-			res[i] = res[i] + '0';
-		i--;
-		if (i == 0)
-			break ;
+		ret[i] = (*str_a ? *str_a - '0' : 0) + (*str_b ? *str_b - '0' : 0);
+		i++;
+		if (str_a != 0)
+			str_a++;
+		if (str_b != 0)
+			str_b++;	
 	}
-	res[i] = res[i] ? res[i] + '0' : 0;
-	return (res);
+	rewrite_str(ret, len);
+	return (ret);
 }
 
 char	*summ_res(char *str1, char *str2)
 {
-	char	*res;
-	int		r_l;
-	int		res_l;
-	int		s1_l;
-	int		s2_l;
+	int		len_a;
+	int		len_b;
+	char	*str_a;
+	char	*str_b;
+	char	*ret;
 
-	s1_l = ft_strlen(str1);
-	s2_l = ft_strlen(str2);
-	res = (char*)malloc((r_l = (sizeof(char) * s1_l > s2_l ? s1_l : s2_l) + 4));
-	res_l = r_l;
-	clear_res(res, r_l);
-	while (s1_l > -1 || s2_l > -1)
-	{
-		r_l--;
-		s1_l--;
-		s2_l--;
-		res[r_l] = (s1_l > -1 ? str1[s1_l] - '0' : 0) + (s2_l > -1 ? str2[s2_l] - '0' : 0); 
-	}
-	return (colect(res, res_l - 1));
+	str_a = ret_str(str1, &len_a);
+	str_b = ret_str(str2, &len_b);
+	ret = add_str(str_a, str_b, len_a > len_b ? len_a + 1 : len_b + 1);
+	ret = ret_str(ret, &len_a);
+	while (*ret == '0')
+		ret++;
+	return (ret);
+}
+
+char	*min_infin_add(char *str1, char *str2)
+{
+
 }
 
 int		main(int argc, char **argv)
@@ -86,27 +130,10 @@ int		main(int argc, char **argv)
 			(argv[1])++;
 			(argv[2])++;
 		}
-		if (argv[1][0] == '-')
-		{
-			(argv[1])++;
+		if (argv[1][0] == '-' || argv[2][0] == '-')
 			res = min_infin_add(argv[2], argv[1]);
-		}
-		else if (argv[2][0] == '-')
-		{
-			(argv[2])++;
-			res = min_infin_add(argv[1], argv[2]);
-		}
 		else
-		{
 			res = summ_res(argv[1], argv[2]);
-		}
-		if (res == NULL)
-		{
-			write(1, "0\n", 2);
-			return (0);
-		}
-		while (*res == 0 || *res == '0')
-				res++;
 		write(1, res, ft_strlen(res));
 		write(1, "\n", 1);
 	}
