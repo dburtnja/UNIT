@@ -51,3 +51,28 @@ char		*ft_round(long double nbr, t_arg *head, char *str)
 	}
 	return (str);
 }
+
+void		ft_round_d(long double nbr, t_arg *head, char *str)
+{
+	int		p;
+
+	p = head->precision;
+	while (p > 0)
+	{
+		nbr *= 10;
+		p--;
+		if ((int)nbr == 0)
+		{
+			*str = '0';
+			str++;
+		}
+		else
+			break ;
+	}
+	while (p > 0)
+	{
+		nbr *= 10;
+		p--;
+	}
+	nbr_to_str(nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr), 10, &str, 0);
+}

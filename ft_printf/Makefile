@@ -49,6 +49,7 @@ SRC =	check_type.c\
 		mod_void.c\
 		read_str.c\
 		ft_round.c\
+		mod_r.c\
 		ft_itoa_d.c
 
 OBJ = $(SRC:.c=.o)

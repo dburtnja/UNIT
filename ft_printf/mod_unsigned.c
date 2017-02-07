@@ -3,15 +3,13 @@
 
 unsigned long long	un_type(va_list arg, t_arg *head)
 {
-	unsigned char		c;
 	unsigned long long	s_i;
 
 	if (head->size == 0)
 		return ((unsigned long long)va_arg(arg, unsigned long));
 	else if (head->size == 1)
 	{
-		c = (unsigned char)va_arg(arg, unsigned int);
-		return ((unsigned long long)c);
+		return ((unsigned long long)va_arg(arg, unsigned int));
 	}
 	else if (head->size == 2)
 	{
@@ -63,10 +61,12 @@ int up)
 	head->flag.space = 0;
 	if (head->flag.min == 1)
 		head->flag.nul = 0;	
-	if (head->type == 5)
+	if (head->type == 5 || head->type == 7)
 		nbr = un_type(arg, head);
 	else
 		nbr = ox_type(arg, head);
+	if (nbr == 0 && head->precision != 0)
+		head->flag.hesh = 0;
 	str = ft_itoa_u(nbr, (unsigned long long)b, head, up);
 	mod_m_flag(str, head);
 	ft_strdel(&str);

@@ -45,7 +45,9 @@ char		*make_str(long long r_nbr, t_arg *head, long double value)
 	head->flag.hesh = 0;
 	nbr_to_str(r_nbr, 10, &str, 0);
 	str = add_nul(str, (len[4] == 1 ? '.' : 0), 0);
-	if (len[5] > 0)
+	if (len[5] > 0 && len[5] <= 15)
+		ft_round_d((value < 0 ? value * -1 : value) - (long double)r_nbr, head, str);
+	else
 		ft_round((value < 0 ? value * -1 : value) - (long double)r_nbr, head, str);
 	return (s);
 }

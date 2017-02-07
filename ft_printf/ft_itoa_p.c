@@ -118,7 +118,9 @@ t_arg *head, int up)
 	if (head->flag.hesh == 1 && !(value == 0 && b != 8))
 		str = add_hesh(str, b, up);
 	str = add_nul(str, 0, len - nbrl);
-	if (len > 0)
+	if (value == 0 && head->precision == 0)
+		*str = '\0';
+	else
 		nbr_to_str(value, b, &str, up);
 	return (s);
 }

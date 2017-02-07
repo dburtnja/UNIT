@@ -75,6 +75,8 @@ char				*ft_round(long double nbr, t_arg *head, char *str);
 char				*ft_itoa_d(long double value, t_arg *head);
 char				mk_sign(long long *value, t_arg *head, int *len);
 char				*add_nul(char *str, char sign, int len);
+void				mod_r(t_arg *head, va_list arg);
+void				ft_round_d(long double nbr, t_arg *head, char *str);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);

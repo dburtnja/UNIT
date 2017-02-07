@@ -19,9 +19,9 @@ void	ft_modlst(t_arg *head, va_list arg)
 		mod_void(head, arg);
 	else if (head->type == 24)
 		mod_n(head, arg);
-/*	else if (head->type == 25)
+	else if (head->type == 25)
 		mod_r(head, arg);
-	else if (head->type == 26)
+/*	else if (head->type == 26)
 		mod_k(head, arg);
 */	else if (head->type == 27)
 		mod_char(head, arg, '%');

@@ -2,14 +2,38 @@
 #include "ft_printf.h"
 
 #include <stdio.h>
+#include <limits.h>
 int main(void)
 {
 	char i;
 	wchar_t c = 1000;
 	char s[] = "start end";
 	double d = 2.061;
-	write(1, &c, 2);
-/*
+	char	non[127];
+	int		j = 1;
+	
+	while (j < 127)
+	{
+		non[j - 1] = j;
+		j++;
+	}
+
+	
+
+	      printf("orig:%.40e\n", 2.061);
+	   ft_printf("ft  :%.40e\n", 2.061);
+
+
+
+
+
+
+
+	ft_printf("\n\n\n\n");
+	ft_printf("%r\n", &non[0]);
+	   ft_printf("start%#.uen%.ud\n", 0, 0);
+	      printf("start%#.uen%.ud\n", 0, 0);
+
 	   ft_printf("start%hUend\n", 4294967296);
 	      printf("start%hUend\n", 4294967296);
 	   ft_printf("%#10.p\n", 0);
@@ -22,8 +46,7 @@ int main(void)
 
 	   printf("orig: %+20e\n",d);
 	ft_printf("ft_t: %+20e\n",d);
-*/
-	ft_printf("\n\n\n\n");
+
 	ft_printf("ft_t str: %15.5Send\n", "з±≥");
 	   printf("org  str: %15.5Send\n", "з±≥");
 /*	ft_printf("ft_t: %#.xe\n", 0);

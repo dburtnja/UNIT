@@ -12,6 +12,27 @@
 
 #include "ft_printf.h"
 
+long long	d_type(va_list arg, t_arg *head)
+{
+	if (head->size == 0)
+		return ((long long)va_arg(arg, long));
+	else if (head->size == 1)
+	{
+		return ((long long)va_arg(arg, int));
+	}
+	else if (head->size == 2)
+	{
+		return (long long)va_arg(arg, int);
+	}
+	else if (head->size == 3)
+		return ((long long)va_arg(arg, long));
+	else if (head->size == 4)
+		return (va_arg(arg, long long));
+	else if (head->size == 5)
+		return ((long long)va_arg(arg, intmax_t));
+	return ((long long)va_arg(arg, size_t));
+}
+
 long long	r_type(va_list arg, t_arg *head)
 {
 	signed char	c;
@@ -40,12 +61,17 @@ long long	r_type(va_list arg, t_arg *head)
 
 void		mod_int(t_arg *head, va_list arg)
 {
-	char	*str;
+	char		*str;
+	long long	nbr;
 
 	if (head->flag.min == 1)
 		head->flag.nul = 0;
 	head->flag.hesh = 0;
-	str = ft_itoa_p(r_type(arg, head), head);
+	if (head->type == 2)
+		nbr = d_type(arg, head);
+	else	
+		nbr = r_type(arg, head);
+	str = ft_itoa_p(nbr, head);
 	head->precision = -1;
 	mod_m_flag(str, head);
 	ft_strdel(&str);
