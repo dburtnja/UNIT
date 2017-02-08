@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_list.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/08 14:59:40 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/08 15:00:49 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
 int		lstlen(t_arg *head)
 {
 	int	i;
-	
+
 	i = 0;
 	while (head)
 	{
@@ -39,7 +50,7 @@ t_arg	*new_lst(void *data, int mod)
 
 	new = (t_arg*)malloc(sizeof(t_arg));
 	if (!new)
-		exit (1);
+		exit(1);
 	new->next = NULL;
 	new->mod = mod;
 	new->data = data;

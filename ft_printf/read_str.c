@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:36 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/19 14:09:29 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:15:35 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ t_arg	*read_str(char *str, va_list arg)
 		}
 		else
 		{
-			p = new_lst(ft_strsub(str, 0, (len = ft_lentoc(str, '%'))), 0);
+			len = ft_lentoc(str, '%');
+			p = new_lst(ft_strsub(str, 0, len), 0);
 			p->len = len;
 			colect_lst(&head, p);
 			str = str + len;

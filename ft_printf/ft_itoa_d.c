@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 17:26:22 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/03 21:24:13 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:02:03 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char		*all_len(int *len, t_arg *head)
 		len[2] = head->width - len[0];
 		len[0] = head->width;
 	}
-	return (ft_strnew(len[0]));	
+	return (ft_strnew(len[0]));
 }
 
 char		*make_str(long long r_nbr, t_arg *head, long double value)
@@ -37,7 +37,7 @@ char		*make_str(long long r_nbr, t_arg *head, long double value)
 	char	*str;
 	char	*s;
 
-	sign = mk_sign(&r_nbr, head, &len[1]);;
+	sign = mk_sign(&r_nbr, head, &len[1]);
 	len[3] = ft_nbrlen(r_nbr, 10);
 	str = all_len(&len[0], head);
 	s = str;
@@ -46,9 +46,11 @@ char		*make_str(long long r_nbr, t_arg *head, long double value)
 	nbr_to_str(r_nbr, 10, &str, 0);
 	str = add_nul(str, (len[4] == 1 ? '.' : 0), 0);
 	if (len[5] > 0 && len[5] <= 15)
-		ft_round_d((value < 0 ? value * -1 : value) - (long double)r_nbr, head, str);
+		ft_round_d((value < 0 ? value * -1 : value) - (long double)r_nbr,
+				head, str);
 	else
-		ft_round((value < 0 ? value * -1 : value) - (long double)r_nbr, head, str);
+		ft_round((value < 0 ? value * -1 : value) - (long double)r_nbr,
+				head, str);
 	return (s);
 }
 

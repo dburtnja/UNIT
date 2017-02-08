@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:45:20 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/27 20:28:42 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:03:22 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ long long	r_type(va_list arg, t_arg *head)
 {
 	signed char	c;
 	short int	s_i;
-	
+
 	if (head->size == 0)
 		return ((long long)va_arg(arg, int));
 	else if (head->size == 1)
@@ -69,7 +69,7 @@ void		mod_int(t_arg *head, va_list arg)
 	head->flag.hesh = 0;
 	if (head->type == 2)
 		nbr = d_type(arg, head);
-	else	
+	else
 		nbr = r_type(arg, head);
 	str = ft_itoa_p(nbr, head);
 	head->precision = -1;

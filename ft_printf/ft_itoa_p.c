@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:54:14 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/27 17:12:25 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:11:20 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ char	*ft_itoa_p(long long value, t_arg *head)
 	sign = mk_sign(&value, head, &len);
 	nbrl = ft_nbrlen(value, 10);
 	if (head->precision > nbrl)
-		str = ft_strnew(len = len + head->precision);
+		len = len + head->precision;
 	else if (head->precision == -1 && head->width > nbrl && head->flag.nul == 1)
-		str = ft_strnew(len = head->width);
+		len = head->width;
 	else
-		str = ft_strnew(len = len + nbrl);
-	if (!str)
-		exit (1);
+		len = len + nbrl;
+	if ((str = ft_strnew(len)) == NULL)
+		exit(1);
 	s = str;
 	str = add_nul(str, sign, len - nbrl);
 	if (value == 0 && head->precision == 0)
@@ -113,7 +113,7 @@ t_arg *head, int up)
 			nbrl += 2;
 	}
 	if ((str = find_size(head, nbrl, &len, value == 0)) == NULL)
-		exit (1);
+		exit(1);
 	s = str;
 	if (head->flag.hesh == 1 && !(value == 0 && b != 8))
 		str = add_hesh(str, b, up);

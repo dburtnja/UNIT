@@ -5,12 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/19 14:03:13 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/27 21:11:15 by dburtnja         ###   ########.fr       */
+/*   Created: 2017/02/08 14:21:59 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/08 14:26:12 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		h_check_flags(char check, char c, int *flag)
+{
+	if (check == c)
+	{
+		*flag = 1;
+		return (1);
+	}
+	return (0);
+}
 
 int		find_c(char c, char *str, int p)
 {
@@ -61,25 +71,7 @@ int		h_check_type(char *str, t_arg *new, int *i, va_list arg)
 		return (1);
 	return (0);
 }
-/*
-t_arg	*check_type(char **str, va_list arg)
-{
-	int		i;
-	int		type_place;
-	t_arg	*new;
 
-	i = 0;
-	(*str)++;
-	if ((new = new_lst(NULL, 1)) == NULL)
-		exit (1);
-	type_place = find_type(*str, &(new->type));
-	while (type_place > i)
-		h_check_type(*str, new, &i, arg);
-	ft_modlst(new, arg);
-	*str = *str + i + 1;
-	return (new);
-}
-*/
 t_arg	*check_type(char **str, va_list arg)
 {
 	int		i;
@@ -88,7 +80,7 @@ t_arg	*check_type(char **str, va_list arg)
 	i = 0;
 	(*str)++;
 	if ((new = new_lst(NULL, 1)) == NULL)
-		exit (1);
+		exit(1);
 	while (**str != 0)
 	{
 		if (h_check_type(*str, new, &i, arg) == 1)

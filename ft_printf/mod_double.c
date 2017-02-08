@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/03 21:24:11 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:18:58 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	*mod_e(long double nbr, t_arg *head)
 	}
 	return (write_e(nbr, head, count));
 }
+
 /*
 char	*mod_g(long double nbr, t_arg *head)
 {
@@ -69,6 +70,7 @@ char	*mod_g(long double nbr, t_arg *head)
 	}
 }
 */
+
 char	*type_d(t_arg *head, long double nbr)
 {
 	if (head->type == 11 || head->type == 12)

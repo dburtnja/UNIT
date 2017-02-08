@@ -6,21 +6,11 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 19:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/01/27 21:11:12 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:59:08 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		h_check_flags(char	check, char c, int	*flag)
-{
-	if (check == c)
-	{
-		*flag = 1;
-		return (1);
-	}
-	return (0);
-}
 
 void	check_flags(char *str, int *i, t_flag *flag)
 {
@@ -59,34 +49,43 @@ void	create_sizes(char *sizes[])
 	sizes[7] = "L";
 }
 
+int		h_check_size(int *i, char *str, int k)
+{
+	int		z;
+	char	*sizes[8];
+	int		j;
+
+	z = 0;
+	j = *i;
+	create_sizes(sizes);
+	while (j - *i < 2 && sizes[k][z] != 0)
+	{
+		if (sizes[k][z] == str[j])
+		{
+			j++;
+			z++;
+		}
+		else
+			break ;
+	}
+	if (j - *i == 2 || (sizes[k][z] == 0 && !(str[j] == 'l' && k == 2)))
+	{
+		*i = j;
+		return (k + 1);
+	}
+	return (0);
+}
+
 int		check_size(char *str, int *i)
 {
-	char	*sizes[8];
 	int		k;
 	int		j;
-	int		z;
 
-	create_sizes(sizes);
 	k = 0;
 	while (k < 8)
 	{
-		j = *i;
-		z = 0;
-		while (j - *i < 2 && sizes[k][z] != 0)
-		{
-			if (sizes[k][z] == str[j])
-			{
-				j++;
-				z++;
-			}
-			else
-				break ;
-		}
-		if (j - *i == 2 || (sizes[k][z] == 0 && !(str[j] == 'l' && k == 2)))
-		{
-			*i = j;
-			return (k + 1);
-		}
+		if ((j = h_check_size(i, str, k)) != 0)
+			return (j);
 		k++;
 	}
 	return (0);

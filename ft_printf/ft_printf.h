@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/03 16:56:28 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:26:41 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char				mk_sign(long long *value, t_arg *head, int *len);
 char				*add_nul(char *str, char sign, int len);
 void				mod_r(t_arg *head, va_list arg);
 void				ft_round_d(long double nbr, t_arg *head, char *str);
-
+int					h_check_flags(char check, char c, int *flag);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 int					ft_lentoc(char *buf, char c);
 size_t				ft_putstr(char const *s);

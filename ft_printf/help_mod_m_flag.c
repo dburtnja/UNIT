@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   help_mod_m_flag.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/08 15:01:14 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/08 15:01:57 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -20,7 +31,7 @@ char	*add_hesh(char *str, int b, int up)
 
 size_t	find_len(size_t strl, t_arg head)
 {
-	int		   p;
+	int		p;
 
 	p = head.precision;
 	if (p != -1 && (size_t)p < strl && (head.type == 21 || head.type == 22))

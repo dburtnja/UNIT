@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:08:57 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/03 17:11:29 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:05:11 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void		ft_round_d(long double nbr, t_arg *head, char *str)
 		nbr *= 10;
 		p--;
 	}
-	nbr_to_str(nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr), 10, &str, 0);
+	nbr_to_str(nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr), 10,
+			&str, 0);
 }

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mod_r.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/08 16:20:46 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/08 16:20:51 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -20,7 +31,7 @@ char	*change_str(char *str)
 
 	ret = ft_strnew(ft_strlen(str) * 2);
 	p = ret;
-	while (*str	!= 0)
+	while (*str != 0)
 	{
 		if (*str >= 32 && *str <= 126)
 		{
@@ -29,7 +40,7 @@ char	*change_str(char *str)
 		}
 		else
 		{
-			write_non_p((unsigned char**)&p, (unsigned char*)str);	
+			write_non_p((unsigned char**)&p, (unsigned char*)str);
 		}
 		str++;
 	}

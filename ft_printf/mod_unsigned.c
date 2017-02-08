@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mod_unsigned.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/08 15:19:16 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/08 15:20:31 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -60,7 +71,7 @@ int up)
 	head->flag.pl = 0;
 	head->flag.space = 0;
 	if (head->flag.min == 1)
-		head->flag.nul = 0;	
+		head->flag.nul = 0;
 	if (head->type == 5 || head->type == 7)
 		nbr = un_type(arg, head);
 	else
@@ -84,10 +95,10 @@ void				mod_unsigned(t_arg *head, va_list arg)
 	else if (head->type == 8)
 		mod_unsigned_int(head, arg, 16, 0);
 	else if (head->type == 9)
-		mod_unsigned_int(head, arg, 16, 1);		
+		mod_unsigned_int(head, arg, 16, 1);
 	else if (head->type == 10)
 	{
 		head->flag.hesh = 0;
-		mod_unsigned_int(head, arg, 2, 0);		
+		mod_unsigned_int(head, arg, 2, 0);
 	}
 }

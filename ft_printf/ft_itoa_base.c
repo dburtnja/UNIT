@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/08 15:33:06 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/08 15:56:40 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	nbr_to_str(unsigned long long value, unsigned long long base, char **str, int up)
+void	nbr_to_str(unsigned long long value, unsigned long long base,
+		char **str, int up)
 {
 	char	c;
 
@@ -22,7 +34,8 @@ void	nbr_to_str(unsigned long long value, unsigned long long base, char **str, i
 	**str = '\0';
 }
 
-char	*ft_itoa_base(unsigned long long value, unsigned long long base, int up, int nul)
+char	*ft_itoa_base(unsigned long long value, unsigned long long base,
+		int up, int nul)
 {
 	char	*str;
 	char	*s;
