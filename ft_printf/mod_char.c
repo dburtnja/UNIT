@@ -25,8 +25,9 @@ char	*check_char(va_list ptr)
 		str[0] = (char)c;
 		return (str);
 	}
-	else
-		return (char_to_str());
+	else if (c < 2048)
+		return (proc_wint_t(c));
+	return (NULL);
 }
 
 void	mod_char(t_arg *head, va_list ptr, char c)

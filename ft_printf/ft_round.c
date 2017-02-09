@@ -54,26 +54,22 @@ char		*ft_round(long double nbr, t_arg *head, char *str)
 
 void		ft_round_d(long double nbr, t_arg *head, char *str)
 {
-	int		p;
+	int			p;
+	long long	nbr_l;
 
 	p = head->precision;
 	while (p > 0)
 	{
 		nbr *= 10;
 		p--;
-		if ((int)nbr == 0)
-		{
-			*str = '0';
-			str++;
-		}
-		else
-			break ;
 	}
+	nbr_l = nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr);
+	p = head->precision - ft_nbrlen(nbr_l, 10);
 	while (p > 0)
 	{
-		nbr *= 10;
+		*str = '0';
+		str++;
 		p--;
 	}
-	nbr_to_str(nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr), 10,
-			&str, 0);
+	nbr_to_str(nbr_l, 10, &str, 0);
 }

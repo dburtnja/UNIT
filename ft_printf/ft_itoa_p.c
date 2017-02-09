@@ -35,7 +35,7 @@ char	mk_sign(long long *value, t_arg *head, int *len)
 		return (0);
 }
 
-char	*add_nul(char *str, char sign, int len)
+char	*add_nul(char *str, char sign, int len, char hesh)
 {
 	int		i;
 
@@ -45,6 +45,12 @@ char	*add_nul(char *str, char sign, int len)
 		*str = sign;
 		str++;
 		i++;
+	}
+	if (hesh != 0)
+	{
+		*str = '0';
+		str[1] = hesh;
+		str += 2;
 	}
 	while (len > i)
 	{
@@ -74,7 +80,7 @@ char	*ft_itoa_p(long long value, t_arg *head)
 	if ((str = ft_strnew(len)) == NULL)
 		exit(1);
 	s = str;
-	str = add_nul(str, sign, len - nbrl);
+	str = add_nul(str, sign, len - nbrl, 0);
 	if (value == 0 && head->precision == 0)
 		*str = '\0';
 	else
@@ -117,7 +123,7 @@ t_arg *head, int up)
 	s = str;
 	if (head->flag.hesh == 1 && !(value == 0 && b != 8))
 		str = add_hesh(str, b, up);
-	str = add_nul(str, 0, len - nbrl);
+	str = add_nul(str, 0, len - nbrl, 0);
 	if (value == 0 && head->precision == 0)
 		*str = '\0';
 	else
