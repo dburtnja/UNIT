@@ -42,7 +42,7 @@ char		*all_len(int *len, t_arg *head, int power_s)
 	len[6] = head->precision;
 	len[5] = (len[6] > 0 || head->flag.hesh == 1) ? 1 : 0;
 	len[7] = (len[2] == 2 || head->type == 13 || head->type == 14) ? 2 : 0;
-	len[8] = power_s > 2 || power_s == 0 ? power_s : 2;
+	len[8] = power_s;
 	len[0] = len[1] + len[2] + len[4] + len[5] + len[6] + len[7] + len[8];
 	if (head->flag.nul == 1 && head->width > len[0] && head->flag.min == 0)
 	{
@@ -52,7 +52,7 @@ char		*all_len(int *len, t_arg *head, int power_s)
 	return (ft_strnew(len[0]));
 }
 
-char		*make_str(t_arg *head, long double value, int power, char hesh)
+char		*make_str(t_arg *head, long double value, int power_s, char hesh)
 {
 	char		sign;
 	int			len[9];
@@ -63,7 +63,7 @@ char		*make_str(t_arg *head, long double value, int power, char hesh)
 	r_nbr = (long long)value < 0 ? value * -1 : value;
 	sign = mk_sign_d(&value, head, &len[1]);
 	len[4] = ft_nbrlen(r_nbr, 10);
-	str = all_len(&len[0], head, power != -1 ? ft_nbrlen((long long)power, 10) : 0 );
+	str = all_len(&len[0], head, power_s == 0 || power_s > 2 ? power_s : 2);
 	s = str;
 	str = add_nul(str, sign, len[3] + len[1], hesh);
 	nbr_to_str(r_nbr, 10, &str, 0);
@@ -86,13 +86,13 @@ char		*ft_itoa_d(long double value, t_arg *head, int power)
 	char				*str;
 	char	hesh;
 
-		
 	if (head->type == 17)
 		hesh = 'x';
 	else if (head->type == 18)
 		hesh = 'X';
 	else
 		hesh = 0;
-	str = make_str(head, value, power, hesh);
+	str = make_str(head, value, power != -1 ? ft_nbrlen((long long)power, 10) : 0,
+hesh);
 	return (str);
 }

@@ -27,7 +27,7 @@ char	*write_e(long double nbr, t_arg *head, int c)
 	str2[0] = upper;
 	str2[1] = c < 0 ? '-' : '+';
 	buf = str2 + 2;
-	if (c > 0 ? c : c * -1 < 10)
+	if ((c > 0 ? c : c * -1) < 10)
 	{
 		*buf = '0';
 		buf++;

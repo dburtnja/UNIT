@@ -20,7 +20,20 @@ void	add_p_nbr(long double nbr, int p, char **str, t_arg *head)
 	}
 }
 
-void	add_power(t_arg *head, 
+void	add_power(t_arg *head, char *str, int power)
+{
+	*str = head->type == 17 ? 'p' : 'P';
+	str++;
+	if (power < 0)
+	{
+		power = -power;
+		*str = '-';
+	}
+	else
+		*str = '+';
+	str++;
+	nbr_to_str(power, 10, &str, 0);
+}
 
 char	*write_a(long double nbr, t_arg *head, int c)
 {
@@ -29,7 +42,10 @@ char	*write_a(long double nbr, t_arg *head, int c)
 	int		len[9];
 	char	sign;
 
-	head->precision = head->precision == -1 ? 13 : head->precision;
+	if (head->precision == -1 && nbr == 0)
+		head->precision = 0;
+	else if (head->precision < 0)
+		head->precision = 13;
 	sign = mk_sign_d(&nbr, head, &len[1]);
 	len[4] = 1;
 	str = all_len(&len[0], head, ft_nbrlen(c < 0 ? -c : c, 10));
@@ -42,7 +58,7 @@ char	*write_a(long double nbr, t_arg *head, int c)
 		str++;
 	}
 	add_p_nbr(nbr, len[6], &str, head);
-	*str = head->type == 17 ? 'p' : 'P';
+	add_power(head, str, c);
 	return (s);
 }
 
