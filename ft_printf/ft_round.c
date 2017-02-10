@@ -32,6 +32,11 @@ long double	ft_floor(long double nbr)
 	return (i - 1);
 }
 
+long double ft_r_nbr(long double nbr)
+{
+	return ((nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr)));
+}
+
 char		*ft_round(long double nbr, t_arg *head, char *str)
 {
 	int			i;
@@ -42,7 +47,7 @@ char		*ft_round(long double nbr, t_arg *head, char *str)
 	{
 		nbr *= 10;
 		if (p == 1)
-			nbr = (nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr));
+			nbr = ft_r_nbr(nbr);
 		i = (int)nbr;
 		*str = i + '0';
 		nbr = nbr - i;
@@ -63,7 +68,7 @@ void		ft_round_d(long double nbr, t_arg *head, char *str)
 		nbr *= 10;
 		p--;
 	}
-	nbr_l = nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr);
+	nbr_l = ft_r_nbr(nbr);
 	p = head->precision - ft_nbrlen(nbr_l, 10);
 	while (p > 0)
 	{

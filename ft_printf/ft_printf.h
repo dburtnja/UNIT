@@ -40,6 +40,9 @@ typedef	struct		s_arg
 }					t_arg;
 
 int					ft_printf(char *str, ...);
+long double			ft_ceil(long double nbr);
+long double			ft_floor(long double nbr);
+long double			ft_r_nbr(long double nbr);
 int					lstlen(t_arg *head);
 t_arg				*read_str(char *str, va_list arg);
 int					colect_lst(t_arg **head, t_arg *lst);

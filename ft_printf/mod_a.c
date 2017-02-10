@@ -9,7 +9,7 @@ void	add_p_nbr(long double nbr, int p, char **str, t_arg *head)
 	c = head->type == 17 ? 'a' : 'A';
 	buf = (int)nbr;
 	nbr = nbr - (long double)buf;
-	while (p > 0)
+	while (p > 0) 
 	{
 		nbr *= 16;
 		buf = (int)nbr;
@@ -35,6 +35,24 @@ void	add_power(t_arg *head, char *str, int power)
 	nbr_to_str(power, 10, &str, 0);
 }
 
+int		ft_nbr_16_len(long double nbr)
+{
+	int		buf;
+	int		i;
+
+	i = 0;
+	buf = (int)nbr;
+	nbr = nbr - (long double)buf;
+	while (nbr != 0) 
+	{
+		nbr *= 16;
+		buf = (int)nbr;
+		nbr = nbr - (long double)buf;
+		i++;
+	}
+	return (i);
+}
+
 char	*write_a(long double nbr, t_arg *head, int c)
 {
 	char	*s;
@@ -45,7 +63,7 @@ char	*write_a(long double nbr, t_arg *head, int c)
 	if (head->precision == -1 && nbr == 0)
 		head->precision = 0;
 	else if (head->precision < 0)
-		head->precision = 13;
+		head->precision = ft_nbr_16_len(nbr);
 	sign = mk_sign_d(&nbr, head, &len[1]);
 	len[4] = 1;
 	str = all_len(&len[0], head, ft_nbrlen(c < 0 ? -c : c, 10));

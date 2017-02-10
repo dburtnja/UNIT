@@ -14,10 +14,11 @@
 
 char	*proc_wint_t(int c)
 {
-	char	s[2];
+	unsigned char	s[3];
 	
 	s[0] = (c >> 6) + 192;
 	s[1] = c << 2;
 	s[1] = (s[1] >> 2) + 128;
-	return (ft_strdup(&s[0]));
+	s[2] = 0;
+	return (ft_strdup((char*)&s[0]));
 }

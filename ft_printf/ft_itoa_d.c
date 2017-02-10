@@ -84,15 +84,10 @@ char		*make_str(t_arg *head, long double value, int power_s, char hesh)
 char		*ft_itoa_d(long double value, t_arg *head, int power)
 {
 	char				*str;
-	char	hesh;
 
-	if (head->type == 17)
-		hesh = 'x';
-	else if (head->type == 18)
-		hesh = 'X';
-	else
-		hesh = 0;
+	if (head->precision == 0)
+		value = (value - ft_floor(value) >= 0.5 ? ft_ceil(value) : ft_floor(value));
 	str = make_str(head, value, power != -1 ? ft_nbrlen((long long)power, 10) : 0,
-hesh);
+0);
 	return (str);
 }

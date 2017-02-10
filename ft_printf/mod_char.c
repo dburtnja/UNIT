@@ -39,7 +39,10 @@ void	mod_char(t_arg *head, va_list ptr, char c)
 	if (c != 0)
 		str = ft_strdup("%");
 	else if (head->size == 3)
+	{
 		str = check_char(ptr);
+		head->len = 2;
+	}
 	else
 	{
 		if ((str = ft_strnew(1)) == NULL)
