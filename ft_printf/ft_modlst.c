@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:58:50 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 15:58:52 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/10 19:28:47 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	ft_modlst(t_arg *head, va_list arg)
 		mod_n(head, arg);
 	else if (head->type == 25)
 		mod_r(head, arg);
-/*	else if (head->type == 26)
-		mod_k(head, arg);
-*/	else if (head->type == 27)
+	else if (head->type == 27)
 		mod_char(head, arg, '%');
 }

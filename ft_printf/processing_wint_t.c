@@ -6,19 +6,32 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 22:06:50 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 22:10:48 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/10 19:33:31 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*proc_wint_t(int c)
+char	*proc_wint8(int c)
 {
 	unsigned char	s[3];
-	
+
 	s[0] = (c >> 6) + 192;
 	s[1] = c << 2;
 	s[1] = (s[1] >> 2) + 128;
 	s[2] = 0;
+	return (ft_strdup((char*)&s[0]));
+}
+
+char	*proc_wint16(int c)
+{
+	unsigned char	s[4];
+
+	s[0] = (c >> 12) + 224;
+	s[1] = c >> 4;
+	s[1] = (s[1] >> 2) + 128;
+	s[2] = c << 2;
+	s[2] = (s[2] >> 2) + 128;
+	s[3] = 0;
 	return (ft_strdup((char*)&s[0]));
 }

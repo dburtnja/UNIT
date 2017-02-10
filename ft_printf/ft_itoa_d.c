@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 ft_itoa_d.c										:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: dburtnja <marvin@42.fr>					+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2017/02/02 17:26:22 by dburtnja		   #+#	  #+#			  */
-/*	 Updated: 2017/02/08 16:02:03 by dburtnja		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_d.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/10 19:32:52 by dburtnja          #+#    #+#             */
+/*   Updated: 2017/02/10 19:32:54 by dburtnja         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
@@ -86,8 +86,8 @@ char		*ft_itoa_d(long double value, t_arg *head, int power)
 	char				*str;
 
 	if (head->precision == 0)
-		value = (value - ft_floor(value) >= 0.5 ? ft_ceil(value) : ft_floor(value));
-	str = make_str(head, value, power != -1 ? ft_nbrlen((long long)power, 10) : 0,
-0);
+		value = ft_r_nbr(value);
+	str = make_str(head, value, power != -1 ? ft_nbrlen((long long)power, 10) :
+			0, 0);
 	return (str);
 }

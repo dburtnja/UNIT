@@ -6,18 +6,18 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:04:21 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 22:04:27 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/10 21:24:50 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*check_char(va_list ptr)
+char	*check_char(int c)
 {
 	char	*str;
-	int		c;
 
-	c = va_arg(ptr, int);
+	if (c == 0)
+		return (ft_strdup("\0"));
 	if (c < 128)
 	{
 		if ((str = ft_strnew(1)) == NULL)
@@ -26,8 +26,8 @@ char	*check_char(va_list ptr)
 		return (str);
 	}
 	else if (c < 2048)
-		return (proc_wint_t(c));
-	return (NULL);
+		return (proc_wint8(c));
+	return (proc_wint16(c));
 }
 
 void	mod_char(t_arg *head, va_list ptr, char c)
@@ -40,8 +40,8 @@ void	mod_char(t_arg *head, va_list ptr, char c)
 		str = ft_strdup("%");
 	else if (head->size == 3)
 	{
-		str = check_char(ptr);
-		head->len = 2;
+		str = check_char(va_arg(ptr, int));
+		head->len = head->len < ft_strlen(str) ? ft_strlen(str) : head->len;
 	}
 	else
 	{

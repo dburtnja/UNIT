@@ -1,6 +1,7 @@
 #include "ft_printf/ft_printf.h"
 #include <stdio.h>
 #include <wchar.h>
+#include <wctype.h>
 #include <locale.h>
 
 int main(void)
@@ -8,14 +9,19 @@ int main(void)
 
 setlocale(LC_ALL, "en_US.UTF-8");
 	double i = 1315315615615615611.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005;
-	i = 0.42;
+	i = 0.902;
 	wchar_t		c = 1023;
 	unsigned char	s[2];
 	char	str[256];
+	wchar_t 	*w = L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B";
 
+	while (*w)
+	{
+		w++;
+	}
+		ft_printf("%ls\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 
-		ft_printf("%lC\n",1023);
-	       printf("%C\n", 1023);
+	       printf("%ls\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 
 		ft_printf("%0g\n", i);
 	       printf("%0g\n", i);
