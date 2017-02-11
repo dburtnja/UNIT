@@ -6,7 +6,7 @@
 #    By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/09 16:49:11 by dburtnja          #+#    #+#              #
-#    Updated: 2017/02/08 16:29:34 by dburtnja         ###   ########.fr        #
+#    Updated: 2017/02/11 22:22:55 by dburtnja         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRC =	check_type.c\
 		mod_r.c\
 		processing_wint_t.c\
 		mod_a.c\
+		mod_g.c\
 		ft_itoa_d.c
 
 OBJ = $(SRC:.c=.o)

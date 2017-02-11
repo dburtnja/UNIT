@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:32:52 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/10 19:32:54 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/11 21:44:38 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char		*all_len(int *len, t_arg *head, int power_s)
 	len[2] = (head->type == 17 || head->type == 18) ? 2 : 0;
 	len[6] = head->precision;
 	len[5] = (len[6] > 0 || head->flag.hesh == 1) ? 1 : 0;
-	len[7] = (len[2] == 2 || head->type == 13 || head->type == 14) ? 2 : 0;
+	len[7] = power_s > 0 ? 2 : 0;
 	len[8] = power_s;
 	len[0] = len[1] + len[2] + len[4] + len[5] + len[6] + len[7] + len[8];
 	if (head->flag.nul == 1 && head->width > len[0] && head->flag.min == 0)
