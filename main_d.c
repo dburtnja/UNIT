@@ -28,9 +28,12 @@ setlocale(LC_ALL, "");
 	{
 		w++;
 	}
-		ft_printf("%ls\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	int ret_m;
+	int ret_o;
+	ret_m = ft_printf("{%.5p}\n", 0);
 
-	       printf("%ls\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	ret_o =    printf("{%.5p}\n", 0);
+	ft_printf("my = %10d, orig = %d\n", ret_m, ret_o);
 
 		ft_printf("%015.9g\n", i);
 	       printf("%015.9g\n", i);

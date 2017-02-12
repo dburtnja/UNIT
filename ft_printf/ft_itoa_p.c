@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:54:14 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 16:11:20 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/12 23:20:10 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,23 +107,25 @@ t_arg *head, int up)
 {
 	int		len;
 	int		nbrl;
+	int		hesh;
 	char	*s;
 	char	*str;
 
+	hesh = 0;
 	nbrl = ft_nbrlen(value, b);
 	if (head->flag.hesh == 1 && !(value == 0 && b != 8))
 	{
 		if (b == 8)
-			nbrl++;
+			hesh++;
 		else if (b == 16)
-			nbrl += 2;
+			hesh += 2;
 	}
-	if ((str = find_size(head, nbrl, &len, value == 0)) == NULL)
+	if ((str = find_size(head, nbrl + hesh, &len, value == 0)) == NULL)
 		exit(1);
 	s = str;
 	if (head->flag.hesh == 1 && !(value == 0 && b != 8))
 		str = add_hesh(str, b, up);
-	str = add_nul(str, 0, len - nbrl, 0);
+	str = add_nul(str, 0, len - nbrl - ((hesh == 1) ? 1 : 0), 0);
 	if (value == 0 && head->precision == 0)
 		*str = '\0';
 	else

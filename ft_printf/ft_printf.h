@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/11 22:24:57 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/12 21:36:17 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef	struct		s_arg
 	size_t			len;
 }					t_arg;
 
+char				*find_size(t_arg *head, int nbrl, int *len, int val);
 char				*mod_e(long double nbr, t_arg *head);
 char				*mod_g(long double nbr, t_arg *head);
 int					find_precision(long double nbr, t_arg *head, int nbr_len);

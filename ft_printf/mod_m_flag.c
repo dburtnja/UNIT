@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:19:12 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 16:19:15 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/12 22:45:12 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*put_char_and_cpy(char *str, t_arg *head)
 
 void	mod_m_flag(char *str, t_arg *head)
 {
-	if (!((head->type >= 19 && head->type <= 22) || head->type == 27))
+	if (!((head->type >= 19 && head->type <= 22) || head->type == 27 || head->type == 0))
 		head->flag.nul = 0;
 	if (head->flag.min == 1)
 		head->data = cpy_and_put_char(str, head);
