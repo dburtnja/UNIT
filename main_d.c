@@ -7,9 +7,14 @@
 int main(void)
 {
 
-setlocale(LC_ALL, "en_US.UTF-8");
+setlocale(LC_ALL, "");
 	double i = 1315315615615615611.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005;
-	i = 0.902;
+//	i = 21474894;
+//	i = 42.41916;
+	i = -8000000;
+//	i = 0;
+//	i = -0.1;	
+//	i = 153.999;
 	wchar_t		c = 1023;
 	unsigned char	s[2];
 	char	str[256];
@@ -23,20 +28,21 @@ setlocale(LC_ALL, "en_US.UTF-8");
 
 	       printf("%ls\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 
-		ft_printf("%0g\n", i);
-	       printf("%0g\n", i);
-		ft_printf("%0E\n", i);
-	       printf("%0E\n", i);
-		ft_printf("%0a\n", i);
-	       printf("%0a\n", i);
-		ft_printf("%0f\n", i);
-	       printf("%0f\n", i);
+		ft_printf("f%015G\n", i);
+	       printf("o%015G\n", i);
+		ft_printf("f%020E\n", i);
+	       printf("o%020E\n", i);
+		ft_printf("f%0a\n", i);
+	       printf("o%0a\n", i);
+		ft_printf("f%0f\n", i);
+	       printf("o%0f\n", i);
 
 /*
         printf("%e\t%#e\t%010e\t%.7e\t%.e\n", d, d, d, d, d);
      ft_printf("%e\t%#e\t%010e\t%.7e\t%.e\n", d, d, d, d, d);
         printf("%f\t%#f\t%010f\t%.7f\t%.f\n", d, d, d, d, d);
         ft_printf("%f\t%#f\t%010f\t%.7f\t%.f\n", d, d, d, d, d);
+	i = 42.41916;
 	i = 0;
 	i = -0.1;	
 	i = 153.999;
