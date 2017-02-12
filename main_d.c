@@ -9,7 +9,10 @@ int main(void)
 
 setlocale(LC_ALL, "en_US.UTF-8");
 	double i = 1315315615615615611.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005;
-	i = 0.902;
+//	i = -0.902; // 15.9
+//	i = 24561789;
+	i = 0;
+	i = 42.42;
 	wchar_t		c = 1023;
 	unsigned char	s[2];
 	char	str[256];
@@ -23,8 +26,8 @@ setlocale(LC_ALL, "en_US.UTF-8");
 
 	       printf("%ls\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 
-		ft_printf("%0g\n", i);
-	       printf("%0g\n", i);
+		ft_printf("%015.9g\n", i);
+	       printf("%015.9g\n", i);
 		ft_printf("%0E\n", i);
 	       printf("%0E\n", i);
 		ft_printf("%0a\n", i);
