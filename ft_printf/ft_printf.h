@@ -41,7 +41,7 @@ typedef	struct		s_arg
 
 char				*mod_e(long double nbr, t_arg *head);
 char				*mod_g(long double nbr, t_arg *head);
-int					find_precision(long double nbr, t_arg *head);
+int					find_precision(long double nbr, t_arg *head, int nbr_len);
 int					ft_nbr_last_len(long double nbr, int base);
 char				*check_char(int c);
 int					ft_printf(char *str, ...);

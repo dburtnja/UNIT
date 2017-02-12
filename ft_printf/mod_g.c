@@ -14,22 +14,28 @@
 
 int		find_precision(long double nbr, t_arg *head, int nbr_len)
 {
-	if (head->precision == -1 && nbr - (long long)nbr == 0 && nbr_len > 6)
-		head->precision = 6;
+	if (head->precision != -1 && nbr - (long long)nbr == 0)
+		head->precision = 0;
 	else if (head->precision == -1 && nbr - (long long)nbr == 0)
 		head->precision = 0;
 	else if (head->precision == -1)
 		head->precision = 4;
 	else
 		head->precision = head->precision - nbr_len;
-	return (nbr_len);
+	return (1);
 }
 
 char	*try_double(long double nbr, t_arg *head, int nbr_len)
 {
 	char	*str;
 	int		i;
+	int		buf_prec;
 
+	buf_prec = head->precision;
+	if (head->precision < nbr_len)
+		return (NULL);
+	if (head->precision == -1 && nbr_len > 6)
+		return (NULL);
 	find_precision(nbr, head, nbr_len);
 	str = ft_itoa_d(nbr, head, -1);
 	i = ft_strlen(str);
@@ -38,16 +44,21 @@ char	*try_double(long double nbr, t_arg *head, int nbr_len)
 		str[i - 1] = 0;
 		i--;
 	}
+	head->precision = buf_prec;
 	return (str);
 }
 
 char	*try_mod_e(long double nbr, t_arg *head, int nbr_len)
 {
+	if (nbr_len <= head->precision)
+		return (NULL);
 	if (head->precision < 0 && nbr_len > 6)	
-		head->precision == 5;
+		head->precision = 5;
 	else if (head->precision < 0)
 		head->precision += nbr_len - 1;
-	m_e = mod_e(nbr, head);
+	else
+		head->precision -= 1;
+	return (mod_e(nbr, head));
 }
 
 char	*mod_g(long double nbr, t_arg *head)
@@ -61,14 +72,14 @@ char	*mod_g(long double nbr, t_arg *head)
 	nbr_len = ft_nbrlen((long long)(nbr < 0 ? -nbr : nbr), 10);
 	str_e = try_mod_e(nbr, head, nbr_len);
 	str_d = try_double(nbr, head, nbr_len);
-	len_e = ft_strlen(str_e);
-	len_d = ft_strlen(str_d);
 	if (str_d == NULL)
 		return (str_e);
 	if (str_e == NULL)
 		return (str_d);
-	if (lene < ft_strlen(m_e)) && i >= 0)
-		return (m_d);
+	len_e = ft_strlen(str_e);
+	len_d = ft_strlen(str_d);
+	if (len_d <= len_e)
+		return (str_d);
 	else
-		return (m_e);
+		return (str_e);
 }

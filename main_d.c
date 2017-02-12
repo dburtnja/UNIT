@@ -15,6 +15,10 @@ setlocale(LC_ALL, "");
 //	i = 0;
 //	i = -0.1;	
 //	i = 153.999;
+//	i = -0.902; // 15.9
+//	i = 24561789;
+	i = 0;
+	i = 42.42;
 	wchar_t		c = 1023;
 	unsigned char	s[2];
 	char	str[256];
@@ -28,14 +32,14 @@ setlocale(LC_ALL, "");
 
 	       printf("%ls\n", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 
-		ft_printf("f%015G\n", i);
-	       printf("o%015G\n", i);
-		ft_printf("f%020E\n", i);
-	       printf("o%020E\n", i);
-		ft_printf("f%0a\n", i);
-	       printf("o%0a\n", i);
-		ft_printf("f%0f\n", i);
-	       printf("o%0f\n", i);
+		ft_printf("%015.9g\n", i);
+	       printf("%015.9g\n", i);
+		ft_printf("%0E\n", i);
+	       printf("%0E\n", i);
+		ft_printf("%0a\n", i);
+	       printf("%0a\n", i);
+		ft_printf("%0f\n", i);
+	       printf("%0f\n", i);
 
 /*
         printf("%e\t%#e\t%010e\t%.7e\t%.e\n", d, d, d, d, d);
