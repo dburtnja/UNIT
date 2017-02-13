@@ -30,9 +30,12 @@ setlocale(LC_ALL, "");
 	}
 	int ret_m;
 	int ret_o;
-	ret_m = ft_printf("{%.5p}\n", 0);
+	ret_m = ft_printf("{%05p}", 0);
+ft_putchar('\n');
 
-	ret_o =    printf("{%.5p}\n", 0);
+	ret_o =    printf("{%05p}", 0);
+fflush(stdout);
+ft_putchar('\n');
 	ft_printf("my = %10d, orig = %d\n", ret_m, ret_o);
 
 		ft_printf("%015.9g\n", i);

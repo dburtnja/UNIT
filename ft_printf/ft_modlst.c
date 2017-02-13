@@ -18,6 +18,7 @@ void	mod_empty(t_arg *head)
 
 	str = head->data;
 	mod_m_flag(str, head);
+	ft_strdel(&str);
 }
 
 void	ft_modlst(t_arg *head, va_list arg)

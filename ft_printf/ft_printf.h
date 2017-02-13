@@ -39,7 +39,9 @@ typedef	struct		s_arg
 	size_t			len;
 }					t_arg;
 
-char				*find_size(t_arg *head, int nbrl, int *len, int val);
+void				scan_width(char *str, int *i, va_list arg, t_arg *head);
+void				scan_precision(char *str, int *i, va_list arg, int *nbr);
+char				*find_size(int *len, t_arg *head,int val);
 char				*mod_e(long double nbr, t_arg *head);
 char				*mod_g(long double nbr, t_arg *head);
 int					find_precision(long double nbr, t_arg *head, int nbr_len);
@@ -61,7 +63,6 @@ void				check_flags(char *str, int *i, t_flag *flag);
 int					check_precision(char *str, int *i);
 int					check_size(char *str, int *i);
 int					find_type(char *str, int *type, int *i);
-void				check_nbr(char *str, int *i, va_list arg, int *nbr);
 int					read_arg(t_arg *head, va_list ptr);
 void				mod_str(t_arg *head, va_list ptr);
 char				*cpy_and_put_char(char *str, t_arg *head);

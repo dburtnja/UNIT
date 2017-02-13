@@ -11,47 +11,21 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-void	mod_void(t_arg *head, va_list ptr)
-{
-	char				*str;
-	char				*buf;
-	unsigned long long	ad;
-
-	head->flag.hesh = 0;
-	head->flag.pl = 0;
-	head->flag.space = 0;
-	if (head->flag.min == 1)
-		head->flag.nul = 0;
-	ad = (unsigned long long)va_arg(ptr, void*);
-	if (ad == 0 && head->precision == 0)
-	{
-		str = "0x";
-		mod_m_flag(str, head);
-	}
-	else
-	{
-		buf = ft_itoa_u(ad, 16, head, 0);
-		str = ft_strjoin("0x", buf);
-		ft_strdel(&buf);
-		mod_m_flag(str, head);
-		ft_strdel(&str);
-	}
-}*/
 
 char	*ft_itoa_void(unsigned long long value, t_arg *head)
 {
-	int		len;
-	int		nbrl;
+	int		len[5];
 	char	*s;
 	char	*str;
 
-	nbrl = ft_nbrlen(value, 16);
-	if ((str = find_size(head, nbrl, &len, value == 0)) == NULL)
+	len[2] = 0;
+	len[3] = ft_nbrlen(value, 16);
+	len[4] = 16;
+	if ((str = find_size(&len[0], head, value)) == NULL)
 		exit(1);
 	s = str;
 	str = add_hesh(str, 16, 0);
-	str = add_nul(str, 0, len - nbrl, 0);
+	str = add_nul(str, 0, len[2], 0);
 	if (value == 0 && head->precision == 0)
 		*str = 0;
 	else

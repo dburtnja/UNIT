@@ -58,12 +58,12 @@ int		h_check_type(char *str, t_arg *new, int *i, va_list arg)
 
 	j = *i;
 	check_flags(str, i, &(new->flag));
-	check_nbr(str, i, arg, &(new->width));
+	scan_width(str, i, arg, new);
 	if (str[*i] == '.')
 	{
 		(*i)++;
 		new->precision = 0;
-		check_nbr(str, i, arg, &(new->precision));
+		scan_precision(str, i, arg, &(new->precision));
 	}
 	if ((b = check_size(str, i)) > new->size)
 		new->size = b;
@@ -80,6 +80,8 @@ t_arg	*check_type(char **str, va_list arg)
 
 	i = 0;
 	(*str)++;
+	if (**str == 0)
+		return (NULL);
 	if ((new = new_lst(NULL, 1)) == NULL)
 		exit(1);
 	while (**str != 0)
@@ -92,7 +94,7 @@ t_arg	*check_type(char **str, va_list arg)
 	{
 		new->data = ft_strnew(1);
 		*(new->data) = **str;
-		*str += 1;
+		*str += **str != 0 ? 1 : 0;
 	}
 	ft_modlst(new, arg);
 	return (new);

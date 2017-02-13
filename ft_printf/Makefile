@@ -53,6 +53,7 @@ SRC =	check_type.c\
 		processing_wint_t.c\
 		mod_a.c\
 		mod_g.c\
+		check_nbr.c\
 		ft_itoa_d.c
 
 OBJ = $(SRC:.c=.o)
