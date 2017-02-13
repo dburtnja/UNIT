@@ -41,7 +41,7 @@ void	mod_char(t_arg *head, va_list ptr, char c)
 	head->precision = -1;
 	if (c != 0)
 		str = ft_strdup("%");
-	else if (head->size == 3 || head->type == 20)
+	else if (head->size == 3)
 	{
 		str = check_char(va_arg(ptr, int));
 		head->len = head->len < ft_strlen(str) ? ft_strlen(str) : head->len;
