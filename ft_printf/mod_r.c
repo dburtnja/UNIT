@@ -35,14 +35,14 @@ void	write_non_p(unsigned char **pp, unsigned char c)
 	*pp = p;
 }
 
-char	*change_str(char *str)
+char	*change_str(char *str, int len)
 {
 	char	*ret;
 	char	*p;
 
 	ret = ft_strnew(ft_strlen(str) * 4);
 	p = ret;
-	while (*str != 0)
+	while (len > 0)
 	{
 		if ((*str >= 32 && *str <= 126) || (unsigned char)*str > 160)
 		{
@@ -54,6 +54,7 @@ char	*change_str(char *str)
 			write_non_p((unsigned char**)&p, (unsigned char)*str);
 		}
 		str++;
+		len--;
 	}
 	return (ret);
 }
@@ -68,7 +69,7 @@ void	mod_r(t_arg *head, va_list arg)
 		mod_m_flag("(null)", head);
 	else
 	{
-		str = change_str(str);
+		str = change_str(str, head->precision);
 		mod_m_flag(str, head);
 		ft_strdel(&str);
 	}

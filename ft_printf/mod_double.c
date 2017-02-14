@@ -88,7 +88,9 @@ void	mod_double(t_arg *head, va_list arg)
 		head->flag.nul = 0;
 	if (head->precision == -1 && !(head->type >= 15 && head->type <= 18))
 		head->precision = 6;
-	str = type_d(head, nbr);
-	mod_m_flag(str, head);
-	ft_strdel(&str);
+	if (nbr != nbr)
+		mod_m_flag("nan")
+		str = type_d(head, nbr);
+		mod_m_flag(str, head);
+		ft_strdel(&str);
 }

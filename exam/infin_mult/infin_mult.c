@@ -1,88 +1,84 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   infin_mult.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/31 10:03:47 by exam              #+#    #+#             */
-/*   Updated: 2017/01/31 12:06:01 by exam             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "infin_mult.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void	check_min(char **argv)
-{
-	if (argv[1][0] ==  '-' && argv[2][0] == '-')
-	{
-		(argv[1])++;
-		(argv[2])++;
-	}
-	else if (argv[1][0] == '-')
-	{
-		write (1, "-", 1);
-		(argv[1])++;
-	}
-	else if (argv[2][0] == '-')
-	{
-		write (1, "-", 1);
-		(argv[2])++;
-	}
-}
-
-int		ft_strlen(char *str)
+char	*rev_str(char *str, int *len)
 {
 	int		i;
+	char	*ret;
 
 	i = 0;
-	while (str[i] != 0)
+	while (str[i])
 		i++;
-	return (i);
+	*len += i;
+	ret = (char*)malloc(i + 1);
+	ret[i] = 0;
+	while (*str)
+	{
+		ret[i - 1] = (*str - '0');
+		str++;
+		i--;
+	}
+	return (ret);
 }
 
-void	ft_bzero(char *str, int i)
+char	*mult_nbrs(int *res, char *str1, char *str2, int len)
 {
+	int		i;
 	int		j;
 
-	j = 0;
-	while (j < i)
+	i = 0;
+	while (str1[i])
 	{
-		str[j] = 0;
-		j++;	
+		j = 0;
+		while (str2[j])
+		{
+			res[i + j - 1] += str1[i] * str2[j];
+			j++;
+		}
+		i++;
 	}
-}
 
-char	**creat_strs(char **argv)
+	int k = i + j;
+	while (k > 0)
+	{
+		printf("%5d", res[k]);
+		k--;
+	}
+	return (str1);	
+}			
+
+char	*infin_mult(char **argv)
 {
-	char	**strs;
-	int		a1_l;
-	int		a2_l;
+	int		*ret;
+	char	*str1;
+	char	*str2;
+	int		len;
 	int		i;
 
 	i = 0;
-	strs = (char**)malloc(sizeof(char*) * ((a2_l = ft_strlen(argv[2])) + 1));
-	a1_l = ft_strlen(argv[1]);
-	while (a2_l > i)
+	len = 1;
+	str1 = rev_str(argv[1], &len);
+	str2 = rev_str(argv[2], &len);
+	ret = (int*)malloc(sizeof(int) * len);
+	while (i < len)
 	{
-		strs[i] = (char*)malloc(sizeof(char) * (a1_l * 2 + 1));
-		ft_bzero(strs[i], (a1_l * 2) + 1);
+		ret[i] = 0;
 		i++;
 	}
-	strs[i] = NULL;
-	return (strs);
+	mult_nbrs(ret, str1, str2, len);
+	return (str1);
 }
 
 int		main(int argc, char **argv)
 {
-	char	**strs;
+	char	*res;
 
-	(void)argc;
-	check_min(argv);
-	strs = creat_strs(argv);
-	in_mult(argv, strs, ft_strlen(argv[1]) - 1, ft_strlen(argv[2]) - 1);
-	sum_strs(strs, ft_strlen(argv[1]) - 1);
-	res_null(strs[0], ft_strlen(argv[1]));
-	write(1, strs[1], ft_strlen(strs[1]));
+	if (argc == 3)
+	{
+		res = infin_mult(argv);
+	}
+	write(1, "\n", 1);
 	return (0);
 }

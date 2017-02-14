@@ -7,6 +7,8 @@
 int main(void)
 {
 
+int	ret_m;
+int	ret_o;
 setlocale(LC_ALL, "");
 	double i = 1315315615615615611.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005;
 //	i = 21474894;
@@ -19,33 +21,25 @@ setlocale(LC_ALL, "");
 //	i = 24561789;
 	i = 0;
 	i = 42.42;
-	wchar_t		c = 1023;
-	unsigned char	s[2];
-	char	str[256];
-	wchar_t 	*w = L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B";
+	i = 0.
 
-	while (*w)
-	{
-		w++;
-	}
-	int ret_m;
-	int ret_o;
-	ret_m = ft_printf("{%05p}", 0);
+
+	ret_m = ft_printf("{%.g}", i);
 ft_putchar('\n');
 
-	ret_o =    printf("{%05p}", 0);
+	ret_o =    printf("{%.g}", i);
 fflush(stdout);
 ft_putchar('\n');
 	ft_printf("my = %10d, orig = %d\n", ret_m, ret_o);
 
-		ft_printf("%015.9g\n", i);
-	       printf("%015.9g\n", i);
-		ft_printf("%0E\n", i);
-	       printf("%0E\n", i);
+		ft_printf("%015.9g\n", 0.0);
+	       printf("%015.9g\n", 0.0);
+		ft_printf("%0.E\n", i);
+	       printf("%0.E\n", i);
 		ft_printf("%0a\n", i);
 	       printf("%0a\n", i);
-		ft_printf("%0f\n", i);
-	       printf("%0f\n", i);
+		ft_printf("%0.f\n", i);
+	       printf("%0.f\n", i);
 
 /*
         printf("%e\t%#e\t%010e\t%.7e\t%.e\n", d, d, d, d, d);

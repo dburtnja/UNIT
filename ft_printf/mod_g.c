@@ -32,8 +32,8 @@ char	*try_double(long double nbr, t_arg *head, int nbr_len)
 	int		buf_prec;
 
 	buf_prec = head->precision;
-	if (head->precision < nbr_len)
-		return (NULL);
+//	if (head->precision < nbr_len)
+//		return (NULL);
 	if (head->precision == -1 && nbr_len > 6)
 		return (NULL);
 	find_precision(nbr, head, nbr_len);
@@ -70,12 +70,16 @@ char	*mod_g(long double nbr, t_arg *head)
 	int		len_d;
 
 	nbr_len = ft_nbrlen((long long)(nbr < 0 ? -nbr : nbr), 10);
-	str_e = try_mod_e(nbr, head, nbr_len);
 	str_d = try_double(nbr, head, nbr_len);
+	str_e = try_mod_e(nbr, head, nbr_len);
 	if (str_d == NULL)
 		return (str_e);
 	if (str_e == NULL)
 		return (str_d);
+	ft_putstr(str_d);
+	ft_putchar('\n');
+	ft_putstr(str_e);
+	ft_putchar('\n');
 	len_e = ft_strlen(str_e);
 	len_d = ft_strlen(str_d);
 	if (len_d <= len_e)
