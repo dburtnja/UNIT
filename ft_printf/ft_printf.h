@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/12 21:36:17 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/15 21:20:30 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ typedef	struct		s_arg
 }					t_arg;
 
 void				*ft_memmove(void *dest, const void *src, size_t n);
-char				*make_str(t_arg *head, long double value, int power_s, char hesh);
+char				*make_str(t_arg *head, long double value, int power_s,
+		char hesh);
 void				scan_width(char *str, int *i, va_list arg, t_arg *head);
 void				scan_precision(char *str, int *i, va_list arg, int *nbr);
-char				*find_size(int *len, t_arg *head,int val);
+char				*find_size(int *len, t_arg *head, int val);
 char				*mod_e(long double nbr, t_arg *head);
 char				*mod_g(long double nbr, t_arg *head);
 int					find_precision(long double nbr, t_arg *head);

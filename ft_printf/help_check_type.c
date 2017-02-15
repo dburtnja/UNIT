@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 19:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/08 14:59:08 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/15 21:21:05 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ void	check_flags(char *str, int *i, t_flag *flag)
 	else if (h_check_flags(str[*i], '0', &(flag->nul)))
 		(*i)++;
 }
-
-/*void	check_nbr(char *str, int *i, va_list arg, int *nbr)
-{
-	if (str[*i] == '*')
-	{
-		(*i)++;
-		*nbr = va_arg(arg, int);
-	}
-	else if (str[*i] > '0' && str[*i] <= '9')
-		*nbr = ft_atoi_mod(str, i);
-}*/
 
 void	create_sizes(char *sizes[])
 {

@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 19:32:52 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/11 21:44:38 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/15 21:30:39 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,15 @@ char		*all_len(int *len, t_arg *head, int power_s)
 	return (ft_strnew(len[0]));
 }
 
+void		add_dot(char **str, int *len)
+{
+	if (len[5] == 1)
+	{
+		**str = '.';
+		(*str)++;
+	}
+}
+
 char		*make_str(t_arg *head, long double value, int power_s, char hesh)
 {
 	char		sign;
@@ -69,11 +78,7 @@ char		*make_str(t_arg *head, long double value, int power_s, char hesh)
 	s = str;
 	str = add_nul(str, sign, len[3] + len[1], hesh);
 	nbr_to_str(r_nbr, 10, &str, 0);
-	if (len[5] == 1)
-	{
-		*str = '.';
-		str++;
-	}
+	add_dot(&str, &len[0]);
 	if (len[6] > 0 && len[6] <= 15)
 		ft_round_d((value < 0 ? value * -1 : value) - (long double)r_nbr,
 				head, str);

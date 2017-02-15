@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:54:14 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/12 23:20:10 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/15 21:26:53 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,7 @@ char	*ft_itoa_p(long long value, t_arg *head)
 		nbr_to_str(value, 10, &str, 0);
 	return (s);
 }
-/*
-char	*find_size(t_arg *head, int *nbrl, int *len, int val)
-{
-	if (head->precision == 0 && val && head->type > 5 && head->type < 10)
-		return (ft_strnew(*len = 0));
-	else if (head->precision > nbrl[1])
-		return (ft_strnew(*len = head->precision + nbrl[0]));
-	else if (head->precision == -1 && head->width > nbrl[0] + nbrl[1]
-&& head->flag.nul == 1)
-		return (ft_strnew(*len = head->width));
-	else if (head->precision <= nbrl[1] && head->flag.hesh == 1 &&
-head->type == 4)
-		return (ft_strnew(*len = nbrl[0] + nbrl[1] + 1));
-	else
-		return (ft_strnew(*len = nbrl[0] + nbrl[1]));
-}
-*/
+
 char	*find_size(int *len, t_arg *head, int val)
 {
 	int		f;
