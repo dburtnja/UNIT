@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:50:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/11 22:22:27 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/15 23:14:27 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,36 +38,37 @@ char	*write_e(long double nbr, t_arg *head, int c)
 	return (ret);
 }
 
-char	*mod_e(long double nbr, t_arg *head)
+char	*mod_e(long double nbr, t_arg *head, int *count)
 {
 	unsigned long long	buf;
-	int					count;
 	long double			r_nbr;
 
-	count = 0;
+	*count = 0;
 	buf = (unsigned long long)(nbr < 0 ? nbr * -1 : nbr);
 	while (buf == 0 && nbr != 0)
 	{
-		count--;
+		(*count)--;
 		nbr *= 10;
 		buf = (unsigned long long)(nbr < 0 ? nbr * -1 : nbr);
 	}
 	while (buf > 9)
 	{
-		count++;
+		(*count)++;
 		nbr /= 10;
 		buf = (unsigned long long)(nbr < 0 ? nbr * -1 : nbr);
 	}
 	r_nbr = head->precision == 0 ? ft_r_nbr(nbr) : nbr;
-	return (write_e(nbr, head, count));
+	return (write_e(nbr, head, *count));
 }
 
 char	*type_d(t_arg *head, long double nbr)
 {
+	int		count;
+
 	if (head->type == 11 || head->type == 12)
 		return (ft_itoa_d(nbr, head, -1));
 	else if (head->type == 13 || head->type == 14)
-		return (mod_e(nbr, head));
+		return (mod_e(nbr, head, &count));
 	else if (head->type == 15 || head->type == 16)
 		return (mod_g(nbr, head));
 	else if (head->type == 17 || head->type == 18)

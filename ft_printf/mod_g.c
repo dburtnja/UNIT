@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 21:28:34 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/15 22:01:09 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/15 23:14:25 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,16 @@ char	*try_double(long double nbr, t_arg *head, int nbr_len)
 
 	prec = head->precision;
 	if (head->precision == -1)
-		head->precision = 6;
+		head->precision = 6 - nbr_len;
 	else if (head->precision >= nbr_len)
 		head->precision = head->precision - nbr_len;
+	else if (head->precision == 0 && (long long)nbr == 0)
+		head->precision = 1;
 	else if (head->precision < nbr_len)
 		return (NULL);
 	str = ft_itoa_d(nbr, head, -1);
 	i = ft_strlen(str);
-	while (i > 0 && str[i - 1] == '0' && head->precision != 0)
+	while (i > 0 && str[i - 1] == '0' && head->precision != 0 && head->flag.hesh == 0)
 	{
 		str[i - 1] = 0;
 		i--;
@@ -65,12 +67,14 @@ char	*try_mod_e(long double nbr, t_arg *head)
 {
 	int		prec;
 	char	*str;
+	int		count;
 
 	prec = head->precision;
 	if (head->precision == -1)
 		head->precision = 5;
-	str = mod_e(nbr, head);
-	rem_nul(str);
+	str = mod_e(nbr, head, &count);
+	if (head->flag.hesh == 0)
+		rem_nul(str);
 	head->precision = prec;
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/15 21:20:30 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/15 23:07:41 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char				*make_str(t_arg *head, long double value, int power_s,
 void				scan_width(char *str, int *i, va_list arg, t_arg *head);
 void				scan_precision(char *str, int *i, va_list arg, int *nbr);
 char				*find_size(int *len, t_arg *head, int val);
-char				*mod_e(long double nbr, t_arg *head);
+char				*mod_e(long double nbr, t_arg *head, int *count);
 char				*mod_g(long double nbr, t_arg *head);
 int					find_precision(long double nbr, t_arg *head);
 int					ft_nbr_last_len(long double nbr, int base);
