@@ -22,6 +22,7 @@ SRC =	check_type.c\
 		ft_list.c\
 		ft_memalloc.c\
 		ft_memdel.c\
+		ft_memmove.c\
 		ft_modlst.c\
 		ft_nbrlen.c\
 		ft_printf.c\

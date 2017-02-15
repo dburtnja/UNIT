@@ -34,6 +34,10 @@ long double	ft_floor(long double nbr)
 
 long double	ft_r_nbr(long double nbr)
 {
+	if (nbr - ft_floor(nbr) == 0.5 && (long long)ft_floor(nbr) % 2 == 0)
+		return (ft_floor(nbr));
+	else if (ft_ceil(nbr) - nbr  == 0.5)
+		return (ft_ceil(nbr));
 	return ((nbr - ft_floor(nbr) >= 0.5 ? ft_ceil(nbr) : ft_floor(nbr)));
 }
 

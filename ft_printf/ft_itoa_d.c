@@ -15,7 +15,7 @@
 char		mk_sign_d(long double *value, t_arg *head, int *len)
 {
 	*len = 0;
-	if (*value < 0)
+	if (*value < 0 || (1 / *value) < 0)
 	{
 		(*len)++;
 		(*value) *= -1;
@@ -60,8 +60,10 @@ char		*make_str(t_arg *head, long double value, int power_s, char hesh)
 	char		*s;
 	long long	r_nbr;
 
-	r_nbr = (long long)value < 0 ? value * -1 : value;
 	sign = mk_sign_d(&value, head, &len[1]);
+	if (head->precision == 0)
+		value = ft_r_nbr(value);
+	r_nbr = (long long)value < 0 ? value * -1 : value;
 	len[4] = ft_nbrlen(r_nbr, 10);
 	str = all_len(&len[0], head, power_s == 0 || power_s > 2 ? power_s : 2);
 	s = str;
@@ -85,8 +87,6 @@ char		*ft_itoa_d(long double value, t_arg *head, int power)
 {
 	char				*str;
 
-	if (head->precision == 0)
-		value = ft_r_nbr(value);
 	str = make_str(head, value, power != -1 ? ft_nbrlen((long long)power, 10) :
 			0, 0);
 	return (str);
