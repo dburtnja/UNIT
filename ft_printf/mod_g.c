@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*try_double(long double nbr, t_arg *head)
+char	*try_double(long double nbr, t_arg *head, int nbr_len)
 {
 	char	*str;
 	int		i;
@@ -21,6 +21,10 @@ char	*try_double(long double nbr, t_arg *head)
 	prec = head->precision;
 	if (head->precision == -1)
 		head->precision = 6;
+	else if (head->precision >= nbr_len)
+		head->precision = head->precision - nbr_len;
+	else if (head->precision < nbr_len)
+		return (NULL);
 	str = ft_itoa_d(nbr, head, -1);
 	i = ft_strlen(str);
 	while (i > 0 && str[i - 1] == '0' && head->precision != 0)
@@ -82,17 +86,12 @@ char	*mod_g(long double nbr, t_arg *head)
 	if ((long long)nbr == 0 && head->precision == 0)
 		head->precision = 1;
 	nbr_len = ft_nbrlen((long long)(nbr < 0 ? -nbr : nbr), 10);
-	str_d = try_double(nbr, head);
 	str_e = try_mod_e(nbr, head);
-/*	ft_putstr(str_d);
-	ft_putchar('\n');
-	ft_putstr(str_e);
-	ft_putchar('\n');
-*/	len_e = only_nbr_len(str_e);
+	if ((str_d = try_double(nbr, head, nbr_len)) == NULL)
+		return (str_e);
+	len_e = only_nbr_len(str_e);
 	len_d = only_nbr_len(str_d);
-/*	if (head->precision == -1 &&)
-		return (str_d);
-*/	if (len_d <= len_e)
+	if (len_d <= len_e)
 		return (str_d);
 	else
 		return (str_e);
