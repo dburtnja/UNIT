@@ -4,8 +4,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
-# include "../get_nex_line/get_next_line.h"
+# include "libft.h"
+# include "get_next_line.h"
 
 void	error(void);
 int		check_instructions(int *a, int *b);

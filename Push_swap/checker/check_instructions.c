@@ -25,6 +25,8 @@ void	applay_instruction(char *inst, int *a, int *b)
 		rev_rotate_stack(b);
 	else if (ft_strcmp(inst, "rrr") == 0)
 		applay_to_both(a, b, &rev_rotate_stack);
+	else
+		error();
 }
 
 int		check_if_sort(int *a, int *b)
@@ -33,7 +35,7 @@ int		check_if_sort(int *a, int *b)
 
 	if (b[0] != 0)
 		return (0);
-	i = 1;
+	i = 2;
 	while (a[0] > i)
 	{
 		if (a[i] < a[i - 1])
