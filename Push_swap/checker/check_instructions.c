@@ -40,6 +40,7 @@ int		check_if_sort(int *a, int *b)
 	{
 		if (a[i] < a[i - 1])
 			return (0);
+		i++;
 	}
 	return (1);
 }
