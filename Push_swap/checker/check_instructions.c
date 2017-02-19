@@ -36,7 +36,7 @@ int		check_if_sort(int *a, int *b)
 	if (b[0] != 0)
 		return (0);
 	i = 2;
-	while (a[0] > i)
+	while (a[0] >= i)
 	{
 		if (a[i] < a[i - 1])
 			return (0);
