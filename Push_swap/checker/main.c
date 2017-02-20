@@ -1,5 +1,5 @@
 
-#include "checker.h"
+#include "../lib/Push_swap.h"
 
 void	error(void)
 {

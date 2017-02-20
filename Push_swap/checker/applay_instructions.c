@@ -1,5 +1,5 @@
 
-#include "checker.h"
+#include "../lib/Push_swap.h"
 
 void	applay_to_both(int *a, int *b, void (*f)(int*))
 {
