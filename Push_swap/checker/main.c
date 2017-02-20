@@ -53,6 +53,8 @@ int		main(int argc, char **argv)
 			i++;
 		}
 		write(1, check_instructions(a, b) == 1 ? "OK\n" : "KO\n", 3);
+		ft_memdel((void*)&a);
+		ft_memdel((void*)&b);
 	}
 	return 0;
 }
