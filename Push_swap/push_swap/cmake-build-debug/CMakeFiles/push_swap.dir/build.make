@@ -81,17 +81,17 @@ CMakeFiles/push_swap.dir/main.c.obj.provides.build: CMakeFiles/push_swap.dir/mai
 
 
 CMakeFiles/push_swap.dir/find_sort_algorithm.c.obj: CMakeFiles/push_swap.dir/flags.make
-CMakeFiles/push_swap.dir/find_sort_algorithm.c.obj: find_sort_algorithm.c
+CMakeFiles/push_swap.dir/find_sort_algorithm.c.obj: ../find_sort_algorithm.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Denys\Documents\GitHub\UNIT\Push_swap\push_swap\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/push_swap.dir/find_sort_algorithm.c.obj"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\push_swap.dir\find_sort_algorithm.c.obj   -c C:\Users\Denys\Documents\GitHub\UNIT\Push_swap\push_swap\cmake-build-debug\find_sort_algorithm.c
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\push_swap.dir\find_sort_algorithm.c.obj   -c C:\Users\Denys\Documents\GitHub\UNIT\Push_swap\push_swap\find_sort_algorithm.c
 
 CMakeFiles/push_swap.dir/find_sort_algorithm.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/push_swap.dir/find_sort_algorithm.c.i"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Denys\Documents\GitHub\UNIT\Push_swap\push_swap\cmake-build-debug\find_sort_algorithm.c > CMakeFiles\push_swap.dir\find_sort_algorithm.c.i
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Denys\Documents\GitHub\UNIT\Push_swap\push_swap\find_sort_algorithm.c > CMakeFiles\push_swap.dir\find_sort_algorithm.c.i
 
 CMakeFiles/push_swap.dir/find_sort_algorithm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/push_swap.dir/find_sort_algorithm.c.s"
-	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Denys\Documents\GitHub\UNIT\Push_swap\push_swap\cmake-build-debug\find_sort_algorithm.c -o CMakeFiles\push_swap.dir\find_sort_algorithm.c.s
+	C:\MinGW\bin\gcc.exe  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Denys\Documents\GitHub\UNIT\Push_swap\push_swap\find_sort_algorithm.c -o CMakeFiles\push_swap.dir\find_sort_algorithm.c.s
 
 CMakeFiles/push_swap.dir/find_sort_algorithm.c.obj.requires:
 

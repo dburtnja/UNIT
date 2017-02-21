@@ -14,5 +14,6 @@ void	push_stack(int *from, int *into);
 void	rotate_stack(int *arr);
 void	rev_rotate_stack(int *arr);
 void	applay_to_both(int *a, int *b, void (*f)(int *stack));
+void	find_sort_algorithm(int *a, int *b);
 
-#endif //CHECKER_CHECKER_H
+#endif

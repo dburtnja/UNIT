@@ -52,7 +52,7 @@ int		main(int argc, char **argv)
 				error();
 			i++;
 		}
-
+		find_sort_algorithm(a, b);
 	}
 	return 0;
 }
