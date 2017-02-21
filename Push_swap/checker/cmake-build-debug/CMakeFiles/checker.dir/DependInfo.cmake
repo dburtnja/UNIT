@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/applay_instructions.c" "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/applay_instructions.c.obj"
   "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/check_instructions.c" "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/check_instructions.c.obj"
+  "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/doubly_linked_list.c" "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/doubly_linked_list.c.obj"
   "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/main.c" "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

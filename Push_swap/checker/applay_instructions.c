@@ -1,23 +1,28 @@
 
 #include "../lib/Push_swap.h"
 
-void	applay_to_both(int *a, int *b, void (*f)(int*))
+void	applay_to_both(t_doub_lst *a, t_doub_lst *b, void (*f)(t_doub_lst*))
 {
 	f(a);
 	f(b);
 }
 
-void	swap_stack(int *stack)
+void	swap_stack(t_doub_lst *stack)
 {
 	int buf;
 
-	buf = stack[0];
-	stack[0] = stack[1];
-	stack[1] = buf;
+	if (stack->size > 1)
+	{
+		buf = stack->nbr;
+		stack->nbr = stack->next->nbr;
+		stack->next->nbr = buf;
+	}
 }
 
-void	push_stack(int *from, int *into)
+void	push_stack(t_doub_lst *from, t_doub_lst *into)
 {
+
+
 	ft_memmove((void*)&into[2], (void*)&into[1], (sizeof(int) * into[0]));
 	into[1] = from[1];
 	into[0]++;

@@ -88,7 +88,7 @@
 		<Unit filename="C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/check_instructions.c">
 			<Option target="checker"/>
 		</Unit>
-		<Unit filename="C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/checker.h">
+		<Unit filename="C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/doubly_linked_list.c">
 			<Option target="checker"/>
 		</Unit>
 		<Unit filename="C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/main.c">

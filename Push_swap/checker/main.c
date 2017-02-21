@@ -7,54 +7,46 @@ void	error(void)
 	exit(1);
 }
 
-int		check_if_num(char *str, int *nbr)
+int		check_if_num(char *str)
 {
-	*nbr = ft_atoi(str);
-	while (*str)
-	{
-		if (!(*str >= '0' && *str <= '9'))
-			return (0);
-		str++;
-	}
-	return (1);
+	int 	nbr;
+
+	nbr = ft_atoi(str);
+	if (ft_strcmp(ft_itoa(nbr), str) != 0)
+		error();
+	return (nbr);
 }
 
-int		*new_int_array(int size)
+t_doub_lst	*make_lst(int size, char **arg)
 {
-	int *array;
-	int i;
+	int			i;
+	t_doub_lst	*p;
+	t_doub_lst	*head;
 
 	i = 0;
-	array = (int *) malloc(sizeof(int) * size);
+	head = NULL;
 	while (i < size)
 	{
-		array[i] = 0;
+		p = new_lst(check_if_num(arg[i]));
+		head = add_lst_to_back(&head, p);
 		i++;
 	}
-	return (array);
+	return (head);
 }
 
 int		main(int argc, char **argv)
 {
-	int *a;
-	int *b;
-	int i;
+	t_doub_lst	*a;
+	t_doub_lst	*b;
+	int			i;
 
 	i = 1;
-	a = new_int_array(argc);
-	b = new_int_array(argc);
-	*a = argc - 1;
+	b = NULL;
 	if (argc > 1)
 	{
-		while (i < argc)
-		{
-			if (check_if_num(argv[i], &a[i]) == 0)
-				error();
-			i++;
-		}
+		a = make_lst(argc - 1, &argv[1]);
 		write(1, check_instructions(a, b) == 1 ? "OK\n" : "KO\n", 3);
-		ft_memdel((void*)&a);
-		ft_memdel((void*)&b);
+
 	}
 	return 0;
 }
