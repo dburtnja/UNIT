@@ -30,13 +30,13 @@ setlocale(LC_ALL, "");
 
 int k = 0;
 
-	ret_m = ft_printf("{%.G}", i[7]);
+	ret_m = ft_printf(RED"{%G}\n"RESET, i[7]);
 while (k < 15)
 {
-	ret_m = ft_printf("{%.G}", i[k]);
+	ret_m = ft_printf("{%015.g}", i[k]);
 ft_putchar('\n');
 
-	ret_o =    printf("{%.G}", i[k]);
+	ret_o =    printf("{%015.g}", i[k]);
 fflush(stdout);
 ft_putchar('\n');
 	ft_printf("my = %10d, orig = %d\n", ret_m, ret_o);
