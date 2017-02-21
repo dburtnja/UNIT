@@ -1,0 +1,3 @@
+C:/Users/Denys/Documents/GitHub/UNIT/get_nex_line/cmake-build-debug/CMakeFiles/get_nex_line.dir
+C:/Users/Denys/Documents/GitHub/UNIT/get_nex_line/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Denys/Documents/GitHub/UNIT/get_nex_line/cmake-build-debug/CMakeFiles/rebuild_cache.dir
