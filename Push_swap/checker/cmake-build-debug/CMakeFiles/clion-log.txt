@@ -1,4 +1,4 @@
-"C:\Program Files (x86)\JetBrains\CLion 2016.3.3\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Denys\Documents\GitHub\UNIT\Push_swap\checker
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug
+-- Build files have been written to: /nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/cmake-build-debug

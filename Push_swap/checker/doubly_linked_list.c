@@ -4,7 +4,7 @@
 
 #include "../lib/Push_swap.h"
 
-void		*add_lst_to_front(t_doub_lst **head, t_doub_lst *new)
+void		add_lst_to_front(t_doub_lst **head, t_doub_lst *new)
 {
 	int 	buf;
 
@@ -20,26 +20,20 @@ void		*add_lst_to_front(t_doub_lst **head, t_doub_lst *new)
 	new->size = buf;
 }
 
-void		*add_lst_to_back(t_doub_lst **head, t_doub_lst *new)
+void		add_lst_to_back(t_doub_lst **head, t_doub_lst *new)
 {
 	t_doub_lst	*p;
-	int 		len;
 
-	len = 1;
 	p = *head;
 	if (*head == NULL)
 		*head = new;
 	else
 	{
 		while (p->next)
-		{
-			len++;
 			p = p->next;
-		}
 		p = new;
 		new->prev = p;
 	}
-	(*head)->size = len;
 }
 
 t_doub_lst	*new_lst(int nbr)

@@ -4,27 +4,27 @@
 void	applay_instruction(char *inst, t_doub_lst *a, t_doub_lst *b)
 {
 	if (ft_strcmp(inst, "sa") == 0)
-		swap_stack(a);
+		swap_stack(&a);
 	else if (ft_strcmp(inst, "sb") == 0)
-		swap_stack(&b[1]);
+		swap_stack(&b);
 	else if (ft_strcmp(inst, "ss") == 0)
-		apply_to_both(a, b, &swap_stack);
+		apply_to_both(&a, &b, &swap_stack);
 	else if (ft_strcmp(inst, "pa") == 0 && b && b->size > 0)
-		push_stack(b, a);
+		push_stack(&b, &a);
 	else if (ft_strcmp(inst, "pb") == 0 && a && a->size > 0)
-		push_stack(a, b);
+		push_stack(&a, &b);
 	else if (ft_strcmp(inst, "ra") == 0)
-		rotate_stack(a);
+		rotate_stack(&a);
 	else if (ft_strcmp(inst, "rb") == 0)
-		rotate_stack(b);
+		rotate_stack(&b);
 	else if (ft_strcmp(inst, "rr") == 0)
-		apply_to_both(a, b, &rotate_stack);
+		apply_to_both(&a, &b, &rotate_stack);
 	else if (ft_strcmp(inst, "rra") == 0)
-		rev_rotate_stack(a);
+		rev_rotate_stack(&a);
 	else if (ft_strcmp(inst, "rrb") == 0)
-		rev_rotate_stack(b);
+		rev_rotate_stack(&b);
 	else if (ft_strcmp(inst, "rrr") == 0)
-		apply_to_both(a, b, &rev_rotate_stack);
+		apply_to_both(&a, &b, &rev_rotate_stack);
 	//else
 	//	error();
 }

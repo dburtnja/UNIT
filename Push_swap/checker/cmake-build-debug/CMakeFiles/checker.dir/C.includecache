@@ -6,23 +6,27 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/applay_instructions.c
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/applay_instructions.c
 ../lib/Push_swap.h
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/Push_swap.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/Push_swap.h
 
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/check_instructions.c
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/check_instructions.c
 ../lib/Push_swap.h
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/Push_swap.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/Push_swap.h
 
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/main.c
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/doubly_linked_list.c
 ../lib/Push_swap.h
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/Push_swap.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/Push_swap.h
 
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/./get_next_line.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/main.c
+../lib/Push_swap.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/Push_swap.h
+
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/./get_next_line.h
 ./libft.h
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/././libft.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/././libft.h
 
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/./libft.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/./libft.h
 string.h
 -
 unistd.h
@@ -30,13 +34,13 @@ unistd.h
 stdlib.h
 -
 
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/Push_swap.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/Push_swap.h
 unistd.h
 -
 stdlib.h
 -
 ./libft.h
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/./libft.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/./libft.h
 ./get_next_line.h
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/./get_next_line.h
+/nfs/2016/d/dburtnja/gitUNIT/Push_swap/lib/./get_next_line.h
 

@@ -1,3 +1,1 @@
-"C:\Program Files (x86)\JetBrains\CLion 2016.3.3\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\checker.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\checker.dir/objects.a @CMakeFiles\checker.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe  -g   -Wl,--whole-archive CMakeFiles\checker.dir/objects.a -Wl,--no-whole-archive  -o checker.exe -Wl,--out-implib,libchecker.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\checker.dir\linklibs.rsp
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/checker.dir/main.c.o CMakeFiles/checker.dir/check_instructions.c.o CMakeFiles/checker.dir/applay_instructions.c.o CMakeFiles/checker.dir/doubly_linked_list.c.o  -o checker -lC:/Users/Denys/Documents/GitHub/UNIT/Push_swap/lib/libget_nex_line.a 

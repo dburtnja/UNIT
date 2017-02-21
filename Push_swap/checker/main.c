@@ -28,7 +28,7 @@ t_doub_lst	*make_lst(int size, char **arg)
 	while (i < size)
 	{
 		p = new_lst(check_if_num(arg[i]));
-		head = add_lst_to_back(&head, p);
+		add_lst_to_back(&head, p);
 		i++;
 	}
 	return (head);
@@ -38,9 +38,7 @@ int		main(int argc, char **argv)
 {
 	t_doub_lst	*a;
 	t_doub_lst	*b;
-	int			i;
 
-	i = 1;
 	b = NULL;
 	if (argc > 1)
 	{

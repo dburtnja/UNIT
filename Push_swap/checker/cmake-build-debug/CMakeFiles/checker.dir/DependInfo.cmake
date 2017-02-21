@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/applay_instructions.c" "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/applay_instructions.c.obj"
-  "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/check_instructions.c" "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/check_instructions.c.obj"
-  "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/doubly_linked_list.c" "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/doubly_linked_list.c.obj"
-  "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/main.c" "C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/main.c.obj"
+  "/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/applay_instructions.c" "/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/applay_instructions.c.o"
+  "/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/check_instructions.c" "/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/check_instructions.c.o"
+  "/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/doubly_linked_list.c" "/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/doubly_linked_list.c.o"
+  "/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/main.c" "/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir/main.c.o"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
