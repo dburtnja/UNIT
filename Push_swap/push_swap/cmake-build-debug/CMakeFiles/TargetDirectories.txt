@@ -1,3 +1,0 @@
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/push_swap/cmake-build-debug/CMakeFiles/push_swap.dir
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/push_swap/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/push_swap/cmake-build-debug/CMakeFiles/rebuild_cache.dir
