@@ -18,9 +18,10 @@ typedef	struct			s_doub_lst
 t_doub_lst				*new_lst(int nbr);
 void					add_lst_to_back(t_doub_lst **head, t_doub_lst *new);
 void					add_lst_to_front(t_doub_lst **head, t_doub_lst *new);
+void					free_lst(t_doub_lst **head);
 
 void					error(void);
-int						check_instructions(t_doub_lst *a, t_doub_lst *b);
+int						check_instructions(t_doub_lst **a, t_doub_lst **b);
 void					swap_stack(t_doub_lst **stack);
 void					push_stack(t_doub_lst **from, t_doub_lst **into);
 void					rotate_stack(t_doub_lst **head);

@@ -31,6 +31,7 @@ t_doub_lst	*make_lst(int size, char **arg)
 		add_lst_to_back(&head, p);
 		i++;
 	}
+	head->size = size;
 	return (head);
 }
 
@@ -43,8 +44,10 @@ int		main(int argc, char **argv)
 	if (argc > 1)
 	{
 		a = make_lst(argc - 1, &argv[1]);
-		write(1, check_instructions(a, b) == 1 ? "OK\n" : "KO\n", 3);
-
+		write(1, check_instructions(&a, &b) == 1 ? "OK\n" : "KO\n", 3);
+		free_lst(&a);
+		if (b)
+			free_lst(&b);
 	}
 	return 0;
 }

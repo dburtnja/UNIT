@@ -1,3 +1,3 @@
-/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/edit_cache.dir
-/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/nfs/2016/d/dburtnja/gitUNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir
+C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/checker.dir
+C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Denys/Documents/GitHub/UNIT/Push_swap/checker/cmake-build-debug/CMakeFiles/rebuild_cache.dir
