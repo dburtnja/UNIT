@@ -4,24 +4,25 @@
 
 #include "../lib/Push_swap.h"
 
-int		check_if_sort(int *arr)
+int 	middle_nbr(t_doub_lst *head)
 {
-	int i;
+	int 		i;
+	t_doub_lst	*sort_lst;
 
-	i = 2;
-	while (arr[0] >= i)
+	sort_lst = bubble_sort(lst_dup(head));
+	i = head->size / 2;
+	while (i > 0)
 	{
-		if (arr[i] < arr[i - 1])
-			return (0);
-		i++;
+		sort_lst = sort_lst->next;
+		i--;
 	}
-	return (1);
+	return (sort_lst->nbr);
 }
 
-void	find_sort_algorithm(int *a, int *b)
+void	find_sort_algorithm(t_doub_lst *a, t_doub_lst *b)
 {
-	while (check_if_sort(a) == 0)
-	{
-		if (a[])
-	}
+	int		midd_nbr;
+
+	midd_nbr = middle_nbr(a);
+	ft_putnbr(midd_nbr);
 }

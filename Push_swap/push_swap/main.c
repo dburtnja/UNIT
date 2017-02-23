@@ -44,10 +44,7 @@ int		main(int argc, char **argv)
 	if (argc > 1)
 	{
 		a = make_lst(argc - 1, &argv[1]);
-		write(1, check_instructions(&a, &b) == 1 ? "OK\n" : "KO\n", 3);
-		free_lst(&a);
-		if (b)
-			free_lst(&b);
+		find_sort_algorithm(a, b);
 	}
 	return 0;
 }

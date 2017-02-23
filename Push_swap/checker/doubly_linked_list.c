@@ -4,6 +4,22 @@
 
 #include "../lib/Push_swap.h"
 
+t_doub_lst	*lst_dup(t_doub_lst *head)
+{
+	t_doub_lst	*p;
+	t_doub_lst	*ret;
+
+	ret = NULL;
+	while (head)
+	{
+		p = new_lst(head->nbr);
+		p->size = head->size;
+		add_lst_to_back(&ret, p);
+		head = head->next;
+	}
+	return (ret);
+}
+
 void		free_lst(t_doub_lst **head)
 {
 	t_doub_lst	*p;
