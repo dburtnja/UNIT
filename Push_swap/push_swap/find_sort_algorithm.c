@@ -25,4 +25,5 @@ void	find_sort_algorithm(t_doub_lst *a, t_doub_lst *b)
 
 	midd_nbr = middle_nbr(a);
 	ft_putnbr(midd_nbr);
+	ft_putendl("");
 }
