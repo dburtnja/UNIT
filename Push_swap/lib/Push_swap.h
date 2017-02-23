@@ -36,4 +36,6 @@ void					apply_to_both(t_doub_lst **a, t_doub_lst **b,
 									   void (*f)(t_doub_lst **stack));
 void					find_sort_algorithm(t_doub_lst *a, t_doub_lst *b);
 
+void					sort_three(t_doub_lst **a);
+
 #endif
