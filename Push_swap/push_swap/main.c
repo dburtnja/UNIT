@@ -45,6 +45,7 @@ int		main(int argc, char **argv)
 	{
 		a = make_lst(argc - 1, &argv[1]);
 		find_sort_algorithm(&a, &b);
+		free_lst(&a);
 	}
 	return 0;
 }

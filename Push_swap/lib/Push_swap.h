@@ -35,12 +35,13 @@ void					rev_rotate_stack(t_doub_lst **head);
 void					apply_to_both(t_doub_lst **a, t_doub_lst **b,
 									   void (*f)(t_doub_lst **stack));
 
+void					ps_swap_stack(t_doub_lst **stack);
 void					ps_push_stack(t_doub_lst **from, t_doub_lst **into);
 void					ps_rotate_stack(t_doub_lst **head);
 void					ps_rev_rotate_stack(t_doub_lst **head);
 void					ps_apply_to_both(t_doub_lst **a, t_doub_lst **b,
 									  void (*f)(t_doub_lst **stack));
-void					find_sort_algorithm(t_doub_lst *a, t_doub_lst *b);
+void					find_sort_algorithm(t_doub_lst **a, t_doub_lst **b);
 
 void					sort_small(t_doub_lst *a, t_doub_lst *b);
 

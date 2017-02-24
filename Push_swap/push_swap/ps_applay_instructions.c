@@ -8,8 +8,7 @@ void	ps_apply_to_both(t_doub_lst **a, t_doub_lst **b, void (*f)
 	f(b);
 }
 
-/*
-void	swap_stack(t_doub_lst **stack)
+void	ps_swap_stack(t_doub_lst **stack)
 {
 	int buf;
 
@@ -20,7 +19,6 @@ void	swap_stack(t_doub_lst **stack)
 		(*stack)->next->nbr = buf;
 	}
 }
-*/
 
 void	ps_push_stack(t_doub_lst **from, t_doub_lst **into)
 {
