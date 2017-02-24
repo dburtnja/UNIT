@@ -44,7 +44,7 @@ int		main(int argc, char **argv)
 	if (argc > 1)
 	{
 		a = make_lst(argc - 1, &argv[1]);
-		find_sort_algorithm(a, b);
+		find_sort_algorithm(&a, &b);
 	}
 	return 0;
 }
