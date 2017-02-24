@@ -11,7 +11,7 @@ set(SOURCE_FILES
         find_sort_algorithm.c
         main.c
         ps_applay_instructions.c
-        q_sort_1.c)
+        q_sort_1.c check_if_sort.c)
 
 add_executable(push_swap ${SOURCE_FILES})
 target_link_libraries(push_swap ${MY_LIB})

@@ -73,34 +73,31 @@ void	dividing_lst_a(t_doub_lst **a, t_doub_lst *b)
 		if (find_instruction_a(a, &b, midd_nbr, rr) == 1)
 			size--;
 	}
-	if ((*a)->size <= 2)
+	find_sort_algorithm(a, &b);
+	while (b)
 	{
-		find_sort_algorithm(a, &b);
-		while (b)
-		{
-			ps_push_stack(&b, a);
-			ft_putendl("pa");
-		}
+		ps_push_stack(&b, a);
+		ft_putendl("pa");
 	}
 }
 
 int		find_instruction_b(t_doub_lst **a, t_doub_lst **b, int midd_nbr, int rr)
 {
-	if ((*a)->nbr > midd_nbr)
+	if ((*b)->nbr > midd_nbr)
 	{
-		ps_push_stack(a, b);
-		ft_putendl("pb");
+		ps_push_stack(b, a);
+		ft_putendl("pa");
 		return (1);
 	}
 	if (rr)
 	{
-		ps_rev_rotate_stack(a);
-		ft_putendl("rra");
+		ps_rev_rotate_stack(b);
+		ft_putendl("rrb");
 	}
 	else
 	{
-		ps_rotate_stack(a);
-		ft_putendl("ra");
+		ps_rotate_stack(b);
+		ft_putendl("rb");
 	}
 	return (0);
 }
@@ -119,29 +116,20 @@ void	dividing_lst_b(t_doub_lst *a, t_doub_lst **b)
 		if (find_instruction_b(&a, b, midd_nbr, !rr) == 1)
 			size--;
 	}
-	if ((*b)->size <= 2)
+	find_sort_algorithm(&a, b);
+	while (a)
 	{
-		find_sort_algorithm(&a, b);
-		while (a)
-		{
-			ps_push_stack(&a, b);
-			ft_putendl("pb");
-		}
+		ps_push_stack(&a, b);
+		ft_putendl("pb");
 	}
 }
 
 void	find_sort_algorithm(t_doub_lst **a, t_doub_lst **b)
 {
-	if ((*a)->size <= 2)
-	{
-		sort_small(*a, *b);
-		return ;
-	}
-	else
-	{
+	sort_small(*a, *b);
+	if (*a && (*a)->size > 2 && check_if_sort_a(*a) == 0)
 		dividing_lst_a(a, NULL);
-		if (*b)
-			dividing_lst_b(NULL, b);
-	}
+	if (*b && (*b)->size > 2 && check_if_sort_b(*b) == 0)
+		dividing_lst_b(NULL, b);
 }
 
