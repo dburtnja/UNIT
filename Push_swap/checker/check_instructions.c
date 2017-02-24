@@ -45,7 +45,27 @@ int		check_if_sort(t_doub_lst *a, t_doub_lst *b)
 	return (1);
 }
 
-int		check_instructions(t_doub_lst **a, t_doub_lst **b)
+void	print_stacks(t_doub_lst *a, t_doub_lst *b)
+{
+	ft_putstr("stack A:");
+	while (a)
+	{
+		ft_putchar(' ');
+		ft_putnbr(a->nbr);
+		a = a->next;
+	}
+	ft_putchar('\n');
+	ft_putstr("stack B:");
+	while (b)
+	{
+		ft_putchar(' ');
+		ft_putnbr(b->nbr);
+		b = b->next;
+	}
+	ft_putchar('\n');
+}
+
+int		check_instructions(t_doub_lst **a, t_doub_lst **b, int flag)
 {
 	char	*inst;
 	int		gnl_ret;
@@ -53,6 +73,8 @@ int		check_instructions(t_doub_lst **a, t_doub_lst **b)
 	while ((gnl_ret = get_next_line(0, &inst)) > 0)
 	{
 		apply_instruction(inst, a, b);
+		if (flag == 1 && inst && *inst != 0)
+			print_stacks(*a, *b);
 		ft_strdel(&inst);
 	}
 	if (gnl_ret == -1)

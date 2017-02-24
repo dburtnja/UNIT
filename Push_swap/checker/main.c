@@ -35,16 +35,35 @@ t_doub_lst	*make_lst(int size, char **arg)
 	return (head);
 }
 
+void	check_flag(int *flag, char ***argv, int *argc)
+{
+	char	**p_argv;
+
+	*flag = 0;
+	p_argv = *argv;
+	p_argv++;
+	(*argc)--;
+	if (*argc > 1 && p_argv[0][0] == '-' && p_argv[0][1] == 'v')
+	{
+		*flag = 1;
+		(*argc)--;
+		p_argv++;
+	}
+	*argv = p_argv;
+}
+
 int		main(int argc, char **argv)
 {
 	t_doub_lst	*a;
 	t_doub_lst	*b;
+	int 		flag;
 
 	b = NULL;
 	if (argc > 1)
 	{
-		a = make_lst(argc - 1, &argv[1]);
-		write(1, check_instructions(&a, &b) == 1 ? "OK\n" : "KO\n", 3);
+		check_flag(&flag, &argv, &argc);
+		a = make_lst(argc, &argv[0]);
+		write(1, check_instructions(&a, &b, flag) == 1 ? "OK\n" : "KO\n", 3);
 		free_lst(&a);
 		if (b)
 			free_lst(&b);

@@ -27,7 +27,8 @@ void					free_lst(t_doub_lst **head);
 t_doub_lst				*bubble_sort(t_doub_lst *lst);
 
 void					error(void);
-int						check_instructions(t_doub_lst **a, t_doub_lst **b);
+int						check_instructions(t_doub_lst **a, t_doub_lst **b,
+											  int flag);
 void					swap_stack(t_doub_lst **stack);
 void					push_stack(t_doub_lst **from, t_doub_lst **into);
 void					rotate_stack(t_doub_lst **head);
@@ -42,6 +43,8 @@ void					ps_rev_rotate_stack(t_doub_lst **head);
 void					ps_apply_to_both(t_doub_lst **a, t_doub_lst **b,
 									  void (*f)(t_doub_lst **stack));
 void					find_sort_algorithm(t_doub_lst **a, t_doub_lst **b);
+int						check_if_sort_a(t_doub_lst *a);
+int						check_if_sort_b(t_doub_lst *b);
 
 void					sort_small(t_doub_lst *a, t_doub_lst *b);
 
