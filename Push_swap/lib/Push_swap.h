@@ -7,8 +7,11 @@
 # include "./libft.h"
 # include "./get_next_line.h"
 
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
+# define GREEN			"\x1b[32m"
+# define YELLOW			"\x1b[33m"
+# define BLUE			"\x1b[34m"
+# define RED			"\x1b[31m"
+# define RESET			"\x1b[0m"
 
 typedef	struct			s_doub_lst
 {
@@ -47,5 +50,7 @@ int						check_if_sort_a(t_doub_lst *a);
 int						check_if_sort_b(t_doub_lst *b);
 
 void					sort_small(t_doub_lst *a, t_doub_lst *b);
+int						middle_nbr(t_doub_lst *head);
+int						if_rev_rotate(t_doub_lst *lst, int midd_nbr, int size);
 
 #endif

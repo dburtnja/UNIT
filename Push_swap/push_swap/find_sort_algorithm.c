@@ -4,40 +4,6 @@
 
 #include "../lib/Push_swap.h"
 
-int 	middle_nbr(t_doub_lst *head)
-{
-	int 		i;
-	t_doub_lst	*sort_lst;
-
-	sort_lst = bubble_sort(lst_dup(head));
-	i = head->size / 2;
-	while (i > 0)
-	{
-		sort_lst = sort_lst->next;
-		i--;
-	}
-	return (sort_lst->nbr);
-}
-
-int		if_rev_rotate(t_doub_lst *lst, int midd_nbr, int size)
-{
-	int 	left;
-	int 	i;
-
-	i = 0;
-	left = 0;
-	while (i < size)
-	{
-		if (midd_nbr > lst->nbr)
-			left++;
-		i++;
-	}
-	if (size - left > left)
-		return (1);
-	return (0);
-}
-
-
 int		find_instruction_a(t_doub_lst **a, t_doub_lst **b, int midd_nbr, int rr)
 {
 	if ((*a)->nbr < midd_nbr)
@@ -83,7 +49,7 @@ void	dividing_lst_a(t_doub_lst **a, t_doub_lst *b)
 
 int		find_instruction_b(t_doub_lst **a, t_doub_lst **b, int midd_nbr, int rr)
 {
-	if ((*b)->nbr > midd_nbr)
+	if ((*b)->nbr >= midd_nbr)
 	{
 		ps_push_stack(b, a);
 		ft_putendl("pa");

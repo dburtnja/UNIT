@@ -63,7 +63,11 @@ int		main(int argc, char **argv)
 	{
 		check_flag(&flag, &argv, &argc);
 		a = make_lst(argc, &argv[0]);
-		write(1, check_instructions(&a, &b, flag) == 1 ? "OK\n" : "KO\n", 3);
+		if (check_instructions(&a, &b, flag) == 1)
+			ft_putendl(GREEN"OK"RESET);
+		else
+			ft_putendl(RED"KO"RESET);
+		//write(1, check_instructions(&a, &b, flag) == 1 ? "OK\n" : "KO\n", 3);
 		free_lst(&a);
 		if (b)
 			free_lst(&b);
