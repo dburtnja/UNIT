@@ -6,12 +6,19 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 14:02:03 by dburtnja          #+#    #+#             */
-/*   Updated: 2017/02/15 23:07:41 by dburtnja         ###   ########.fr       */
+/*   Updated: 2017/02/16 16:17:23 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# define RED		"\x1b[31m"
+# define GREEN		"\x1b[32m"
+# define YELLOW		"\x1b[33m"
+# define BLUE		"\x1b[34m"
+# define MAGENTA	"\x1b[35m"
+# define CYAN		"\x1b[36m"
+# define RESET		"\x1b[0m"
 
 # include <stdarg.h>
 # include <stdlib.h>
