@@ -14,7 +14,7 @@
 
 static char		*write_word(char *s, char *buf, char c)
 {
-	while (*s != c && *s != '\0')
+	while (*s != c && *s != 0)
 	{
 		*buf = *s;
 		s++;
@@ -49,14 +49,14 @@ t_list			*ft_strsplit_lst(char const *s, char c)
 		str++;
 	head = make_list(&str, c);
 	p = head;
-	while (*str != '\0')
+	while (*str != 0)
 	{
 		if (*str != c)
 		{
 			p->next = make_list(&str, c);
 			p = p->next;
 		}
-		if (str != '\0')
+		if (str != 0)
 			str++;
 	}
 	return (head);
